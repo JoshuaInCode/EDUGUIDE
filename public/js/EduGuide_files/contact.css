@@ -1,0 +1,27 @@
+/*=====================================
+  CONTACT STYLES 
+  ===================================*/
+#contact-sec {
+    padding-top: 10px;
+    padding-bottom: 60px;
+    background: url(../img/slide2.jpg) no-repeat center center;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+#contact-sec .overlay {
+    background: rgba(0, 0, 0, 0.76);
+    min-height: 600px;
+}
+
+#contact-sec h1 {
+    color: #fff;
+}
+
+#contact-sec .form-control {
+    background-color: rgba(255, 255, 255, 0);
+    color: #fff;
+}
