@@ -33,7 +33,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             height: 100%;
             transition: all 0.3s ease;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
         }
         
         .faculty-div:hover {
@@ -43,7 +44,7 @@
         
         .faculty-div img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
         }
         
@@ -53,15 +54,59 @@
         
         .faculty-div h3 {
             font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #333;
+            font-weight: 600;
         }
         
         .faculty-div p {
             color: #666;
             margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.4;
         }
-        
+
+        .university-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .university-info p {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .university-info i {
+            color: #007bff;
+            width: 20px;
+            margin-right: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .button-group .btn {
+            flex: 1;
+            padding: 8px 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        .col-md-4 {
+            padding: 10px;
+        }
+
         .header-line {
             position: relative;
             padding-bottom: 20px;
@@ -79,21 +124,75 @@
             background: #007bff;
         }
 
-        .university-info {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
+        .university-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 2;
         }
 
-        .university-info p {
-            margin-bottom: 5px;
-            font-size: 0.9rem;
+        .university-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
-        .university-info i {
-            color: #007bff;
-            width: 20px;
-            margin-right: 10px;
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0,123,255,0.2);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 5px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .search-result-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -140,6 +239,12 @@
                 </div>
             </div>
 
+            <!-- Search Container -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for a university..." id="universitySearch">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="faculty-div">
@@ -153,7 +258,10 @@
                                 <p><i class="fas fa-globe"></i> www.up.ac.pa</p>
                                 <p><i class="fas fa-phone"></i> (507) 523-5000</p>
                             </div>
-                            <a href="careers.html?uni=up" class="btn btn-outline-primary mt-3 w-100">View Programs</a>
+                            <div class="button-group">
+                                <a href="careers.html?uni=up" class="btn btn-outline-primary">View Programs</a>
+                                <a href="https://www.up.ac.pa" target="_blank" class="btn btn-primary">Official Website</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,7 +278,10 @@
                                 <p><i class="fas fa-globe"></i> www.utp.ac.pa</p>
                                 <p><i class="fas fa-phone"></i> (507) 560-3000</p>
                             </div>
-                            <a href="careers.html?uni=utp" class="btn btn-outline-primary mt-3 w-100">View Programs</a>
+                            <div class="button-group">
+                                <a href="careers.html?uni=utp" class="btn btn-outline-primary">View Programs</a>
+                                <a href="https://www.utp.ac.pa" target="_blank" class="btn btn-primary">Official Website</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,11 +298,16 @@
                                 <p><i class="fas fa-globe"></i> www.udelas.ac.pa</p>
                                 <p><i class="fas fa-phone"></i> (507) 501-1000</p>
                             </div>
-                            <a href="careers.html?uni=udelas" class="btn btn-outline-primary mt-3 w-100">View Programs</a>
+                            <div class="button-group">
+                                <a href="careers.html?uni=udelas" class="btn btn-outline-primary">View Programs</a>
+                                <a href="https://www.udelas.ac.pa" target="_blank" class="btn btn-primary">Official Website</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-4">
                     <div class="faculty-div">
                         <img src="https://umip.ac.pa/wp-content/uploads/2020/10/UMIP.jpg" alt="UMIP">
@@ -204,7 +320,10 @@
                                 <p><i class="fas fa-globe"></i> www.umip.ac.pa</p>
                                 <p><i class="fas fa-phone"></i> (507) 520-0000</p>
                             </div>
-                            <a href="careers.html?uni=umip" class="btn btn-outline-primary mt-3 w-100">View Programs</a>
+                            <div class="button-group">
+                                <a href="careers.html?uni=umip" class="btn btn-outline-primary">View Programs</a>
+                                <a href="https://www.umip.ac.pa" target="_blank" class="btn btn-primary">Official Website</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -221,7 +340,10 @@
                                 <p><i class="fas fa-globe"></i> www.unachi.ac.pa</p>
                                 <p><i class="fas fa-phone"></i> (507) 730-5300</p>
                             </div>
-                            <a href="careers.html?uni=unachi" class="btn btn-outline-primary mt-3 w-100">Ver Programas</a>
+                            <div class="button-group">
+                                <a href="careers.html?uni=unachi" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.unachi.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -238,7 +360,258 @@
                                 <p><i class="fas fa-globe"></i> www.ulatina.edu.pa</p>
                                 <p><i class="fas fa-phone"></i> (507) 230-8200</p>
                             </div>
-                            <a href="careers.html?uni=latina" class="btn btn-outline-primary mt-3 w-100">Ver Programas</a>
+                            <div class="button-group">
+                                <a href="careers.html?uni=latina" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.ulatina.edu.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.usma.ac.pa/wp-content/uploads/2020/03/campus-usma.jpg" alt="USMA">
+                        <div class="content">
+                            <h3>UNIVERSIDAD SANTA MARÍA LA ANTIGUA</h3>
+                            <p>Universidad católica privada con enfoque en humanidades y ciencias sociales.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Vía Ricardo J. Alfaro, Panamá</p>
+                                <p><i class="fas fa-graduation-cap"></i> +40 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.usma.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 236-8000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=usma" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.usma.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://uip.edu.pa/wp-content/uploads/2020/03/campus-uip.jpg" alt="UIP">
+                        <div class="content">
+                            <h3>UNIVERSIDAD INTERAMERICANA DE PANAMÁ</h3>
+                            <p>Universidad privada con enfoque en negocios y tecnología.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Vía Ricardo J. Alfaro, Panamá</p>
+                                <p><i class="fas fa-graduation-cap"></i> +30 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.uip.edu.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 279-6200</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=uip" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.uip.edu.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://udi.edu.pa/wp-content/uploads/2020/03/campus-udi.jpg" alt="UDI">
+                        <div class="content">
+                            <h3>UNIVERSIDAD DEL ISTMO</h3>
+                            <p>Universidad privada con enfoque en negocios y tecnología.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Vía Ricardo J. Alfaro, Panamá</p>
+                                <p><i class="fas fa-graduation-cap"></i> +25 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.udi.edu.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 279-6200</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=udi" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.udi.edu.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.ancon.up.ac.pa/wp-content/uploads/2020/03/campus-ancon.jpg" alt="UP Ancon">
+                        <div class="content">
+                            <h3>UNIVERSIDAD DE PANAMÁ - SEDE ANCON</h3>
+                            <p>Principal campus de la Universidad de Panamá con amplia oferta académica.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Ancon, Panamá</p>
+                                <p><i class="fas fa-graduation-cap"></i> +50 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.up.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 523-5000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=upancon" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.up.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.utp.ac.pa/sites/default/files/styles/imagen_noticias_grandes/public/documentos/2021/imagen/campus_utp_veraguas.jpg" alt="UTP Veraguas">
+                        <div class="content">
+                            <h3>UTP - CENTRO REGIONAL VERAGUAS</h3>
+                            <p>Campus regional de la UTP especializado en ingeniería y tecnología.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Santiago, Veraguas</p>
+                                <p><i class="fas fa-graduation-cap"></i> +20 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.utp.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 998-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=utpveraguas" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.utp.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.udelas.ac.pa/wp-content/uploads/2020/06/UDELAS-CHIRIQUI.jpg" alt="UDELAS Chiriquí">
+                        <div class="content">
+                            <h3>UDELAS - CENTRO REGIONAL CHIRIQUÍ</h3>
+                            <p>Campus regional especializado en ciencias de la salud y educación.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> David, Chiriquí</p>
+                                <p><i class="fas fa-graduation-cap"></i> +15 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.udelas.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 730-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=udelaschiriqui" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.udelas.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.umip.ac.pa/wp-content/uploads/2020/10/UMIP-COLON.jpg" alt="UMIP Colón">
+                        <div class="content">
+                            <h3>UMIP - CENTRO REGIONAL COLÓN</h3>
+                            <p>Campus regional especializado en ciencias marítimas y portuarias.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Colón, Panamá</p>
+                                <p><i class="fas fa-graduation-cap"></i> +10 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.umip.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 441-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=umipcolon" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.umip.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.unachi.ac.pa/assets/img/unachi-bocas.jpg" alt="UNACHI Bocas">
+                        <div class="content">
+                            <h3>UNACHI - CENTRO REGIONAL BOCAS DEL TORO</h3>
+                            <p>Campus regional con enfoque en turismo y ciencias ambientales.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Bocas del Toro</p>
+                                <p><i class="fas fa-graduation-cap"></i> +8 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.unachi.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 758-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=unachibocas" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.unachi.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://ulatina.edu.pa/wp-content/uploads/2019/05/campus-ulatina-veraguas.jpg" alt="ULATINA Veraguas">
+                        <div class="content">
+                            <h3>ULATINA - CENTRO REGIONAL VERAGUAS</h3>
+                            <p>Campus regional con enfoque en negocios y tecnología.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> Santiago, Veraguas</p>
+                                <p><i class="fas fa-graduation-cap"></i> +12 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.ulatina.edu.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 998-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=ulatinavg" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.ulatina.edu.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://www.usma.ac.pa/wp-content/uploads/2020/03/campus-usma-chiriqui.jpg" alt="USMA Chiriquí">
+                        <div class="content">
+                            <h3>USMA - CENTRO REGIONAL CHIRIQUÍ</h3>
+                            <p>Campus regional con enfoque en humanidades y ciencias sociales.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> David, Chiriquí</p>
+                                <p><i class="fas fa-graduation-cap"></i> +15 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.usma.ac.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 730-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=usmachiriqui" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.usma.ac.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://uip.edu.pa/wp-content/uploads/2020/03/campus-uip-chiriqui.jpg" alt="UIP Chiriquí">
+                        <div class="content">
+                            <h3>UIP - CENTRO REGIONAL CHIRIQUÍ</h3>
+                            <p>Campus regional con enfoque en negocios y tecnología.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> David, Chiriquí</p>
+                                <p><i class="fas fa-graduation-cap"></i> +10 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.uip.edu.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 730-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=uipchiriqui" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.uip.edu.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="faculty-div">
+                        <img src="https://udi.edu.pa/wp-content/uploads/2020/03/campus-udi-chiriqui.jpg" alt="UDI Chiriquí">
+                        <div class="content">
+                            <h3>UDI - CENTRO REGIONAL CHIRIQUÍ</h3>
+                            <p>Campus regional con enfoque en negocios y tecnología.</p>
+                            <div class="university-info">
+                                <p><i class="fas fa-map-marker-alt"></i> David, Chiriquí</p>
+                                <p><i class="fas fa-graduation-cap"></i> +8 carreras</p>
+                                <p><i class="fas fa-globe"></i> www.udi.edu.pa</p>
+                                <p><i class="fas fa-phone"></i> (507) 730-0000</p>
+                            </div>
+                            <div class="button-group">
+                                <a href="careers.html?uni=udichiriqui" class="btn btn-outline-primary">Ver Programas</a>
+                                <a href="https://www.udi.edu.pa" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -257,5 +630,69 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Search Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('universitySearch');
+            const searchResults = document.getElementById('searchResults');
+            const universityCards = document.querySelectorAll('.faculty-div');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                if (searchTerm.length < 2) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+
+                const matches = Array.from(universityCards).filter(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    return title.includes(searchTerm);
+                });
+
+                if (matches.length > 0) {
+                    searchResults.innerHTML = matches.map(card => {
+                        const title = card.querySelector('h3').textContent;
+                        return `<div class="search-result-item" data-title="${title}">${title}</div>`;
+                    }).join('');
+                    searchResults.style.display = 'block';
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+            searchResults.addEventListener('click', function(e) {
+                if (e.target.classList.contains('search-result-item')) {
+                    const selectedTitle = e.target.getAttribute('data-title');
+                    const targetCard = Array.from(universityCards).find(card => 
+                        card.querySelector('h3').textContent === selectedTitle
+                    );
+
+                    if (targetCard) {
+                        // Remove previous highlights
+                        universityCards.forEach(card => card.classList.remove('highlight'));
+                        
+                        // Add highlight to selected card
+                        targetCard.classList.add('highlight');
+                        
+                        // Scroll to the card
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Clear search
+                        searchInput.value = '';
+                        searchResults.style.display = 'none';
+                    }
+                }
+            });
+
+            // Close search results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
