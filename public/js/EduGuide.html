@@ -19,20 +19,23 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
+            background: #f8fbff;
+            color: #0a2342;
         }
         
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
+            box-shadow: 0 2px 10px rgba(10,35,66,0.08);
             padding: 15px 0;
         }
         
         .home-sec {
             position: relative;
             min-height: 100vh;
-            color: white;
+            color: #fff;
             padding: 0;
             overflow: hidden;
+            background: linear-gradient(120deg, #1769aa 0%, #0a2342 100%);
         }
         
         .carousel {
@@ -58,7 +61,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(10,35,66,0.55);
             z-index: 1;
         }
         
@@ -84,12 +87,21 @@
             z-index: 1030;
         }
         
-        .nav-link {
+        .navbar .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.2s;
             position: relative;
-            padding: 8px 15px;
+            text-transform: uppercase;
         }
         
-        .nav-link:after {
+        .navbar .nav-link.active, .navbar .nav-link:hover {
+            color: #3ec6ff !important;
+            text-shadow: 0 2px 8px #1769aa;
+        }
+        
+        .navbar .nav-link::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -97,53 +109,52 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: #007bff;
-            transition: all 0.3s ease;
+            background: #3ec6ff;
+            transition: all 0.3s;
         }
         
-        .nav-link:hover:after,
-        .nav-link.active:after {
+        .navbar .nav-link:hover::after, .navbar .nav-link.active::after {
             width: 100%;
         }
         
-        .nav-link.active {
-            color: #007bff !important;
-            font-weight: 500;
-        }
-        
         .about-div {
-            background: white;
+            background: #fff;
             border-radius: 15px;
             padding: 30px;
             margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(23,105,170,0.08);
+            border-left: 6px solid #1769aa;
+            transition: all 0.3s;
         }
         
         .about-div:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(10,35,66,0.12);
+            border-left: 6px solid #0a2342;
         }
         
         .faculty-div {
-            background: white;
+            background: #fff;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(23,105,170,0.08);
             height: 100%;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             position: relative;
+            border-top: 4px solid #1769aa;
         }
         
         .faculty-div:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(10,35,66,0.15);
+            border-top: 4px solid #0a2342;
         }
 
         .university-logo {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: white;
+            background: #f8fbff;
             border-radius: 10px;
             padding: 5px;
             width: 80px;
@@ -151,7 +162,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(23,105,170,0.10);
             z-index: 2;
         }
 
@@ -174,43 +185,47 @@
         .faculty-div h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #333;
+            color: #1769aa;
+            font-weight: 700;
         }
         
         .faculty-div p {
-            color: #666;
+            color: #0a2342;
             margin-bottom: 0;
         }
         
         .btn-custom {
-            background: #007bff;
-            color: white;
-            padding: 10px 25px;
+            background: #1769aa;
+            color: #fff;
+            padding: 12px 32px;
             border-radius: 30px;
             border: none;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(23,105,170,0.12);
+            transition: all 0.3s;
         }
         
         .btn-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #0a2342;
+            color: #ffe600;
+            box-shadow: 0 4px 16px rgba(10,35,66,0.18);
         }
         
         .header-line {
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+            color: #fff;
+            background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%);
+            border-radius: 12px;
+            padding: 18px 0 18px 0;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+            animation: colorchange 4s infinite alternate;
         }
         
         .header-line:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: #007bff;
+            border-bottom: 2px solid #3ec6ff;
         }
         
         .contact-form {
@@ -240,10 +255,11 @@
         }
         
         .divider {
-            width: 50px;
+            width: 40px;
             height: 3px;
             background: linear-gradient(45deg, #007bff, #00e1ff);
-            margin: 15px auto;
+            margin: 12px auto 18px auto;
+            border-bottom: 2px solid #1769aa;
         }
         
         /* Estilos para programas */
@@ -331,7 +347,9 @@
         .lead {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: #666;
+            color: #1769aa;
+            font-weight: 600;
+            text-shadow: 1px 1px 6px #fff;
         }
         
         /* Estilos adicionales para las nuevas secciones */
@@ -389,6 +407,47 @@
         .mt-3 {
             margin-top: 1rem;
         }
+        
+        .btn-outline-light {
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 12px 32px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-light:hover {
+            background: #1769aa;
+            color: #ffe600;
+            border-color: #1769aa;
+        }
+        
+        @keyframes colorchange {
+            0% { background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%); color: #fff; }
+            100% { background: linear-gradient(90deg, #0a2342 0%, #3ec6ff 100%); color: #3ec6ff; }
+        }
+        
+        .eduguide-brand {
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px #1769aa;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .eduguide-brand:hover {
+            color: #3ec6ff !important;
+            text-shadow: 0 2px 8px #3ec6ff;
+        }
+        .dynamic-white {
+            color: #fff !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px #1769aa;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
     </style>
 </head>
 
@@ -396,7 +455,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="EduGuide.html">EduGuide</a>
+            <a class="navbar-brand eduguide-brand" href="EduGuide.html">EduGuide</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -453,8 +512,8 @@
         </div>
 
         <div class="container text-center hero-content">
-            <h1 class="display-4 mb-4">EDUGUIDE IS HERE TO GUIDE YOU</h1>
-            <p class="lead mb-5">Your complete guide for higher education in Panama</p>
+            <h1 class="display-4 mb-4 dynamic-white">Impulsa tu futuro universitario con EduGuide</h1>
+            <p class="lead mb-5" style="color:#fff; font-weight:600; text-shadow: 1px 1px 4px #1769aa;">La plataforma más completa para descubrir universidades y becas en Panamá</p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="universities.html" class="btn btn-custom">View Universities</a>
                 <a href="careers.html" class="btn btn-outline-light">Explore Careers</a>

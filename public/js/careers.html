@@ -21,9 +21,37 @@
         }
         
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
+            box-shadow: 0 2px 10px rgba(10,35,66,0.08);
             padding: 15px 0;
+        }
+        
+        .navbar .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+        
+        .navbar .nav-link.active, .navbar .nav-link:hover {
+            color: #3ec6ff !important;
+            text-shadow: 0 2px 8px #1769aa;
+        }
+        
+        .navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #3ec6ff;
+            transition: all 0.3s;
+        }
+        
+        .navbar .nav-link:hover::after, .navbar .nav-link.active::after {
+            width: 100%;
         }
         
         .program-category {
@@ -116,6 +144,15 @@
             padding-bottom: 20px;
             margin-bottom: 40px;
             text-align: center;
+            color: #fff;
+            background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%);
+            border-radius: 12px;
+            padding: 18px 0 18px 0;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+            animation: colorchange 4s infinite alternate;
         }
         
         .header-line:after {
@@ -126,7 +163,25 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: #007bff;
+            background: #3ec6ff;
+        }
+        
+        @keyframes colorchange {
+            0% { background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%); color: #fff; }
+            100% { background: linear-gradient(90deg, #0a2342 0%, #3ec6ff 100%); color: #3ec6ff; }
+        }
+        
+        .eduguide-brand {
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px #1769aa;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .eduguide-brand:hover {
+            color: #3ec6ff !important;
+            text-shadow: 0 2px 8px #3ec6ff;
         }
     </style>
 </head>
@@ -135,7 +190,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="EduGuide.html">EduGuide</a>
+            <a class="navbar-brand eduguide-brand" href="EduGuide.html">EduGuide</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
