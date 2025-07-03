@@ -19,20 +19,23 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
+            background: #f8fbff;
+            color: #0a2342;
         }
         
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
+            box-shadow: 0 2px 10px rgba(10,35,66,0.08);
             padding: 15px 0;
         }
         
         .home-sec {
             position: relative;
             min-height: 100vh;
-            color: white;
+            color: #fff;
             padding: 0;
             overflow: hidden;
+            background: linear-gradient(120deg, #1769aa 0%, #0a2342 100%);
         }
         
         .carousel {
@@ -45,11 +48,13 @@
         
         .carousel-item {
             height: 100vh;
+            min-height: 600px;
         }
         
         .carousel-item img {
             object-fit: cover;
             height: 100%;
+            width: 100%;
         }
         
         .carousel-overlay {
@@ -58,14 +63,30 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+<<<<<<< HEAD
+            background: rgba(10,35,66,0.55);
+=======
+            background: rgba(0,0,0,0.5);
+>>>>>>> 54fa08a49b657b65227612a93d39fabbca873a62
             z-index: 1;
         }
         
-        .hero-content {
-            position: relative;
+        .carousel-caption {
             z-index: 2;
-            padding-top: 30vh;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-caption h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .carousel-caption p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
         }
         
         .carousel-indicators {
@@ -84,12 +105,21 @@
             z-index: 1030;
         }
         
-        .nav-link {
+        .navbar .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.2s;
             position: relative;
-            padding: 8px 15px;
+            text-transform: uppercase;
         }
         
-        .nav-link:after {
+        .navbar .nav-link.active, .navbar .nav-link:hover {
+            color: #3ec6ff !important;
+            text-shadow: 0 2px 8px #1769aa;
+        }
+        
+        .navbar .nav-link::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -97,53 +127,52 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: #007bff;
-            transition: all 0.3s ease;
+            background: #3ec6ff;
+            transition: all 0.3s;
         }
         
-        .nav-link:hover:after,
-        .nav-link.active:after {
+        .navbar .nav-link:hover::after, .navbar .nav-link.active::after {
             width: 100%;
         }
         
-        .nav-link.active {
-            color: #007bff !important;
-            font-weight: 500;
-        }
-        
         .about-div {
-            background: white;
+            background: #fff;
             border-radius: 15px;
             padding: 30px;
             margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(23,105,170,0.08);
+            border-left: 6px solid #1769aa;
+            transition: all 0.3s;
         }
         
         .about-div:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(10,35,66,0.12);
+            border-left: 6px solid #0a2342;
         }
         
         .faculty-div {
-            background: white;
+            background: #fff;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(23,105,170,0.08);
             height: 100%;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             position: relative;
+            border-top: 4px solid #1769aa;
         }
         
         .faculty-div:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(10,35,66,0.15);
+            border-top: 4px solid #0a2342;
         }
 
         .university-logo {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: white;
+            background: #f8fbff;
             border-radius: 10px;
             padding: 5px;
             width: 80px;
@@ -151,7 +180,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(23,105,170,0.10);
             z-index: 2;
         }
 
@@ -174,43 +203,66 @@
         .faculty-div h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #333;
+            color: #1769aa;
+            font-weight: 700;
         }
         
         .faculty-div p {
-            color: #666;
+            color: #0a2342;
             margin-bottom: 0;
         }
         
         .btn-custom {
-            background: #007bff;
-            color: white;
-            padding: 10px 25px;
+<<<<<<< HEAD
+            background: #1769aa;
+            color: #fff;
+            padding: 12px 32px;
             border-radius: 30px;
             border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(23,105,170,0.12);
+            transition: all 0.3s;
+        }
+        
+        .btn-custom:hover {
+            background: #0a2342;
+            color: #ffe600;
+            box-shadow: 0 4px 16px rgba(10,35,66,0.18);
+=======
+            background: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .btn-custom:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #0056b3;
+            color: white;
+>>>>>>> 54fa08a49b657b65227612a93d39fabbca873a62
         }
         
         .header-line {
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+            color: #fff;
+            background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%);
+            border-radius: 12px;
+            padding: 18px 0 18px 0;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+            animation: colorchange 4s infinite alternate;
         }
         
         .header-line:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: #007bff;
+            border-bottom: 2px solid #3ec6ff;
         }
         
         .contact-form {
@@ -240,10 +292,11 @@
         }
         
         .divider {
-            width: 50px;
+            width: 40px;
             height: 3px;
             background: linear-gradient(45deg, #007bff, #00e1ff);
-            margin: 15px auto;
+            margin: 12px auto 18px auto;
+            border-bottom: 2px solid #1769aa;
         }
         
         /* Estilos para programas */
@@ -331,7 +384,9 @@
         .lead {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: #666;
+            color: #1769aa;
+            font-weight: 600;
+            text-shadow: 1px 1px 6px #fff;
         }
         
         /* Estilos adicionales para las nuevas secciones */
@@ -389,6 +444,67 @@
         .mt-3 {
             margin-top: 1rem;
         }
+<<<<<<< HEAD
+        
+        .btn-outline-light {
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 12px 32px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-light:hover {
+            background: #1769aa;
+            color: #ffe600;
+            border-color: #1769aa;
+        }
+        
+        @keyframes colorchange {
+            0% { background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%); color: #fff; }
+            100% { background: linear-gradient(90deg, #0a2342 0%, #3ec6ff 100%); color: #3ec6ff; }
+        }
+        
+        .eduguide-brand {
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px #1769aa;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .eduguide-brand:hover {
+            color: #3ec6ff !important;
+            text-shadow: 0 2px 8px #3ec6ff;
+        }
+        .dynamic-white {
+            color: #fff !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px #1769aa;
+            transition: color 0.3s, text-shadow 0.3s;
+=======
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: #007bff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+>>>>>>> 54fa08a49b657b65227612a93d39fabbca873a62
+        }
     </style>
 </head>
 
@@ -396,7 +512,11 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="EduGuide.html">EduGuide</a>
+<<<<<<< HEAD
+            <a class="navbar-brand eduguide-brand" href="EduGuide.html">EduGuide</a>
+=======
+            <a class="navbar-brand" href="index.html">EduGuide</a>
+>>>>>>> 54fa08a49b657b65227612a93d39fabbca873a62
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -424,7 +544,6 @@
 
     <!-- Hero Section -->
     <section class="home-sec" id="home">
-        <!-- Carrusel de imágenes -->
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
@@ -433,31 +552,68 @@
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
             </div>
             <div class="carousel-inner">
+                <!-- Primer Slide -->
                 <div class="carousel-item active">
-                    <div class="carousel-overlay"></div>
                     <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Educación">
-                </div>
-                <div class="carousel-item">
                     <div class="carousel-overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Universidad">
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">TU FUTURO COMIENZA AQUÍ</h1>
+                        <p class="lead mb-4">Descubre tu camino hacia el éxito académico y profesional</p>
+                        <div class="d-flex gap-3">
+                            <a href="universities.html" class="btn btn-custom">Explorar Universidades</a>
+                            <a href="careers.html" class="btn btn-outline-light">Ver Carreras</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Estudiantes">
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Campus">
-                </div>
-            </div>
-        </div>
 
+<<<<<<< HEAD
         <div class="container text-center hero-content">
-            <h1 class="display-4 mb-4">EDUGUIDE IS HERE TO GUIDE YOU</h1>
-            <p class="lead mb-5">Your complete guide for higher education in Panama</p>
+            <h1 class="display-4 mb-4 dynamic-white">Impulsa tu futuro universitario con EduGuide</h1>
+            <p class="lead mb-5" style="color:#fff; font-weight:600; text-shadow: 1px 1px 4px #1769aa;">La plataforma más completa para descubrir universidades y becas en Panamá</p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="universities.html" class="btn btn-custom">View Universities</a>
                 <a href="careers.html" class="btn btn-outline-light">Explore Careers</a>
+=======
+                <!-- Segundo Slide -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Test Vocacional">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">DESCUBRE TU VOCACIÓN</h1>
+                        <p class="lead mb-4">¿No sabes qué carrera estudiar? Nuestro test vocacional te ayudará a encontrar tu camino profesional ideal</p>
+                        <a href="test-vocacional.html" class="btn btn-custom">Realizar Test Vocacional</a>
+                    </div>
+                </div>
+
+                <!-- Tercer Slide -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Sobre Nosotros">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">SOBRE EDUGUIDE</h1>
+                        <p class="lead mb-4">Tu guía completa para la educación superior en Panamá. Brindamos información confiable y actualizada sobre universidades, carreras y becas para ayudarte a tomar la mejor decisión para tu futuro.</p>
+                        <a href="#benefits" class="btn btn-custom">Conoce Más</a>
+                    </div>
+                </div>
+
+                <!-- Cuarto Slide -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Redes Sociales">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">CONÉCTATE CON NOSOTROS</h1>
+                        <p class="lead mb-4">Síguenos en nuestras redes sociales para mantenerte informado sobre las últimas novedades en educación superior</p>
+                        <div class="d-flex gap-3">
+                            <a href="https://www.facebook.com/people/EduGuide-Panamá/61563217786890/" target="_blank" class="btn btn-custom">
+                                <i class="fab fa-facebook me-2"></i>Facebook
+                            </a>
+                            <a href="https://www.instagram.com/eduguide_pa" target="_blank" class="btn btn-custom">
+                                <i class="fab fa-instagram me-2"></i>Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 54fa08a49b657b65227612a93d39fabbca873a62
             </div>
         </div>
     </section>
@@ -592,70 +748,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Más universidades -->
-                <div class="col-md-4 mb-4">
-                    <div class="faculty-div">
-                        <div class="university-logo">
-                            <img src="https://umip.ac.pa/wp-content/uploads/2020/10/logo-umip.png" alt="Logo UMIP" class="logo-img">
-                        </div>
-                        <img src="https://umip.ac.pa/wp-content/uploads/2020/10/UMIP.jpg" alt="UMIP" class="campus-img">
-                        <div class="content">
-                            <h3><i class="fas fa-ship me-2"></i>UNIVERSIDAD MARÍTIMA DE PANAMÁ</h3>
-                            <p>Specialized in maritime and port training, contributing to the development of Panama's maritime sector.</p>
-                            <div class="d-flex gap-2">
-                                <a href="https://umip.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-globe me-2"></i>Web site
-                                </a>
-                                <a href="https://umip.ac.pa/oferta-academica/" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-book-open me-2"></i>Programs
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="faculty-div">
-                        <div class="university-logo">
-                            <img src="https://unachi.ac.pa/assets/img/logo.png" alt="Logo UNACHI" class="logo-img">
-                        </div>
-                        <img src="https://unachi.ac.pa/assets/img/unachi.jpg" alt="UNACHI" class="campus-img">
-                        <div class="content">
-                            <h3><i class="fas fa-graduation-cap me-2"></i>UNIVERSIDAD AUTÓNOMA DE CHIRIQUÍ</h3>
-                            <p>A public university that serves the western region of Panama, offering high-quality programs.</p>
-                            <div class="d-flex gap-2">
-                                <a href="https://unachi.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-globe me-2"></i>Web site
-                                </a>
-                                <a href="https://unachi.ac.pa/facultades" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-book-open me-2"></i>Programs
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="faculty-div">
-                        <div class="university-logo">
-                            <img src="https://ulatina.edu.pa/wp-content/uploads/2019/05/logo-ulatina.png" alt="Logo U. Latina" class="logo-img">
-                        </div>
-                        <img src="https://ulatina.edu.pa/wp-content/uploads/2019/05/campus-ulatina.jpg" alt="LATINA" class="campus-img">
-                        <div class="content">
-                            <h3><i class="fas fa-star me-2"></i>UNIVERSIDAD LATINA DE PANAMÁ</h3>
-                            <p>One of the leading private universities in Panama, known for its academic excellence.</p>
-                            <div class="d-flex gap-2">
-                                <a href="https://ulatina.edu.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-globe me-2"></i>Web site
-                                </a>
-                                <a href="https://ulatina.edu.pa/oferta-academica/" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-book-open me-2"></i>Programs
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -665,160 +757,118 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="header-line">UNIVERSITY PROGRAMS</h2>
+                    <h2 class="header-line">EXPLORA NUESTRAS CARRERAS</h2>
                     <p class="lead mb-5">
-                        Explore our wide range of university programs designed to prepare you for professional success.
+                        Descubre una amplia variedad de programas universitarios diseñados para impulsar tu futuro profesional.
                     </p>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="program-category mb-4">
-                        <h3 class="mb-4">Science and Engineering</h3>
-                        <div class="program-list">
-                            <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#engineering1">
-                                    <i class="fas fa-microchip"></i>
-                                    <h4>Computer Engineering</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="engineering1" class="collapse program-content">
-                                    <p>Trains professionals capable of designing, implementing, and maintaining computer systems.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 4 years</li>
-                                        <li>Mode: On-campus</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#engineering2">
-                                    <i class="fas fa-building"></i>
-                                    <h4>Civil Engineering</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="engineering2" class="collapse program-content">
-                                    <p>Prepares professionals to design and supervise infrastructure construction.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 5 years</li>
-                                        <li>Mode: On-campus</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
-                                </div>
-                            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Primera Fila -->
+                <div class="col-md-5">
+                    <div class="career-card tech-card">
+                        <div class="career-icon">
+                            <i class="fas fa-microchip"></i>
                         </div>
-                    </div>
-
-                    <div class="program-category mb-4">
-                        <h3 class="mb-4">Health Sciences</h3>
-                        <div class="program-list">
+                        <h3>Ingeniería y Tecnología</h3>
+                        <div class="career-programs">
                             <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health1">
-                                    <i class="fas fa-heartbeat"></i>
-                                    <h4>Medicine</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="health1" class="collapse program-content">
-                                    <p>Trains comprehensive doctors qualified for healthcare.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 6 years</li>
-                                        <li>Mode: On-campus</li>
-                                        <li>Degree: Doctor of Medicine</li>
-                                    </ul>
+                                <h4>Ingeniería en Sistemas</h4>
+                                <p>Diseño y desarrollo de soluciones tecnológicas</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
                                 </div>
                             </div>
-
                             <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health2">
-                                    <i class="fas fa-tooth"></i>
-                                    <h4>Dentistry</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="health2" class="collapse program-content">
-                                    <p>Prepares professionals specialized in oral and dental health.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 5 years</li>
-                                        <li>Mode: On-campus</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
+                                <h4>Ingeniería Civil</h4>
+                                <p>Diseño y construcción de infraestructura</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 5 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="program-category mb-4">
-                        <h3 class="mb-4">Business Sciences</h3>
-                        <div class="program-list">
+                <div class="col-md-5">
+                    <div class="career-card health-card">
+                        <div class="career-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Ciencias de la Salud</h3>
+                        <div class="career-programs">
                             <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#business1">
-                                    <i class="fas fa-chart-line"></i>
-                                    <h4>Business Administration</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="business1" class="collapse program-content">
-                                    <p>Develops skills to manage organizations and businesses.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 4 years</li>
-                                        <li>Mode: On-campus/Online</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
+                                <h4>Medicina</h4>
+                                <p>Formación integral en ciencias médicas</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 6 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Doctorado</span>
                                 </div>
                             </div>
-
                             <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#business2">
-                                    <i class="fas fa-coins"></i>
-                                    <h4>Accounting</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="business2" class="collapse program-content">
-                                    <p>Trains professionals expert in financial and accounting management.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 4 years</li>
-                                        <li>Mode: On-campus/Online</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
+                                <h4>Odontología</h4>
+                                <p>Especialización en salud bucal</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 5 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="program-category">
-                        <h3 class="mb-4">Design and Communication</h3>
-                        <div class="program-list">
+                <!-- Segunda Fila -->
+                <div class="col-md-5">
+                    <div class="career-card design-card">
+                        <div class="career-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Diseño y Artes</h3>
+                        <div class="career-programs">
                             <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design1">
-                                    <i class="fas fa-paint-brush"></i>
-                                    <h4>Graphic Design</h4>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <div id="design1" class="collapse program-content">
-                                    <p>Develops creative skills for visual communication.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 4 years</li>
-                                        <li>Mode: On-campus</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
+                                <h4>Diseño Gráfico</h4>
+                                <p>Comunicación visual y diseño digital</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
                                 </div>
                             </div>
-
                             <div class="program-item">
-                                <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design2">
-                                    <i class="fas fa-video"></i>
-                                    <h4>Audiovisual Production</h4>
-                                    <i class="fas fa-chevron-down"></i>
+                                <h4>Bellas Artes</h4>
+                                <p>Expresión artística y creativa</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
                                 </div>
-                                <div id="design2" class="collapse program-content">
-                                    <p>Trains professionals in audiovisual content creation.</p>
-                                    <ul class="program-details">
-                                        <li>Duration: 4 years</li>
-                                        <li>Mode: On-campus</li>
-                                        <li>Degree: Bachelor's</li>
-                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="career-card business-card">
+                        <div class="career-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Ciencias Empresariales</h3>
+                        <div class="career-programs">
+                            <div class="program-item">
+                                <h4>Administración de Empresas</h4>
+                                <p>Gestión y dirección organizacional</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <h4>Contabilidad</h4>
+                                <p>Gestión financiera y contable</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
                                 </div>
                             </div>
                         </div>
@@ -826,6 +876,114 @@
                 </div>
             </div>
         </div>
+
+        <style>
+            .career-card {
+                background: white;
+                border-radius: 20px;
+                padding: 30px;
+                height: 100%;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 2rem;
+            }
+
+            .career-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            }
+
+            .career-icon {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                font-size: 2rem;
+                color: white;
+            }
+
+            .tech-card .career-icon {
+                background: linear-gradient(45deg, #2196F3, #00BCD4);
+            }
+
+            .health-card .career-icon {
+                background: linear-gradient(45deg, #F44336, #FF9800);
+            }
+
+            .design-card .career-icon {
+                background: linear-gradient(45deg, #9C27B0, #E91E63);
+            }
+
+            .business-card .career-icon {
+                background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            }
+
+            .career-card h3 {
+                color: #333;
+                margin-bottom: 25px;
+                font-size: 1.8rem;
+                font-weight: 600;
+            }
+
+            .program-item {
+                background: #f8f9fa;
+                border-radius: 15px;
+                padding: 20px;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
+            }
+
+            .program-item:hover {
+                background: #fff;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .program-item h4 {
+                color: #007bff;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            .program-item p {
+                color: #666;
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .program-details {
+                display: flex;
+                gap: 20px;
+                font-size: 0.85rem;
+                color: #888;
+            }
+
+            .program-details span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .program-details i {
+                color: #007bff;
+            }
+
+            .g-4 {
+                gap: 2rem !important;
+            }
+
+            @media (max-width: 768px) {
+                .col-md-5 {
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 0 auto;
+                }
+            }
+        </style>
     </section>
 
     <!-- Contact Section -->
