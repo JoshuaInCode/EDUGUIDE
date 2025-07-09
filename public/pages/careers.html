@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>EduGuide - University Careers in Panama</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/public/css/pages/careers.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand eduguide-brand" href="EduGuide.html">EduGuide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="EduGuide.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="universities.html">UNIVERSITIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scholarships.html">SCHOLARSHIPS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="careers.html">CAREERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Careers Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="header-line">UNIVERSITY CAREERS</h2>
+            
+            <!-- Search Container -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for a career..." id="careerSearch">
+                <i class="fas fa-search search-icon"></i>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="program-category">
+                        <h3>Engineering and Technology</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#eng1">
+                                <h4><i class="fas fa-microchip"></i> Computer Engineering</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="eng1" class="collapse show">
+                                <div class="program-content">
+                                    <p>Trains professionals capable of designing, implementing, and maintaining computer systems.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4-5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus/Online</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=utp" class="university-tag">UTP</a>
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#eng2">
+                                <h4><i class="fas fa-building"></i> Civil Engineering</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="eng2" class="collapse">
+                                <div class="program-content">
+                                    <p>Prepares professionals to design and supervise infrastructure construction.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=utp" class="university-tag">UTP</a>
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#eng3">
+                                <h4><i class="fas fa-industry"></i> Industrial Engineering</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="eng3" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on optimizing processes and systems in industrial environments.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4-5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=utp" class="university-tag">UTP</a>
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#eng4">
+                                <h4><i class="fas fa-bolt"></i> Electrical Engineering</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="eng4" class="collapse">
+                                <div class="program-content">
+                                    <p>Specializes in electrical systems, power generation, and distribution.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=utp" class="university-tag">UTP</a>
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Health Sciences</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health1">
+                                <h4><i class="fas fa-heartbeat"></i> Medicine</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="health1" class="collapse">
+                                <div class="program-content">
+                                    <p>Trains comprehensive doctors qualified for healthcare.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 6 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Doctor of Medicine</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health2">
+                                <h4><i class="fas fa-tooth"></i> Dentistry</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="health2" class="collapse">
+                                <div class="program-content">
+                                    <p>Prepares professionals in oral health and dental care.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Doctor of Dental Surgery</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health3">
+                                <h4><i class="fas fa-user-nurse"></i> Nursing</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="health3" class="collapse">
+                                <div class="program-content">
+                                    <p>Trains nursing professionals for patient care and health management.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health4">
+                                <h4><i class="fas fa-pills"></i> Pharmacy</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="health4" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on pharmaceutical sciences and medication management.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Design and Arts</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design1">
+                                <h4><i class="fas fa-palette"></i> Graphic Design</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="design1" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on visual communication and design principles.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design2">
+                                <h4><i class="fas fa-paint-brush"></i> Fine Arts</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="design2" class="collapse">
+                                <div class="program-content">
+                                    <p>Explores artistic expression and creative techniques.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design3">
+                                <h4><i class="fas fa-music"></i> Music</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="design3" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies musical theory, performance, and composition.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design4">
+                                <h4><i class="fas fa-theater-masks"></i> Theater Arts</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="design4" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on theatrical performance and production.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Law</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#law1">
+                                <h4><i class="fas fa-balance-scale"></i> Law</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="law1" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies legal systems and practices.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#law2">
+                                <h4><i class="fas fa-gavel"></i> Criminal Law</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="law2" class="collapse">
+                                <div class="program-content">
+                                    <p>Specializes in criminal justice and legal procedures.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#law3">
+                                <h4><i class="fas fa-landmark"></i> International Law</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="law3" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on international legal systems and global governance.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#law4">
+                                <h4><i class="fas fa-briefcase"></i> Corporate Law</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="law4" class="collapse">
+                                <div class="program-content">
+                                    <p>Specializes in business and corporate legal matters.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 5 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="program-category">
+                        <h3>Business Sciences</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#bus1">
+                                <h4><i class="fas fa-chart-line"></i> Business Administration</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="bus1" class="collapse">
+                                <div class="program-content">
+                                    <p>Prepares professionals for business management and leadership.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus/Online</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#bus2">
+                                <h4><i class="fas fa-calculator"></i> Accounting</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="bus2" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on financial management and accounting systems.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus/Online</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#bus3">
+                                <h4><i class="fas fa-globe-americas"></i> International Business</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="bus3" class="collapse">
+                                <div class="program-content">
+                                    <p>Prepares professionals for global business operations.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#bus4">
+                                <h4><i class="fas fa-coins"></i> Economics</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="bus4" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies economic systems and market behavior.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Humanities</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#humanities1">
+                                <h4><i class="fas fa-book"></i> Literature</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="humanities1" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies literary works and cultural expression.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#humanities2">
+                                <h4><i class="fas fa-history"></i> History</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="humanities2" class="collapse">
+                                <div class="program-content">
+                                    <p>Explores historical events and their impact on society.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#humanities3">
+                                <h4><i class="fas fa-globe-americas"></i> Anthropology</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="humanities3" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies human societies and cultural development.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#humanities4">
+                                <h4><i class="fas fa-language"></i> Linguistics</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="humanities4" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies language structure and communication.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Natural Sciences</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#sciences1">
+                                <h4><i class="fas fa-flask"></i> Chemistry</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="sciences1" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies matter and its transformations.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#sciences2">
+                                <h4><i class="fas fa-atom"></i> Physics</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="sciences2" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies matter, energy, and their interactions.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#sciences3">
+                                <h4><i class="fas fa-dna"></i> Biology</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="sciences3" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies living organisms and their processes.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#sciences4">
+                                <h4><i class="fas fa-mountain"></i> Geology</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="sciences4" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies Earth's structure and processes.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="program-category">
+                        <h3>Communications</h3>
+                        
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#comm1">
+                                <h4><i class="fas fa-broadcast-tower"></i> Journalism</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="comm1" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on news reporting and media production.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#comm2">
+                                <h4><i class="fas fa-video"></i> Digital Media</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="comm2" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies digital content creation and distribution.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#comm3">
+                                <h4><i class="fas fa-ad"></i> Public Relations</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="comm3" class="collapse">
+                                <div class="program-content">
+                                    <p>Focuses on managing public image and communications.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-header" data-bs-toggle="collapse" data-bs-target="#comm4">
+                                <h4><i class="fas fa-film"></i> Film Production</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="comm4" class="collapse">
+                                <div class="program-content">
+                                    <p>Studies filmmaking and visual storytelling.</p>
+                                    <div class="program-details">
+                                        <p><i class="fas fa-clock"></i> Duration: 4 years</p>
+                                        <p><i class="fas fa-graduation-cap"></i> Degree: Bachelor's</p>
+                                        <p><i class="fas fa-chalkboard-teacher"></i> Mode: On-campus</p>
+                                    </div>
+                                    <h5 class="mt-4">Available at:</h5>
+                                    <div class="university-links">
+                                        <a href="universities.html?uni=up" class="university-tag">UP</a>
+                                        <a href="universities.html?uni=latina" class="university-tag">U. Latina</a>
+                                        <a href="universities.html?uni=udelas" class="university-tag">UDELAS</a>
+                                        <a href="universities.html?uni=unachi" class="university-tag">UNACHI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="text-center">
+                <p>© 2024 EduGuide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Search Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('careerSearch');
+            const searchResults = document.getElementById('searchResults');
+            const programItems = document.querySelectorAll('.program-item');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                if (searchTerm.length < 2) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+
+                const matches = Array.from(programItems).filter(item => {
+                    const title = item.querySelector('h4').textContent.toLowerCase();
+                    const category = item.closest('.program-category').querySelector('h3').textContent.toLowerCase();
+                    return title.includes(searchTerm) || category.includes(searchTerm);
+                });
+
+                if (matches.length > 0) {
+                    searchResults.innerHTML = matches.map(item => {
+                        const title = item.querySelector('h4').textContent;
+                        const category = item.closest('.program-category').querySelector('h3').textContent;
+                        return `
+                            <div class="search-result-item" data-title="${title}">
+                                ${title}
+                                <div class="category">${category}</div>
+                            </div>
+                        `;
+                    }).join('');
+                    searchResults.style.display = 'block';
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+            searchResults.addEventListener('click', function(e) {
+                if (e.target.classList.contains('search-result-item')) {
+                    const selectedTitle = e.target.getAttribute('data-title');
+                    const targetItem = Array.from(programItems).find(item => 
+                        item.querySelector('h4').textContent === selectedTitle
+                    );
+
+                    if (targetItem) {
+                        // Remove previous highlights
+                        programItems.forEach(item => item.classList.remove('highlight'));
+                        
+                        // Add highlight to selected item
+                        targetItem.classList.add('highlight');
+                        
+                        // Expand the item
+                        const collapseId = targetItem.querySelector('.program-header').getAttribute('data-bs-target');
+                        const collapseElement = document.querySelector(collapseId);
+                        if (collapseElement) {
+                            collapseElement.classList.add('show');
+                        }
+                        
+                        // Scroll to the item
+                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Clear search
+                        searchInput.value = '';
+                        searchResults.style.display = 'none';
+                    }
+                }
+            });
+
+            // Close search results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

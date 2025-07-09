@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="EduGuide - Your complete guide for higher education in Panama">
+    <meta name="author" content="EduGuide Team">
+    <title>EduGuide - Your Educational Guide in Panama</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/public/css/pages/EduGuide.css">
+    
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand eduguide-brand" href="EduGuide.html">EduGuide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="EduGuide.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="universities.html">UNIVERSITIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scholarships.html">SCHOLARSHIPS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="careers.html">CAREERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="home-sec" id="home">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Primer Slide -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Educación">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">TU FUTURO COMIENZA AQUÍ</h1>
+                        <p class="lead mb-4">Descubre tu camino hacia el éxito académico y profesional</p>
+                        <div class="d-flex gap-3">
+                            <a href="universities.html" class="btn btn-custom">Explorar Universidades</a>
+                            <a href="careers.html" class="btn btn-outline-light">Ver Carreras</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segundo Slide -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Test Vocacional">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">DESCUBRE TU VOCACIÓN</h1>
+                        <p class="lead mb-4">¿No sabes qué carrera estudiar? Nuestro test vocacional te ayudará a encontrar tu camino profesional ideal</p>
+                        <a href="test-vocacional.html" class="btn btn-custom">Realizar Test Vocacional</a>
+                    </div>
+                </div>
+
+                <!-- Tercer Slide -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Sobre Nosotros">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">SOBRE EDUGUIDE</h1>
+                        <p class="lead mb-4">Tu guía completa para la educación superior en Panamá. Brindamos información confiable y actualizada sobre universidades, carreras y becas para ayudarte a tomar la mejor decisión para tu futuro.</p>
+                        <a href="#benefits" class="btn btn-custom">Conoce Más</a>
+                    </div>
+                </div>
+
+                <!-- Cuarto Slide -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Redes Sociales">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
+                        <h1 class="display-4 fw-bold mb-4">CONÉCTATE CON NOSOTROS</h1>
+                        <p class="lead mb-4">Síguenos en nuestras redes sociales para mantenerte informado sobre las últimas novedades en educación superior</p>
+                        <div class="d-flex gap-3">
+                            <a href="https://www.facebook.com/people/EduGuide-Panamá/61563217786890/" target="_blank" class="btn btn-custom">
+                                <i class="fab fa-facebook me-2"></i>Facebook
+                            </a>
+                            <a href="https://www.instagram.com/eduguide_pa" target="_blank" class="btn btn-custom">
+                                <i class="fab fa-instagram me-2"></i>Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="header-line">WHAT IS EDUGUIDE?</h2>
+                    <p class="lead mb-5">
+                        EduGuide was born from the idea of providing young people with a safe place where they can find validated information about university programs and scholarships, as there is a significant lack of comprehensive information when searching for programs and scholarships.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="about-div">
+                        <div class="icon-container">
+                            <i class="fas fa-paper-plane fa-3x"></i>
+                        </div>
+                        <h3>MISSION</h3>
+                        <div class="divider"></div>
+                        <p>
+                            To provide a centralized platform in Panama for people to discover universities and scholarships, ensuring equitable access to higher education resources and opportunities for all.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-div">
+                        <div class="icon-container">
+                            <i class="fas fa-bolt fa-3x"></i>
+                        </div>
+                        <h3>VISION</h3>
+                        <div class="divider"></div>
+                        <p>
+                            To empower every Panamanian to easily access higher education opportunities, regardless of their background, fostering personal and professional growth.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="about-div">
+                        <div class="icon-container">
+                            <i class="fas fa-magic fa-3x"></i>
+                        </div>
+                        <h3>BENEFITS</h3>
+                        <div class="divider"></div>
+                        <p>
+                            We provide comprehensive information, resources, and support to students. Additionally, EduGuide enables users to make informed decisions, fostering a more inclusive and equitable higher education system.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universities Section Extended -->
+    <section id="universities" class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="header-line">UNIVERSITIES</h2>
+                    <p class="lead mb-5">
+                        Panamanian universities offer a wide range of educational programs, supporting academic and professional development in our country.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="faculty-div">
+                        <div class="university-logo">
+                            <img src="https://www.up.ac.pa/sites/default/files/inline-images/logo-up-2019.png" alt="Logo Universidad de Panamá" class="logo-img">
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Universidad_de_Panama_-_Facultad_de_Medicina.jpg" alt="Universidad de Panamá" class="campus-img">
+                        <div class="content">
+                            <h3><i class="fas fa-university me-2"></i>UNIVERSIDAD DE PANAMÁ</h3>
+                            <p>It is a public university in Panama and one of the main ones in the country. Founded in 1935.</p>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.up.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                                    <i class="fas fa-globe me-2"></i>Web site
+                                </a>
+                                <a href="https://www.up.ac.pa/oferta-academica" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                                    <i class="fas fa-book-open me-2"></i>Programs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="faculty-div">
+                        <div class="university-logo">
+                            <img src="https://utp.ac.pa/sites/default/files/inline-images/logo-utp-2021.png" alt="Logo UTP" class="logo-img">
+                        </div>
+                        <img src="https://utp.ac.pa/sites/default/files/styles/imagen_noticias_grandes/public/documentos/2021/imagen/campus_utp.jpg" alt="UTP" class="campus-img">
+                        <div class="content">
+                            <h3><i class="fas fa-cogs me-2"></i>UNIVERSIDAD TECNOLÓGICA DE PANAMÁ</h3>
+                            <p>It is the most important public institution for scientific and technological higher education in the Republic of Panama.</p>
+                            <div class="d-flex gap-2">
+                                <a href="https://utp.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                                    <i class="fas fa-globe me-2"></i>Web site
+                                </a>
+                                <a href="https://utp.ac.pa/oferta-academica" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                                    <i class="fas fa-book-open me-2"></i>Programs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="faculty-div">
+                        <div class="university-logo">
+                            <img src="https://www.udelas.ac.pa/wp-content/uploads/2020/01/logo-udelas.png" alt="Logo UDELAS" class="logo-img">
+                        </div>
+                        <img src="https://www.udelas.ac.pa/wp-content/uploads/2020/06/UDELAS-ALBROOK.jpg" alt="UDELAS" class="campus-img">
+                        <div class="content">
+                            <h3><i class="fas fa-users me-2"></i>UNIVERSIDAD ESPECIALIZADA DE LAS AMERICAS</h3>
+                            <p>Founded in 1997, with the goal of offering innovative degree programs and training professionals to address the real needs of the country.</p>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.udelas.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                                    <i class="fas fa-globe me-2"></i>Web site
+                                </a>
+                                <a href="https://www.udelas.ac.pa/oferta-academica/" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                                    <i class="fas fa-book-open me-2"></i>Programs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section Extended -->
+    <section id="careers" class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="header-line">EXPLORA NUESTRAS CARRERAS</h2>
+                    <p class="lead mb-5">
+                        Descubre una amplia variedad de programas universitarios diseñados para impulsar tu futuro profesional.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Primera Fila -->
+                <div class="col-md-5">
+                    <div class="career-card tech-card">
+                        <div class="career-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Ingeniería y Tecnología</h3>
+                        <div class="career-programs">
+                            <div class="program-item">
+                                <h4>Ingeniería en Sistemas</h4>
+                                <p>Diseño y desarrollo de soluciones tecnológicas</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <h4>Ingeniería Civil</h4>
+                                <p>Diseño y construcción de infraestructura</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 5 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="career-card health-card">
+                        <div class="career-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Ciencias de la Salud</h3>
+                        <div class="career-programs">
+                            <div class="program-item">
+                                <h4>Medicina</h4>
+                                <p>Formación integral en ciencias médicas</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 6 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Doctorado</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <h4>Odontología</h4>
+                                <p>Especialización en salud bucal</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 5 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segunda Fila -->
+                <div class="col-md-5">
+                    <div class="career-card design-card">
+                        <div class="career-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Diseño y Artes</h3>
+                        <div class="career-programs">
+                            <div class="program-item">
+                                <h4>Diseño Gráfico</h4>
+                                <p>Comunicación visual y diseño digital</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <h4>Bellas Artes</h4>
+                                <p>Expresión artística y creativa</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="career-card business-card">
+                        <div class="career-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Ciencias Empresariales</h3>
+                        <div class="career-programs">
+                            <div class="program-item">
+                                <h4>Administración de Empresas</h4>
+                                <p>Gestión y dirección organizacional</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <h4>Contabilidad</h4>
+                                <p>Gestión financiera y contable</p>
+                                <div class="program-details">
+                                    <span><i class="fas fa-clock"></i> 4 años</span>
+                                    <span><i class="fas fa-graduation-cap"></i> Licenciatura</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .career-card {
+                background: white;
+                border-radius: 20px;
+                padding: 30px;
+                height: 100%;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 2rem;
+            }
+
+            .career-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            }
+
+            .career-icon {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                font-size: 2rem;
+                color: white;
+            }
+
+            .tech-card .career-icon {
+                background: linear-gradient(45deg, #2196F3, #00BCD4);
+            }
+
+            .health-card .career-icon {
+                background: linear-gradient(45deg, #F44336, #FF9800);
+            }
+
+            .design-card .career-icon {
+                background: linear-gradient(45deg, #9C27B0, #E91E63);
+            }
+
+            .business-card .career-icon {
+                background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            }
+
+            .career-card h3 {
+                color: #fff;
+                margin-bottom: 25px;
+                font-size: 1.8rem;
+                font-weight: 600;
+                text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            }
+
+            .program-item {
+                background: #f8f9fa;
+                border-radius: 15px;
+                padding: 20px;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
+            }
+
+            .program-item:hover {
+                background: #fff;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .program-item h4 {
+                color: #fff;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+                text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            }
+
+            .program-item p {
+                color: #fff;
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+                text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            }
+
+            .program-details {
+                display: flex;
+                gap: 20px;
+                font-size: 0.85rem;
+                color: #fff;
+            }
+
+            .program-details span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .program-details i {
+                color: #3ec6ff;
+            }
+
+            .g-4 {
+                gap: 2rem !important;
+            }
+
+            @media (max-width: 768px) {
+                .col-md-5 {
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 0 auto;
+                }
+            }
+        </style>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center header-line">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Location</h4>
+                    <p>Centro ¡Supérate! Alberto Motta Foundation<br>Panama</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact</h4>
+                    <p>Phone: + 507 6720 9200<br>Email: eduguide.pa@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/EduGuide-Panamá/61563217786890/" target="_blank" class="me-3">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/eduguide_pa" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>© 2024 EduGuide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Asegurarse de que el carrusel funcione automáticamente -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var myCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
+                interval: 5000,
+                ride: true
+            });
+        });
+    </script>
+</body>
+</html> 
