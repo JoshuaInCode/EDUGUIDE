@@ -1,0 +1,176 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8fbff;
+    color: #0a2342;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
+    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+    padding: 15px 0;
+    z-index: 1030;
+}
+
+.home-sec {
+    position: relative;
+    min-height: 100vh;
+    color: #fff;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(120deg, #1769aa 0%, #0a2342 100%);
+}
+
+.carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100vh;
+    min-height: 600px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10,35,66,0.55);
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-caption h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.carousel-caption p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    color: #fff;
+}
+
+.carousel-indicators {
+    z-index: 3;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.navbar .nav-link.active, .navbar .nav-link:hover {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #1769aa;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #3ec6ff;
+    transition: all 0.3s;
+}
+
+.navbar .nav-link:hover::after, .navbar .nav-link.active::after {
+    width: 100%;
+}
+
+.about-div {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(23,105,170,0.08);
+    border-left: 6px solid #1769aa;
+    transition: all 0.3s;
+}
+
+.about-div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(10,35,66,0.12);
+    border-left: 6px solid #0a2342;
+}
+
+.faculty-div {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(23,105,170,0.08);
+    height: 100%;
+    transition: all 0.3s;
+    position: relative;
+    border-top: 4px solid #1769aa;
+}
+
+.faculty-div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(10,35,66,0.15);
+    border-top: 4px solid #0a2342;
+}
+
+.university-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f8fbff;
+    border-radius: 10px;
+    padding: 5px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(23,105,170,0.10);
+    z-index: 2;
+}
+
+.university-logo .logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.faculty-div .campus-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.faculty-div .content {
+    padding: 20px;
+} 

@@ -1,0 +1,74 @@
+.premium-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.premium-title {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.premium-desc {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary, #666);
+}
+.tutors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+.tutor-card {
+    background: var(--card-bg, #fff);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+.tutor-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+}
+.tutor-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+    border: 2px solid var(--primary, #2a7ae4);
+}
+.tutor-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+.tutor-service {
+    font-size: 0.98rem;
+    color: var(--text-secondary, #888);
+    margin-bottom: 0.7rem;
+}
+.tutor-schedule {
+    font-size: 0.95rem;
+    color: var(--text-secondary, #aaa);
+    margin-bottom: 1.2rem;
+}
+.cta-btn {
+    background: var(--primary, #2a7ae4);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.7rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+}
+.cta-btn:hover {
+    background: var(--primary-dark, #185a9d);
+}
+@media (max-width: 600px) {
+    .premium-title { font-size: 1.4rem; }
+    .premium-section { padding: 1rem 0.2rem; }
+} 
