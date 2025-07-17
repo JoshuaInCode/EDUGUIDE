@@ -185,4 +185,11 @@ body {
     border-radius: 30px;
     transition: all 0.3s ease;
     background: #f8f9fa;
+}
+
+.highlight {
+    border: 3px solid #1769aa !important;
+    box-shadow: 0 0 20px 2px #3ec6ff55 !important;
+    transition: border 0.3s, box-shadow 0.3s;
+    z-index: 20;
 } 
