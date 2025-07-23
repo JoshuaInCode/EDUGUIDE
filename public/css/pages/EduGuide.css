@@ -144,6 +144,10 @@ body {
     transition: all 0.3s;
     position: relative;
     border-top: 4px solid #1769aa;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 420px;
 }
 
 .faculty-div:hover {
@@ -181,8 +185,16 @@ body {
 }
 
 .faculty-div .content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 20px;
-} 
+}
+
+.faculty-div .d-flex.gap-2 {
+    margin-top: auto;
+}
 
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -333,11 +345,11 @@ body {
     margin-top: 48px;
 } 
 #contact.contact-section-bg {
-    background: linear-gradient(120deg, #1769aa 0%, #2196f3 100%) !important;
+    background: linear-gradient(135deg, #f5fbff 0%, #b3e5fc 40%, #2196f3 100%) !important;
     border-radius: 18px !important;
     box-shadow: 0 8px 32px rgba(33,150,243,0.10) !important;
-    color: #fff !important;
+    color: #0a2342 !important;
     margin-top: 48px !important;
-    background-color: #1769aa !important;
+    background-color: #f5fbff !important;
     opacity: 1 !important;
 } 
