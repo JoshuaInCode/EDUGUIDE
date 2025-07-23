@@ -37,6 +37,15 @@ body {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    transition: transform 2.5s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+}
+.carousel-item.active img {
+    animation: kenburns 7s linear both;
+}
+@keyframes kenburns {
+    from { transform: scale(1) translateY(0); }
+    to { transform: scale(1.08) translateY(-10px); }
 }
 
 .carousel-overlay {
@@ -173,4 +182,162 @@ body {
 
 .faculty-div .content {
     padding: 20px;
+} 
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.animate-fadein {
+    animation: fadeIn 1.2s both;
+}
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-slidein-up {
+    animation: slideInUp 1.1s both;
+}
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+.animate-zoom-in {
+    animation: zoomIn 1.1s both;
+} 
+
+.carousel-3d .carousel-item {
+    transition: transform 1.2s cubic-bezier(0.77,0,0.175,1), opacity 1.2s cubic-bezier(0.77,0,0.175,1);
+    backface-visibility: hidden;
+    perspective: 1200px;
+}
+.carousel-3d .carousel-item-next.carousel-item-left,
+.carousel-3d .carousel-item-prev.carousel-item-right {
+    transform: rotateY(30deg) scale(0.95);
+    opacity: 0.7;
+}
+.carousel-3d .carousel-item-next,
+.carousel-3d .carousel-item-prev {
+    transform: rotateY(-30deg) scale(0.95);
+    opacity: 0.7;
+}
+.carousel-3d .carousel-item.active {
+    transform: rotateY(0deg) scale(1.03);
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Overlay degradado animado */
+.carousel-gradient-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(120deg, rgba(23,105,170,0.25) 0%, rgba(10,35,66,0.45) 100%);
+    animation: gradientMove 8s ease-in-out infinite alternate;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Animaciones de entrada secuencial y 3D */
+@keyframes fadeIn3D {
+    0% { opacity: 0; transform: translateY(60px) rotateX(30deg) scale(0.95); filter: blur(4px); }
+    60% { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; transform: none; filter: blur(0); }
+}
+.animate-3d-in {
+    animation: fadeIn3D 1.1s cubic-bezier(0.77,0,0.175,1) both;
+}
+.animate-3d-in-delay {
+    animation: fadeIn3D 1.1s 0.3s cubic-bezier(0.77,0,0.175,1) both;
+}
+.animate-3d-in-delay2 {
+    animation: fadeIn3D 1.1s 0.6s cubic-bezier(0.77,0,0.175,1) both;
+}
+
+/* Botón Glow */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 16px 2px #3ec6ff88, 0 0 0 0 #fff0;
+    transition: box-shadow 0.3s;
+}
+.btn-glow:hover, .btn-glow:focus {
+    box-shadow: 0 0 32px 8px #3ec6ffcc, 0 0 0 0 #fff0;
+    animation: glowPulse 1.2s infinite alternate;
+}
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 16px 2px #3ec6ff88; }
+    100% { box-shadow: 0 0 32px 8px #3ec6ffcc; }
+} 
+
+/* --- Transición fade pura y elegante para el carrusel --- */
+/*
+.carousel-fadeclean .carousel-item {
+    opacity: 0;
+    transition: opacity 1.1s cubic-bezier(0.77,0,0.175,1);
+    z-index: 1;
+}
+.carousel-fadeclean .carousel-item.active {
+    opacity: 1;
+    z-index: 2;
+}
+.carousel-fadeclean .carousel-item-next,
+.carousel-fadeclean .carousel-item-prev {
+    opacity: 0;
+    z-index: 1;
+}
+*/ 
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(80px) scale(0.96); filter: blur(6px); box-shadow: 0 24px 48px #1769aa33; }
+    80% { filter: blur(0); }
+    100% { opacity: 1; transform: none; filter: blur(0); box-shadow: none; }
+}
+.fadein-on-scroll {
+    opacity: 0;
+    transform: translateY(80px) scale(0.96);
+    filter: blur(6px);
+    box-shadow: 0 24px 48px #1769aa33;
+    transition: opacity 1.2s, transform 1.2s, filter 1.2s, box-shadow 1.2s;
+}
+.fadein-on-scroll.visible {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    box-shadow: none;
+    animation: fadeInUp 1.2s cubic-bezier(0.77,0,0.175,1) both;
+} 
+
+/* Animación de movimiento flotante para iconos */
+.icon-container {
+    animation: floatIcon 2.8s ease-in-out infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes floatIcon {
+    0% { transform: translateY(0) scale(1) rotate(-6deg); filter: drop-shadow(0 2px 8px #1769aa22); }
+    50% { transform: translateY(-16px) scale(1.08) rotate(6deg); filter: drop-shadow(0 8px 24px #1769aa33); }
+    100% { transform: translateY(0) scale(1) rotate(-6deg); filter: drop-shadow(0 2px 8px #1769aa22); }
+} 
+
+.contact-section-bg {
+    background: linear-gradient(120deg, #1769aa 0%, #2196f3 100%);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(33,150,243,0.10);
+    color: #fff;
+    margin-top: 48px;
+} 
+#contact.contact-section-bg {
+    background: linear-gradient(120deg, #1769aa 0%, #2196f3 100%) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 32px rgba(33,150,243,0.10) !important;
+    color: #fff !important;
+    margin-top: 48px !important;
+    background-color: #1769aa !important;
+    opacity: 1 !important;
 } 
