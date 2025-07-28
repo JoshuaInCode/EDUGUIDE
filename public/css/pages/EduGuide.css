@@ -332,12 +332,12 @@ body {
     color: #fff;
     margin-top: 48px;
 } 
-#contact.contact-section-bg {
-    background: linear-gradient(120deg, #1769aa 0%, #2196f3 100%) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 8px 32px rgba(33,150,243,0.10) !important;
-    color: #fff !important;
-    margin-top: 48px !important;
-    background-color: #1769aa !important;
-    opacity: 1 !important;
+#contact.contact-section-bg, .contact-section-bg {
+    background: linear-gradient(135deg, #1769aa 0%, #2196f3 60%, #3ec6ff 100%);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(33,150,243,0.18);
+    color: #fff;
+    margin-top: 48px;
+    opacity: 1;
+    border: 3px solid #2196f3;
 } 
