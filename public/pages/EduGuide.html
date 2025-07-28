@@ -19,9 +19,131 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="/public/css/pages/EduGuide.css">
     
+    <style>
+        /* Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1769aa 0%, #2196f3 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 3px solid #3ec6ff;
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .cookie-text {
+            flex: 1;
+        }
+        
+        .cookie-text h5 {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .cookie-text p {
+            margin-bottom: 0;
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        
+        .btn-cookie {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-accept {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-accept:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-reject {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+        
+        .btn-reject:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-1px);
+        }
+        
+        .cookie-icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-buttons {
+                justify-content: center;
+            }
+            
+            .cookie-banner {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h5><i class="fas fa-cookie-bite cookie-icon"></i>We use cookies</h5>
+                <p>We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-reject" onclick="rejectCookies()">Reject All</button>
+                <button class="btn-cookie btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
@@ -45,6 +167,16 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link btn btn-outline-primary btn-sm" href="login.html" style="border-radius: 20px; padding: 8px 20px; border: 2px solid #2196f3; color: #2196f3; font-weight: 600; transition: all 0.3s ease;">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link btn btn-primary btn-sm" href="signup.html" style="border-radius: 20px; padding: 8px 20px; background: linear-gradient(135deg, #1769aa, #2196f3); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
+                            <i class="fas fa-user-plus me-1"></i>Sign Up
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -666,6 +798,50 @@ function revealOnScroll() {
 }
 window.addEventListener('scroll', revealOnScroll);
 document.addEventListener('DOMContentLoaded', revealOnScroll);
+</script>
+
+<!-- Cookie Banner JavaScript -->
+<script>
+    // Check if user has already made a choice
+    function hasUserConsented() {
+        return localStorage.getItem('cookieConsent') !== null;
+    }
+    
+    // Show cookie banner if user hasn't made a choice
+    function showCookieBanner() {
+        if (!hasUserConsented()) {
+            const banner = document.getElementById('cookieBanner');
+            setTimeout(() => {
+                banner.classList.add('show');
+            }, 1000); // Show after 1 second
+        }
+    }
+    
+    // Accept cookies
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        hideCookieBanner();
+    }
+    
+    // Reject cookies
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        hideCookieBanner();
+    }
+    
+    // Hide cookie banner with animation
+    function hideCookieBanner() {
+        const banner = document.getElementById('cookieBanner');
+        banner.classList.remove('show');
+        setTimeout(() => {
+            banner.style.display = 'none';
+        }, 500);
+    }
+    
+    // Initialize cookie banner
+    document.addEventListener('DOMContentLoaded', function() {
+        showCookieBanner();
+    });
 </script>
 </body>
 </html> 

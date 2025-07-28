@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduGuide - Login</title>
+    <title>EduGuide - Sign Up</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
         
-        .login-container {
+        .signup-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -32,13 +32,13 @@
             padding: 20px;
         }
         
-        .login-card {
+        .signup-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             padding: 60px 40px;
-            max-width: 450px;
+            max-width: 500px;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -47,7 +47,7 @@
             animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         
-        .login-card::before {
+        .signup-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -81,6 +81,12 @@
             font-weight: 400;
         }
         
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
         .form-group {
             margin-bottom: 25px;
             position: relative;
@@ -93,6 +99,14 @@
         
         .form-group:nth-child(3) {
             animation-delay: 0.7s;
+        }
+        
+        .form-group:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        .form-group:nth-child(5) {
+            animation-delay: 0.9s;
         }
         
         .form-control {
@@ -127,7 +141,21 @@
             padding-left: 50px;
         }
         
-        .btn-login {
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .password-toggle:hover {
+            color: #2196f3;
+        }
+        
+        .btn-signup {
             background: linear-gradient(135deg, #1769aa, #2196f3);
             border: none;
             border-radius: 12px;
@@ -139,10 +167,10 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.8s ease 0.8s both;
+            animation: fadeInUp 0.8s ease 1s both;
         }
         
-        .btn-login::before {
+        .btn-signup::before {
             content: '';
             position: absolute;
             top: 0;
@@ -153,11 +181,11 @@
             transition: left 0.5s ease;
         }
         
-        .btn-login:hover::before {
+        .btn-signup:hover::before {
             left: 100%;
         }
         
-        .btn-login:hover {
+        .btn-signup:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(33, 150, 243, 0.3);
         }
@@ -166,7 +194,7 @@
             text-align: center;
             margin: 30px 0;
             position: relative;
-            animation: fadeIn 1s ease 1s both;
+            animation: fadeIn 1s ease 1.1s both;
         }
         
         .divider::before {
@@ -186,11 +214,11 @@
             font-size: 14px;
         }
         
-        .social-login {
+        .social-signup {
             display: flex;
             gap: 15px;
             margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease 1.1s both;
+            animation: fadeInUp 0.8s ease 1.2s both;
         }
         
         .btn-social {
@@ -216,19 +244,19 @@
             box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
         }
         
-        .signup-link {
+        .login-link {
             text-align: center;
-            animation: fadeIn 1s ease 1.2s both;
+            animation: fadeIn 1s ease 1.3s both;
         }
         
-        .signup-link a {
+        .login-link a {
             color: #2196f3;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
         
-        .signup-link a:hover {
+        .login-link a:hover {
             color: #1769aa;
         }
         
@@ -272,6 +300,34 @@
             left: 20%;
             animation-delay: 4s;
         }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e1e5e9;
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1769aa, #2196f3);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .strength-indicator {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .strength-weak { color: #dc3545; }
+        .strength-medium { color: #ffc107; }
+        .strength-strong { color: #28a745; }
         
         @keyframes slideInUp {
             from {
@@ -325,7 +381,7 @@
         }
         
         @media (max-width: 768px) {
-            .login-card {
+            .signup-card {
                 padding: 40px 30px;
                 margin: 20px;
             }
@@ -334,8 +390,13 @@
                 font-size: 2rem;
             }
             
-            .social-login {
+            .social-signup {
                 flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
         }
     </style>
@@ -349,45 +410,66 @@
         <div class="shape"></div>
     </div>
 
-    <div class="login-container">
-        <div class="login-card">
+    <div class="signup-container">
+        <div class="signup-card">
             <div class="brand-header">
                 <div class="brand-logo">EduGuide</div>
-                <div class="brand-subtitle">Welcome back to your educational journey</div>
+                <div class="brand-subtitle">Join our educational community</div>
             </div>
             
-            <form>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <form id="signupForm">
+                <div class="form-row">
+                    <div class="form-group flex-grow-1">
+                        <input type="text" class="form-control with-icon" placeholder="First name" required>
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+                    <div class="form-group flex-grow-1">
+                        <input type="text" class="form-control with-icon" placeholder="Last name" required>
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+                </div>
+                
                 <div class="form-group">
                     <input type="email" class="form-control with-icon" placeholder="Email address" required>
                     <i class="fas fa-envelope input-icon"></i>
                 </div>
                 
                 <div class="form-group">
-                    <input type="password" class="form-control with-icon" placeholder="Password" required>
+                    <input type="password" class="form-control with-icon" id="password" placeholder="Password" required>
+                    <i class="fas fa-lock input-icon"></i>
+                    <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+                    <div class="strength-indicator" id="strengthIndicator"></div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" class="form-control with-icon" placeholder="Confirm password" required>
                     <i class="fas fa-lock input-icon"></i>
                 </div>
                 
-                <div class="form-group d-flex justify-content-between align-items-center">
+                <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">
-                            Remember me
+                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck">
+                            I agree to the <a href="#" style="color: #2196f3;">Terms of Service</a> and <a href="#" style="color: #2196f3;">Privacy Policy</a>
                         </label>
                     </div>
-                    <a href="#" class="text-decoration-none" style="color: #2196f3; font-size: 14px;">Forgot password?</a>
                 </div>
                 
-                <button type="submit" class="btn btn-login">
-                    <i class="fas fa-sign-in-alt me-2"></i>
-                    Sign In
+                <button type="submit" class="btn btn-signup">
+                    <i class="fas fa-user-plus me-2"></i>
+                    Create Account
                 </button>
             </form>
             
             <div class="divider">
-                <span>or continue with</span>
+                <span>or sign up with</span>
             </div>
             
-            <div class="social-login">
+            <div class="social-signup">
                 <a href="#" class="btn-social">
                     <i class="fab fa-google"></i>
                     Google
@@ -398,9 +480,9 @@
                 </a>
             </div>
             
-            <div class="signup-link">
-                <span style="color: #666;">Don't have an account? </span>
-                <a href="signup.html">Sign up</a>
+            <div class="login-link">
+                <span style="color: #666;">Already have an account? </span>
+                <a href="login.html">Sign in</a>
             </div>
         </div>
     </div>
@@ -409,35 +491,119 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = '';
+            
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            switch(strength) {
+                case 0:
+                case 1:
+                    feedback = 'Very weak';
+                    break;
+                case 2:
+                    feedback = 'Weak';
+                    break;
+                case 3:
+                    feedback = 'Medium';
+                    break;
+                case 4:
+                    feedback = 'Strong';
+                    break;
+                case 5:
+                    feedback = 'Very strong';
+                    break;
+            }
+            
+            return { strength, feedback };
+        }
+        
+        // Update progress bar
+        function updateProgress() {
+            const form = document.getElementById('signupForm');
+            const inputs = form.querySelectorAll('input[required]');
+            const filledInputs = Array.from(inputs).filter(input => input.value.trim() !== '');
+            const progress = (filledInputs.length / inputs.length) * 100;
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        // Password toggle visibility
+        document.getElementById('passwordToggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const result = checkPasswordStrength(password);
+            const indicator = document.getElementById('strengthIndicator');
+            
+            indicator.textContent = result.feedback;
+            indicator.className = 'strength-indicator';
+            
+            if (result.strength <= 2) {
+                indicator.classList.add('strength-weak');
+            } else if (result.strength <= 3) {
+                indicator.classList.add('strength-medium');
+            } else {
+                indicator.classList.add('strength-strong');
+            }
+        });
+        
         // Form validation and submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const email = document.querySelector('input[type="email"]').value;
-            const password = document.querySelector('input[type="password"]').value;
+            const formData = new FormData(this);
+            const email = this.querySelector('input[type="email"]').value;
+            const password = this.querySelector('#password').value;
+            const confirmPassword = this.querySelector('input[placeholder="Confirm password"]').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
             
             if (email && password) {
                 // Simulate loading
-                const btn = document.querySelector('.btn-login');
+                const btn = document.querySelector('.btn-signup');
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing in...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating account...';
                 btn.disabled = true;
                 
                 setTimeout(() => {
                     // Here you would typically send the data to your backend
-                    console.log('Login attempt:', { email, password });
+                    console.log('Signup attempt:', { email, password });
                     
                     // Reset button
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                     
                     // Show success message (you can customize this)
-                    alert('Login successful! Redirecting...');
+                    alert('Account created successfully! Welcome to EduGuide!');
                 }, 2000);
             }
         });
         
-        // Add focus effects
+        // Add focus effects and progress tracking
         document.querySelectorAll('.form-control').forEach(input => {
             input.addEventListener('focus', function() {
                 this.parentElement.style.transform = 'scale(1.02)';
@@ -446,7 +612,12 @@
             input.addEventListener('blur', function() {
                 this.parentElement.style.transform = 'scale(1)';
             });
+            
+            input.addEventListener('input', updateProgress);
         });
+        
+        // Initialize progress
+        updateProgress();
     </script>
 </body>
-</html>
+</html> 
