@@ -22,7 +22,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand eduguide-brand" href="EduGuide.html">EduGuide</a>
+            <a class="navbar-brand eduguide-brand" href="EduGuide.html" style="color:#2196F3; font-weight:900; font-size:2.2rem; letter-spacing:2px; text-shadow:0 2px 8px #1769aa;">EduGuide</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,20 +61,43 @@
     <!-- Universities Section -->
     <section class="py-5">
         <div class="container">
-            <!-- Restaurar el título grande principal si fue eliminado -->
-            <h2 class="header-line">UNIVERSITIES IN PANAMA</h2>
-            <div class="row text-center">
-                <div class="col-lg-8 mx-auto">
-                    <p class="lead mb-5">
-                        Explore Panama's leading higher education institutions, each with its own specialty and academic excellence.
-                    </p>
+            <!-- Header Section -->
+            <div class="header-section" style="background: transparent; margin: 0 -50vw 2rem -50vw; padding: 4rem 2rem; border-radius: 0; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; height: 200px; display: flex; align-items: center; justify-content: center;">
+                <div class="row text-center w-100">
+                    <div class="col-lg-10 mx-auto">
+                        <h2 style="color: #333; margin-bottom: 0; font-size: 2.5rem; font-weight: 900; text-align: center; letter-spacing: 1px;">UNIVERSITIES IN PANAMA</h2>
+                        <p class="lead mb-0" style="color: #666; text-align: center; margin-top: 20px; font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">
+                            Explore Panama's leading higher education institutions, each with its own specialty and academic excellence.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Search Container -->
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search for a university..." id="universitySearch">
-                <div class="search-results" id="searchResults"></div>
+            <!-- Search and Filter Container -->
+            <div class="search-filter-container mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="search-container" style="position: relative;">
+                            <input type="text" class="search-input" placeholder="Search for a university..." id="universitySearch" style="padding-left: 45px;">
+                            <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #666; z-index: 10;"></i>
+                            <div class="search-results" id="searchResults"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select" id="provinceFilter" style="border-radius: 25px; border: 2px solid #e1e5e9; padding: 12px 20px; font-weight: 500;">
+                            <option value="">All Provinces</option>
+                            <option value="panama">Panama</option>
+                            <option value="chiriqui">Chiriquí</option>
+                            <option value="veraguas">Veraguas</option>
+                            <option value="cocle">Coclé</option>
+                            <option value="herrera">Herrera</option>
+                            <option value="los-santos">Los Santos</option>
+                            <option value="colon">Colón</option>
+                            <option value="bocas-del-toro">Bocas del Toro</option>
+                            <option value="darien">Darién</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -627,5 +650,74 @@
         });
     </script>
     <script src="/public/js/components.js"></script>
+    
+    <!-- Province Filter Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const provinceFilter = document.getElementById('provinceFilter');
+            const universityCards = document.querySelectorAll('.faculty-div');
+            
+            // Add province data attributes to university cards
+            const universityProvinces = {
+                'up-block': 'panama',
+                'utp-block': 'panama',
+                'udelas-block': 'panama',
+                'umip-block': 'panama',
+                'latina-block': 'panama',
+                'unachi-block': 'chiriqui',
+                'udelistmo-block': 'chiriqui',
+                'up-veraguas-block': 'veraguas',
+                'utp-veraguas-block': 'veraguas'
+            };
+            
+            // Apply province data to cards
+            universityCards.forEach(card => {
+                const cardId = card.id;
+                if (universityProvinces[cardId]) {
+                    card.setAttribute('data-province', universityProvinces[cardId]);
+                }
+            });
+            
+            provinceFilter.addEventListener('change', function() {
+                const selectedProvince = this.value;
+                
+                universityCards.forEach(card => {
+                    const cardProvince = card.getAttribute('data-province');
+                    
+                    if (selectedProvince === '' || cardProvince === selectedProvince) {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        card.style.opacity = '0.3';
+                        card.style.transform = 'scale(0.95)';
+                    }
+                });
+                
+                // Show message if no universities found
+                const visibleCards = Array.from(universityCards).filter(card => 
+                    card.style.opacity !== '0.3'
+                );
+                
+                if (visibleCards.length === 0 && selectedProvince !== '') {
+                    // Create or update no results message
+                    let noResultsMsg = document.getElementById('noResultsMsg');
+                    if (!noResultsMsg) {
+                        noResultsMsg = document.createElement('div');
+                        noResultsMsg.id = 'noResultsMsg';
+                        noResultsMsg.className = 'text-center mt-4';
+                        noResultsMsg.innerHTML = '<p class="text-muted">No universities found in this province.</p>';
+                        document.querySelector('.row').after(noResultsMsg);
+                    }
+                    noResultsMsg.style.display = 'block';
+                } else {
+                    const noResultsMsg = document.getElementById('noResultsMsg');
+                    if (noResultsMsg) {
+                        noResultsMsg.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
