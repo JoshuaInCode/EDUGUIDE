@@ -257,53 +257,119 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="header-line fadein-on-scroll" style="color: #fff; margin-bottom: 0;">WHAT IS EDUGUIDE?</h2>
-                    <p class="lead mb-5 fadein-on-scroll" style="color: #fff; margin-top: 10px;">
+                    <h2 class="header-line fadein-on-scroll" style="color: #0a2342; margin-bottom: 0;">WHAT IS EDUGUIDE?</h2>
+                    <p class="lead mb-5 fadein-on-scroll" style="color: #0a2342; margin-top: 10px;">
                         We solve the critical information gap for students by providing a secure, one-stop platform with rigorously verified details on university programs and scholarships.
                     </p>
                 </div>
             </div>
 
-            <div class="row justify-content-center align-items-stretch">
-                <div class="col-md-4 d-flex">
-                    <div class="about-div fadein-on-scroll animate-fadein" style="width:100%;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                        <div class="icon-container">
-                            <i class="fas fa-paper-plane fa-3x"></i>
+            <div class="row g-4" style="display: flex; flex-wrap: nowrap; justify-content: space-between;">
+                <!-- Mission -->
+                <div class="col-md-4" style="flex: 1; min-width: 0;">
+                    <div class="about-div fadein-on-scroll animate-fadein" style="background: #fff; border-radius: 15px; padding: 25px; box-shadow: 0 8px 32px rgba(33,150,243,0.15); border-left: 6px solid #2196f3; transition: all 0.3s ease; cursor: pointer;" onclick="toggleContent('mission')">
+                        <div class="text-center">
+                            <div class="icon-container mb-3">
+                                <i class="fas fa-paper-plane fa-3x" style="color: #2196f3;"></i>
+                            </div>
+                            <h3 style="color: #0a2342; font-weight: 600; margin-bottom: 15px;">MISSION</h3>
+                            <div id="mission-content" class="content-collapsed">
+                                <p style="color: #555; line-height: 1.6;">
+                                    Discover universities and scholarships effortlessly through our definitive national platform, designed to democratize access to higher education resources for all Panamanians.
+                                </p>
+                            </div>
+                            <div class="collapse-indicator" style="text-align: center; margin-top: 10px;">
+                                <i class="fas fa-chevron-down" style="color: #2196f3; font-size: 0.9rem; transition: transform 0.3s ease;"></i>
+                            </div>
                         </div>
-                        <h3 style="text-align:center;">MISSION</h3>
-                        <div class="divider"></div>
-                        <p style="text-align:center;">
-                            Discover universities and scholarships effortlessly through our definitive national platform, designed to democratize access to higher education resources for all Panamanians.
-                        </p>
                     </div>
                 </div>
 
-                <div class="col-md-4 d-flex">
-                    <div class="about-div fadein-on-scroll animate-fadein" style="width:100%;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                        <div class="icon-container">
-                            <i class="fas fa-bolt fa-3x"></i>
+                <!-- Vision -->
+                <div class="col-md-4" style="flex: 1; min-width: 0;">
+                    <div class="about-div fadein-on-scroll animate-fadein" style="background: #fff; border-radius: 15px; padding: 25px; box-shadow: 0 8px 32px rgba(33,150,243,0.15); border-left: 6px solid #2196f3; transition: all 0.3s ease; cursor: pointer;" onclick="toggleContent('vision')">
+                        <div class="text-center">
+                            <div class="icon-container mb-3">
+                                <i class="fas fa-bolt fa-3x" style="color: #2196f3;"></i>
+                            </div>
+                            <h3 style="color: #0a2342; font-weight: 600; margin-bottom: 15px;">VISION</h3>
+                            <div id="vision-content" class="content-collapsed">
+                                <p style="color: #555; line-height: 1.6;">
+                                    We unlock higher education opportunities for everyone, regardless of background, enabling transformative personal and professional growth.
+                                </p>
+                            </div>
+                            <div class="collapse-indicator" style="text-align: center; margin-top: 10px;">
+                                <i class="fas fa-chevron-down" style="color: #2196f3; font-size: 0.9rem; transition: transform 0.3s ease;"></i>
+                            </div>
                         </div>
-                        <h3 style="text-align:center;">VISION</h3>
-                        <div class="divider"></div>
-                        <p style="text-align:center;">
-                            We unlock higher education opportunities for everyone, regardless of background, enabling transformative personal and professional growth.
-                        </p>
                     </div>
                 </div>
 
-                <div class="col-md-4 d-flex">
-                    <div class="about-div fadein-on-scroll animate-fadein" style="width:100%;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                        <div class="icon-container">
-                            <i class="fas fa-magic fa-3x"></i>
+                <!-- Benefits -->
+                <div class="col-md-4" style="flex: 1; min-width: 0;">
+                    <div class="about-div fadein-on-scroll animate-fadein" style="background: #fff; border-radius: 15px; padding: 25px; box-shadow: 0 8px 32px rgba(33,150,243,0.15); border-left: 6px solid #2196f3; transition: all 0.3s ease; cursor: pointer;" onclick="toggleContent('benefits')">
+                        <div class="text-center">
+                            <div class="icon-container mb-3">
+                                <i class="fas fa-magic fa-3x" style="color: #2196f3;"></i>
+                            </div>
+                            <h3 style="color: #0a2342; font-weight: 600; margin-bottom: 15px;">BENEFITS</h3>
+                            <div id="benefits-content" class="content-collapsed">
+                                <p style="color: #555; line-height: 1.6;">
+                                    EduGuide equips students with comprehensive information, essential resources, and dedicated support, empowering confident choices for a more inclusive higher education landscape.
+                                </p>
+                            </div>
+                            <div class="collapse-indicator" style="text-align: center; margin-top: 10px;">
+                                <i class="fas fa-chevron-down" style="color: #2196f3; font-size: 0.9rem; transition: transform 0.3s ease;"></i>
+                            </div>
                         </div>
-                        <h3 style="text-align:center;">BENEFITS</h3>
-                        <div class="divider"></div>
-                        <p style="text-align:center;">
-                            EduGuide equips students with comprehensive information, essential resources, and dedicated support, empowering confident choices for a more inclusive higher education landscape.
-                        </p>
                     </div>
                 </div>
             </div>
+
+            <style>
+                .content-collapsed {
+                    max-height: 0;
+                    overflow: hidden;
+                    opacity: 0;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    margin-bottom: 0;
+                }
+                .content-expanded {
+                    max-height: 200px;
+                    opacity: 1;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    margin-bottom: 15px;
+                }
+                .about-div:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 12px 40px rgba(33,150,243,0.2);
+                }
+                .collapse-indicator i {
+                    transition: transform 0.3s ease;
+                }
+                .collapse-indicator i.fa-chevron-up {
+                    transform: rotate(180deg);
+                }
+            </style>
+
+            <script>
+                function toggleContent(id) {
+                    const content = document.getElementById(id + '-content');
+                    const indicator = content.parentElement.querySelector('.collapse-indicator i');
+                    
+                    if (content.classList.contains('content-expanded')) {
+                        content.classList.remove('content-expanded');
+                        content.classList.add('content-collapsed');
+                        indicator.classList.remove('fa-chevron-up');
+                        indicator.classList.add('fa-chevron-down');
+                    } else {
+                        content.classList.remove('content-collapsed');
+                        content.classList.add('content-expanded');
+                        indicator.classList.remove('fa-chevron-down');
+                        indicator.classList.add('fa-chevron-up');
+                    }
+                }
+            </script>
         </div>
     </section>
 
@@ -312,66 +378,102 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="header-line fadein-on-scroll" style="color: #fff; margin-bottom: 0;">UNIVERSITIES</h2>
-                    <p class="lead mb-5 fadein-on-scroll" style="color: #fff; margin-top: 10px;">
+                    <h2 class="header-line fadein-on-scroll" style="color: #0a2342; margin-bottom: 0;">UNIVERSITIES</h2>
+                    <p class="lead mb-5 fadein-on-scroll" style="color: #0a2342; margin-top: 10px;">
                         Panamanian universities offer a wide range of educational programs, supporting academic and professional development in our country.
                     </p>
                 </div>
             </div>
 
-            <div class="row align-items-stretch d-flex">
-                <div class="col-md-4 mb-4 d-flex">
-                    <div class="faculty-div fadein-on-scroll d-flex flex-column" style="width:100%;">
-                        <img src="https://th.bing.com/th/id/R.6ab229b43d68e08242a88eb06f1aec29?rik=oY5CjRVTZOZD4Q&riu=http%3a%2f%2fwww.upinforma.com%2fnuevo%2fimages%2flogoUP2019color-01.png&ehk=DaHGj%2fLsjBZgd8xJuhfSNknXO7VB0O1Y%2bhz%2fvbnmQZQ%3d&risl=&pid=ImgRaw&r=0" alt="Universidad de Panamá" class="campus-img">
-                        <div class="content flex-grow-1 d-flex flex-column justify-content-between">
-                            <h3><i class="fas fa-university me-2"></i>UNIVERSIDAD DE PANAMÁ</h3>
-                            <p>It is a public university in Panama and one of the main ones in the country. Founded in 1935.</p>
-                            <div class="d-flex gap-2 mt-auto">
-                                <a href="https://www.up.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-globe me-2"></i>Web site
-                                </a>
-                                <a href="https://www.up.ac.pa/oferta-academica" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+            <div class="accordion" id="universitiesAccordion">
+                <!-- Universidad de Panamá -->
+                <div class="accordion-item fadein-on-scroll animate-fadein" style="border: none; margin-bottom: 15px; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(33,150,243,0.15);">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background: linear-gradient(135deg, #eaf3fb 60%, #1976d2 100%); color: #0a2342; border: none; padding: 20px; font-weight: 600; font-size: 1.2rem;">
+                            <div class="d-flex align-items-center w-100">
+                                <img src="https://th.bing.com/th/id/R.6ab229b43d68e08242a88eb06f1aec29?rik=oY5CjRVTZOZD4Q&riu=http%3a%2f%2fwww.upinforma.com%2fnuevo%2fimages%2flogoUP2019color-01.png&ehk=DaHGj%2fLsjBZgd8xJuhfSNknXO7VB0O1Y%2bhz%2fvbnmQZQ%3d&risl=&pid=ImgRaw&r=0" alt="Universidad de Panamá" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px; background: rgba(255,255,255,0.8); padding: 6px; margin-right: 15px;">
+                                <span><i class="fas fa-university me-2"></i>UNIVERSIDAD DE PANAMÁ</span>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#universitiesAccordion">
+                        <div class="accordion-body" style="background: linear-gradient(135deg, #eaf3fb 60%, #1976d2 100%); color: #0a2342; padding: 25px;">
+                            <p style="color: #0a2342; font-size: 1rem; margin-bottom: 20px; line-height: 1.6;">
+                                Leading public university offering comprehensive academic programs since 1935. The University of Panama is the largest and most prestigious public university in Panama, providing quality education across various disciplines.
+                            </p>
+                            <div class="d-flex gap-3">
+                                <a href="https://www.up.ac.pa/oferta-academica" target="_blank" class="btn btn-primary btn-sm" style="padding: 10px 25px; font-weight: 600; border-radius: 20px; background: linear-gradient(135deg, #1976d2, #42a5f5); border: none; color: white; box-shadow: 0 4px 15px rgba(33,150,243,0.3);">
                                     <i class="fas fa-book-open me-2"></i>Programs
+                                </a>
+                                <a href="https://www.up.ac.pa/" target="_blank" class="btn btn-outline-primary btn-sm" style="padding: 10px 25px; font-weight: 600; border-radius: 20px; border: 2px solid #1976d2; color: #1976d2;">
+                                    <i class="fas fa-globe me-2"></i>Website
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-4 d-flex">
-                    <div class="faculty-div fadein-on-scroll d-flex flex-column" style="width:100%;">
-                        <img src="https://utp.ac.pa/sites/default/files/documentos/2023/imagen/logo_utp-rgb_2022.png" alt="UTP" class="campus-img">
-                        <div class="content flex-grow-1 d-flex flex-column justify-content-between">
-                            <h3><i class="fas fa-cogs me-2"></i>UNIVERSIDAD TECNOLÓGICA DE PANAMÁ</h3>
-                            <p>It is the most important public institution for scientific and technological higher education in the Republic of Panama.</p>
-                            <div class="d-flex gap-2 mt-auto">
-                                <a href="" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-globe me-2"></i>Web site
-                                </a>
-                                <a href="https://utp.ac.pa/oferta-academica" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                <!-- Universidad Tecnológica de Panamá -->
+                <div class="accordion-item fadein-on-scroll animate-fadein" style="border: none; margin-bottom: 15px; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(33,150,243,0.15);">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background: linear-gradient(135deg, #eaf3fb 60%, #42a5f5 100%); color: #0a2342; border: none; padding: 20px; font-weight: 600; font-size: 1.2rem;">
+                            <div class="d-flex align-items-center w-100">
+                                <img src="https://utp.ac.pa/sites/default/files/documentos/2023/imagen/logo_utp-rgb_2022.png" alt="UTP" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px; background: rgba(255,255,255,0.8); padding: 6px; margin-right: 15px;">
+                                <span><i class="fas fa-cogs me-2"></i>UNIVERSIDAD TECNOLÓGICA DE PANAMÁ</span>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#universitiesAccordion">
+                        <div class="accordion-body" style="background: linear-gradient(135deg, #eaf3fb 60%, #42a5f5 100%); color: #0a2342; padding: 25px;">
+                            <p style="color: #0a2342; font-size: 1rem; margin-bottom: 20px; line-height: 1.6;">
+                                Premier institution for scientific and technological education in Panama. UTP specializes in engineering, technology, and applied sciences, preparing students for the modern workforce with cutting-edge programs and research opportunities.
+                            </p>
+                            <div class="d-flex gap-3">
+                                <a href="https://utp.ac.pa/oferta-academica" target="_blank" class="btn btn-primary btn-sm" style="padding: 10px 25px; font-weight: 600; border-radius: 20px; background: linear-gradient(135deg, #42a5f5, #64b5f6); border: none; color: white; box-shadow: 0 4px 15px rgba(66,165,245,0.3);">
                                     <i class="fas fa-book-open me-2"></i>Programs
+                                </a>
+                                <a href="https://utp.ac.pa/" target="_blank" class="btn btn-outline-primary btn-sm" style="padding: 10px 25px; font-weight: 600; border-radius: 20px; border: 2px solid #42a5f5; color: #42a5f5;">
+                                    <i class="fas fa-globe me-2"></i>Website
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-4 d-flex">
-                    <div class="faculty-div fadein-on-scroll d-flex flex-column" style="width:100%;">
-                        <img src="/public/img/UDELAS.png" alt="UDELAS" class="campus-img">
-                        <div class="content flex-grow-1 d-flex flex-column justify-content-between">
-                            <h3><i class="fas fa-users me-2"></i>UNIVERSIDAD ESPECIALIZADA DE LAS AMERICAS</h3>
-                            <p>Founded in 1997, with the goal of offering innovative degree programs and training professionals to address the real needs of the country.</p>
-                            <div class="d-flex gap-2 mt-auto">
-                                <a href="https://www.udelas.ac.pa" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
-                                    <i class="fas fa-globe me-2"></i>Web site
-                                </a>
-                                <a href="https://www.udelas.ac.pa/oferta-academica/" target="_blank" class="btn btn-outline-primary mt-3 flex-grow-1">
+                <!-- Universidad Especializada de las Américas -->
+                <div class="accordion-item fadein-on-scroll animate-fadein" style="border: none; margin-bottom: 15px; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(33,150,243,0.15);">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background: linear-gradient(135deg, #eaf3fb 60%, #64b5f6 100%); color: #0a2342; border: none; padding: 20px; font-weight: 600; font-size: 1.2rem;">
+                            <div class="d-flex align-items-center w-100">
+                                <img src="/public/img/UDELAS.png" alt="UDELAS" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px; background: rgba(255,255,255,0.8); padding: 6px; margin-right: 15px;">
+                                <span><i class="fas fa-users me-2"></i>UNIVERSIDAD ESPECIALIZADA DE LAS AMERICAS</span>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#universitiesAccordion">
+                        <div class="accordion-body" style="background: linear-gradient(135deg, #eaf3fb 60%, #64b5f6 100%); color: #0a2342; padding: 25px;">
+                            <p style="color: #0a2342; font-size: 1rem; margin-bottom: 20px; line-height: 1.6;">
+                                Innovative institution focused on specialized degree programs since 1997. UDELAS offers unique programs in specialized fields, providing students with practical skills and theoretical knowledge for their professional development.
+                            </p>
+                            <div class="d-flex gap-3">
+                                <a href="https://www.udelas.ac.pa/oferta-academica/" target="_blank" class="btn btn-primary btn-sm" style="padding: 10px 25px; font-weight: 600; border-radius: 20px; background: linear-gradient(135deg, #64b5f6, #90caf9); border: none; color: white; box-shadow: 0 4px 15px rgba(100,181,246,0.3);">
                                     <i class="fas fa-book-open me-2"></i>Programs
+                                </a>
+                                <a href="https://www.udelas.ac.pa/" target="_blank" class="btn btn-outline-primary btn-sm" style="padding: 10px 25px; font-weight: 600; border-radius: 20px; border: 2px solid #64b5f6; color: #64b5f6;">
+                                    <i class="fas fa-globe me-2"></i>Website
                                 </a>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- See More Button -->
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="universities.html" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #1769aa, #2196f3); border: none; padding: 15px 40px; border-radius: 30px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 8px 25px rgba(33,150,243,0.3); transition: all 0.3s ease;">
+                        <i class="fas fa-university me-2"></i>See More Universities
+                    </a>
                 </div>
             </div>
         </div>
@@ -382,15 +484,14 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="header-line fadein-on-scroll" style="color: #fff; margin-bottom: 0;">EXPLORE OUR CAREERS</h2>
-                    <p class="lead mb-5 fadein-on-scroll" style="color: #fff; margin-top: 10px;">
+                    <h2 class="header-line fadein-on-scroll" style="color: #0a2342; margin-bottom: 0;">EXPLORE OUR CAREERS</h2>
+                    <p class="lead mb-5 fadein-on-scroll" style="color: #0a2342; margin-top: 10px;">
                         Discover a wide variety of university programs designed to boost your professional future.
                     </p>
                 </div>
             </div>
 
             <div class="row g-4 justify-content-center">
-                <!-- Primera Fila -->
                 <div class="col-md-5">
                     <div class="career-card tech-card fadein-on-scroll animate-fadein" style="background:linear-gradient(135deg,#1565c0 60%,#42a5f5 100%);color:#fff;box-shadow:0 8px 32px rgba(33,150,243,0.15);">
                         <div class="career-icon">
@@ -445,7 +546,6 @@
                     </div>
                 </div>
 
-                <!-- Segunda Fila -->
                 <div class="col-md-5">
                     <div class="career-card design-card fadein-on-scroll animate-fadein" style="background:linear-gradient(135deg,#1e88e5 60%,#90caf9 100%);color:#fff;box-shadow:0 8px 32px rgba(33,150,243,0.15);">
                         <div class="career-icon">
