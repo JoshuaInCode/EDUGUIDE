@@ -3,9 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents</title>
+    <title>EduGuide - University Careers</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 76px;
+        }
+        
+        /* Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1769aa 0%, #2196f3 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 3px solid #3ec6ff;
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .cookie-text {
+            flex: 1;
+        }
+        
+        .cookie-text h5 {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .cookie-text p {
+            margin-bottom: 0;
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        
+        .btn-cookie {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-accept {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-accept:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-reject {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+        
+        .btn-reject:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-1px);
+        }
+        
+        .cookie-icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-buttons {
+                justify-content: center;
+            }
+            
+            .cookie-banner {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-   <script type="module" src=".src/firebase/firebasConfig.js"></script>
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h5><i class="fas fa-cookie-bite cookie-icon"></i>We use cookies</h5>
+                <p>We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-reject" onclick="rejectCookies()">Reject All</button>
+                <button class="btn-cookie btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">EduGuide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="js/careers.html">Careers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/tutores.html">Tutors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/actividades.html">Activities</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Welcome to EduGuide</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">University Careers</h5>
+                        <p class="card-text">Explore different university careers in Panama.</p>
+                        <a href="js/careers.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tutors</h5>
+                        <p class="card-text">Find expert tutors for your academic needs.</p>
+                        <a href="pages/tutores.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Activities</h5>
+                        <p class="card-text">Join our educational activities and workshops.</p>
+                        <a href="pages/actividades.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../src/firebase/firebasConfig.js"></script>
+    
+    <!-- Cookie Banner JavaScript -->
+    <script>
+        // Check if user has already made a choice
+        function hasUserConsented() {
+            return localStorage.getItem('cookieConsent') !== null;
+        }
+        
+        // Show cookie banner if user hasn't made a choice
+        function showCookieBanner() {
+            if (!hasUserConsented()) {
+                const banner = document.getElementById('cookieBanner');
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 1000); // Show after 1 second
+            }
+        }
+        
+        // Accept cookies
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            hideCookieBanner();
+        }
+        
+        // Reject cookies
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            hideCookieBanner();
+        }
+        
+        // Hide cookie banner with animation
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.classList.remove('show');
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 500);
+        }
+        
+        // Initialize cookie banner
+        document.addEventListener('DOMContentLoaded', function() {
+            showCookieBanner();
+        });
+    </script>
 </body>
 </html>

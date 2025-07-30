@@ -1,0 +1,184 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 76px;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
+    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+    padding: 15px 0;
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.navbar .nav-link.active, .navbar .nav-link:hover {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #1769aa;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #3ec6ff;
+    transition: all 0.3s;
+}
+
+.navbar .nav-link:hover::after, .navbar .nav-link.active::after {
+    width: 100%;
+}
+
+.program-category {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.program-category h3 {
+    color: #333;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.program-category h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(45deg, #007bff, #00e1ff);
+}
+
+.program-item {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.program-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.program-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.program-content {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.university-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #e9ecef;
+    border-radius: 15px;
+    margin: 5px;
+    font-size: 0.9rem;
+    color: #495057;
+    text-decoration: none;
+}
+
+.university-tag:hover {
+    background: #007bff;
+    color: white;
+}
+
+.program-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.program-details p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.program-details i {
+    color: #007bff;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.header-line {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%);
+    border-radius: 12px;
+    padding: 18px 0 18px 0;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+    animation: colorchange 4s infinite alternate;
+}
+
+.header-line:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #3ec6ff;
+}
+
+@keyframes colorchange {
+    0% { background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%); color: #fff; }
+    100% { background: linear-gradient(90deg, #0a2342 0%, #3ec6ff 100%); color: #3ec6ff; }
+}
+
+.eduguide-brand {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px #1769aa;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.eduguide-brand:hover {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #3ec6ff;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+} 

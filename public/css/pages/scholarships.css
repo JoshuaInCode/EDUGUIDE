@@ -1,0 +1,163 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 76px;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
+    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+    padding: 15px 0;
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.navbar .nav-link.active, .navbar .nav-link:hover {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #1769aa;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #3ec6ff;
+    transition: all 0.3s;
+}
+
+.navbar .nav-link:hover::after, .navbar .nav-link.active::after {
+    width: 100%;
+}
+
+.header-line {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%);
+    border-radius: 12px;
+    padding: 18px 0 18px 0;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
+    animation: colorchange 4s infinite alternate;
+}
+
+.header-line:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #3ec6ff;
+}
+
+@keyframes colorchange {
+    0% { background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%); color: #fff; }
+    100% { background: linear-gradient(90deg, #0a2342 0%, #3ec6ff 100%); color: #3ec6ff; }
+}
+
+.scholarship-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.scholarship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.scholarship-header {
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.scholarship-badge {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: 10px;
+}
+
+.deadline-badge {
+    background: #fbe9e7;
+    color: #d84315;
+}
+
+.requirements-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.requirements-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.requirements-list li:before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: #4caf50;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #333;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #00e1ff);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.eduguide-brand {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px #1769aa;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.eduguide-brand:hover {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #3ec6ff;
+} 
