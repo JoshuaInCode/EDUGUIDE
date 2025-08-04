@@ -181,4 +181,26 @@ body {
     border-radius: 30px;
     transition: all 0.3s ease;
     background: #f8f9fa;
+    padding-left: 50px; /* Add left padding to make room for the icon */
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.1rem;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    outline: none;
+}
+
+.search-input:focus + .search-icon {
+    color: #007bff;
 } 
