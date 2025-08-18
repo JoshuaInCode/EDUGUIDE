@@ -1,0 +1,170 @@
+/* Title Animations CSS - Smooth appearance animations for section titles */
+
+/* Animation for main section titles */
+.section-title-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: titleFadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.3s;
+}
+
+/* Animation for subtitle/description */
+.section-subtitle-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: subtitleFadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.5s;
+}
+
+/* Animation for category titles */
+.category-title-animation {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: categorySlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.7s;
+}
+
+/* Animation for program/scholarship titles */
+.program-title-animation {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: programScaleIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.9s;
+}
+
+/* Main title fade in animation */
+@keyframes titleFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtitle fade in animation */
+@keyframes subtitleFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Category title slide in animation */
+@keyframes categorySlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Program title scale in animation */
+@keyframes programScaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* University title animation */
+.university-title {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: universityTitleFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes universityTitleFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Staggered animation for multiple elements */
+.stagger-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggerFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes staggerFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effects for animated titles */
+.section-title-animation:hover,
+.category-title-animation:hover,
+.program-title-animation:hover,
+.university-title:hover {
+    transform: translateY(-3px) scale(1.02);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-shadow: 0 4px 8px rgba(33, 150, 243, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section-title-animation {
+        animation-delay: 0.1s;
+    }
+    
+    .section-subtitle-animation {
+        animation-delay: 0.2s;
+    }
+    
+    .category-title-animation {
+        animation-delay: 0.3s;
+    }
+    
+    .program-title-animation {
+        animation-delay: 0.4s;
+    }
+}
+
+/* Smooth scroll behavior for better animation experience */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Intersection Observer fallback for older browsers */
+@supports not (animation: titleFadeInUp 0.8s) {
+    .section-title-animation,
+    .section-subtitle-animation,
+    .category-title-animation,
+    .program-title-animation {
+        opacity: 1;
+        transform: none;
+    }
+}

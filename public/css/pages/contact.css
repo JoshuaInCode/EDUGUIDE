@@ -11,11 +11,9 @@ body {
 
 .navbar .nav-link {
     color: #fff !important;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 500;
     transition: color 0.2s;
     position: relative;
-    text-transform: uppercase;
 }
 
 .navbar .nav-link.active, .navbar .nav-link:hover {
