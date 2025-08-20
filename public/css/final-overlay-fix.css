@@ -1,0 +1,40 @@
+/* Final Overlay Fix CSS - Asegura que los overlays se oculten completamente */
+
+/* Forzar que los overlays se oculten cuando tienen opacity 0 */
+body .university-overlay[style*="opacity: 0"] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Forzar que los overlays se muestren cuando tienen opacity 1 */
+body .university-overlay[style*="opacity: 1"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: none !important;
+}
+
+/* Asegurar que los overlays tengan transición suave */
+body .university-overlay {
+    transition: all 0.3s ease !important;
+}
+
+/* Cuando el overlay está oculto, asegurar que no interfiera */
+body .university-overlay.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: scale(0.95) !important;
+}
+
+/* Asegurar que el contenedor padre tenga cursor pointer */
+body .faculty-div {
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Efecto hover para el contenedor padre */
+body .faculty-div:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}

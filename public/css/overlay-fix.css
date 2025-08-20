@@ -1,0 +1,121 @@
+/* Overlay Fix CSS - Corrige los problemas de los overlays de universidades */
+
+/* Asegurar que los overlays funcionen correctamente */
+body .university-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(255,255,255,0.97) !important;
+    z-index: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important; /* Cambiado a none para evitar conflictos */
+    cursor: pointer !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Asegurar que los overlays no interfieran con el hover */
+body .university-overlay * {
+    pointer-events: none !important;
+}
+
+/* Estilos para el logo en el overlay */
+body .university-overlay img {
+    max-width: 110px !important;
+    max-height: 110px !important;
+    margin-bottom: 18px !important;
+    pointer-events: none !important;
+}
+
+/* Estilos para el título en el overlay */
+body .university-overlay .university-title {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    text-align: center !important;
+    margin: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Asegurar que el contenedor padre tenga posición relativa */
+body .faculty-div {
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+}
+
+/* Animación de entrada suave para los overlays */
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación de salida suave */
+@keyframes overlayFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+body .university-overlay {
+    animation: overlayFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body .university-overlay.fade-out {
+    animation: overlayFadeOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+/* Efecto hover para el contenedor padre */
+body .faculty-div:hover {
+    transform: translateY(-2px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+/* Cuando el overlay está oculto */
+body .university-overlay[style*="display: none"] {
+    display: none !important;
+}
+
+body .university-overlay[style*="opacity: 0"] {
+    opacity: 0 !important;
+}
+
+/* Asegurar que no interfiera con la búsqueda */
+body .search-filter-container {
+    z-index: 9999 !important;
+    position: relative !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body .university-overlay img {
+        max-width: 80px !important;
+        max-height: 80px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    body .university-overlay .university-title {
+        font-size: 1.2rem !important;
+    }
+}

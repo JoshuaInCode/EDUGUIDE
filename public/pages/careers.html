@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/pages/careers.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/title-animations.css">
+    <link rel="stylesheet" href="../css/search-results-fix.css">
 </head>
 
 <body>
@@ -953,6 +954,7 @@
                 
                 if (searchTerm.length < 2) {
                     searchResults.style.display = 'none';
+                    searchResults.classList.remove('hidden');
                     return;
                 }
 
@@ -974,8 +976,10 @@
                         `;
                     }).join('');
                     searchResults.style.display = 'block';
+                    searchResults.classList.remove('hidden');
                 } else {
                     searchResults.style.display = 'none';
+                    searchResults.classList.remove('hidden');
                 }
             });
 
@@ -1006,6 +1010,7 @@
                         // Clear search
                         searchInput.value = '';
                         searchResults.style.display = 'none';
+                        searchResults.classList.remove('hidden');
                     }
                 }
             });
@@ -1014,6 +1019,7 @@
             document.addEventListener('click', function(e) {
                 if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
+                    searchResults.classList.remove('hidden');
                 }
             });
         });

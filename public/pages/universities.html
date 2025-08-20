@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/search-fix.css">
     <link rel="stylesheet" href="../css/title-animations.css">
+    <link rel="stylesheet" href="../css/search-results-fix.css">
+    <link rel="stylesheet" href="../css/university-search-results.css">
+    <link rel="stylesheet" href="../css/overlay-fix.css">
+    <link rel="stylesheet" href="../css/final-overlay-fix.css">
     
     <!-- Professional Search Styling -->
     <style>
@@ -100,7 +104,8 @@
                     <div class="col-md-8">
                         <div class="search-container">
                             <input type="text" class="search-input" placeholder="Buscar una universidad..." id="universitySearch">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search search-icon"></i>
+                            <div class="search-results" id="searchResults"></div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -607,17 +612,17 @@
     <!-- University Search and Filter Script - Load first -->
     <script src="../js/university-search.js"></script>
     
+    <!-- University Search Dropdown Script -->
+    <script src="../js/university-search-dropdown.js"></script>
+    
     <!-- University Overlay Script - Load after search -->
     <script src="/public/js/components.js"></script>
     
+    <!-- Final Overlay Fix Script - Solución definitiva -->
+    <script src="../js/final-overlay-fix.js"></script>
+    
     <!-- Simple Search Fix Script -->
     <script src="../js/simple-search-fix.js"></script>
-    
-    <!-- Quick Diagnostic Script - Temporary -->
-    <script src="../js/quick-diagnostic.js"></script>
-    
-    <!-- Overlay Fix Script -->
-    <script src="../js/overlay-fix.js"></script>
     
     <!-- Spacing Fix Script -->
     <script src="../js/spacing-fix.js"></script>
