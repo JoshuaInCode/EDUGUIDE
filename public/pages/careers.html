@@ -16,6 +16,8 @@
     
     <link rel="stylesheet" href="../css/pages/careers.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/title-animations.css">
+    <link rel="stylesheet" href="../css/search-results-fix.css">
 </head>
 
 <body>
@@ -65,8 +67,8 @@
             <div class="header-section" style="background: transparent; margin: 0 -50vw 2rem -50vw; padding: 4rem 2rem; border-radius: 0; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; height: 200px; display: flex; align-items: center; justify-content: center;">
                 <div class="row text-center w-100">
                     <div class="col-lg-10 mx-auto">
-                        <h2 style="color: #333; margin-bottom: 0; font-size: 2.5rem; font-weight: 900; text-align: center; letter-spacing: 1px;">UNIVERSITY CAREERS</h2>
-                        <p class="lead mb-0" style="color: #666; text-align: center; margin-top: 20px; font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">
+                        <h2 class="section-title-animation" style="color: #333; margin-bottom: 0; font-size: 2.5rem; font-weight: 900; text-align: center; letter-spacing: 1px;">UNIVERSITY CAREERS</h2>
+                        <p class="lead mb-0 section-subtitle-animation" style="color: #666; text-align: center; margin-top: 20px; font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">
                             Discover a wide variety of university programs designed to boost your professional future.
                         </p>
                     </div>
@@ -83,7 +85,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="program-category">
-                        <h3>Engineering and Technology</h3>
+                        <h3 class="category-title-animation">Engineering and Technology</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#eng1">
@@ -182,7 +184,7 @@
                     </div>
 
                     <div class="program-category">
-                        <h3>Health Sciences</h3>
+                        <h3 class="category-title-animation">Health Sciences</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#health1">
@@ -280,7 +282,7 @@
                     </div>
 
                     <div class="program-category">
-                        <h3>Design and Arts</h3>
+                        <h3 class="category-title-animation">Design and Arts</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#design1">
@@ -380,7 +382,7 @@
                     </div>
 
                     <div class="program-category">
-                        <h3>Law</h3>
+                        <h3 class="category-title-animation">Law</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#law1">
@@ -478,7 +480,7 @@
 
                 <div class="col-lg-6">
                     <div class="program-category">
-                        <h3>Business Sciences</h3>
+                        <h3 class="category-title-animation">Business Sciences</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#bus1">
@@ -572,7 +574,7 @@
                     </div>
 
                     <div class="program-category">
-                        <h3>Humanities</h3>
+                        <h3 class="category-title-animation">Humanities</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#humanities1">
@@ -672,7 +674,7 @@
                     </div>
 
                     <div class="program-category">
-                        <h3>Natural Sciences</h3>
+                        <h3 class="category-title-animation">Natural Sciences</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#sciences1">
@@ -772,7 +774,7 @@
                     </div>
 
                     <div class="program-category">
-                        <h3>Communications</h3>
+                        <h3 class="category-title-animation">Communications</h3>
                         
                         <div class="program-item">
                             <div class="program-header" data-bs-toggle="collapse" data-bs-target="#comm1">
@@ -937,6 +939,9 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Title Animations -->
+    <script src="../js/title-animations.js"></script>
+    
     <!-- Search Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -949,6 +954,7 @@
                 
                 if (searchTerm.length < 2) {
                     searchResults.style.display = 'none';
+                    searchResults.classList.remove('hidden');
                     return;
                 }
 
@@ -970,8 +976,10 @@
                         `;
                     }).join('');
                     searchResults.style.display = 'block';
+                    searchResults.classList.remove('hidden');
                 } else {
                     searchResults.style.display = 'none';
+                    searchResults.classList.remove('hidden');
                 }
             });
 
@@ -1002,6 +1010,7 @@
                         // Clear search
                         searchInput.value = '';
                         searchResults.style.display = 'none';
+                        searchResults.classList.remove('hidden');
                     }
                 }
             });
@@ -1010,6 +1019,7 @@
             document.addEventListener('click', function(e) {
                 if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
+                    searchResults.classList.remove('hidden');
                 }
             });
         });

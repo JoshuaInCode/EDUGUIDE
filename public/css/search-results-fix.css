@@ -1,0 +1,109 @@
+/* Search Results Fix CSS - Solución para el problema del ícono de lupa */
+
+/* Ajustar el z-index del ícono de búsqueda para que no interfiera con los resultados */
+body .search-container i.fas.fa-search,
+body .search-container .search-icon {
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #2196f3 !important;
+    z-index: 5 !important; /* Reducir el z-index de 99999 a 5 */
+    pointer-events: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 18px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Estilos para los resultados de búsqueda */
+body .search-results {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    border: 2px solid #e3f2fd !important;
+    border-top: none !important;
+    border-radius: 0 0 20px 20px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+    z-index: 10 !important; /* Mayor que el ícono pero menor que otros elementos */
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    /* Removido display: none !important para permitir que JavaScript controle la visibilidad */
+}
+
+/* Estilos para los elementos individuales de resultados */
+body .search-result-item {
+    padding: 15px 20px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+}
+
+body .search-result-item:last-child {
+    border-bottom: none !important;
+}
+
+body .search-result-item:hover {
+    background-color: #f8f9fa !important;
+}
+
+/* Estilos para la categoría dentro de los resultados */
+body .search-result-item .category {
+    font-size: 14px !important;
+    color: #666 !important;
+    margin-top: 5px !important;
+    font-weight: 400 !important;
+}
+
+/* Asegurar que el contenedor de búsqueda tenga posición relativa */
+body .search-container {
+    position: relative !important;
+}
+
+/* Asegurar que los resultados de búsqueda sean visibles cuando se muestran */
+body .search-results[style*="display: block"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ajustar el padding del input para que no se superponga con el ícono */
+body .search-input {
+    padding-left: 50px !important; /* Espacio para el ícono */
+    padding-right: 20px !important;
+}
+
+/* Responsive design para móviles */
+@media (max-width: 768px) {
+    body .search-results {
+        max-height: 250px !important;
+    }
+    
+    body .search-result-item {
+        padding: 12px 15px !important;
+        font-size: 15px !important;
+    }
+    
+    body .search-result-item .category {
+        font-size: 13px !important;
+    }
+}
+
+/* Animación suave para mostrar/ocultar resultados */
+body .search-results {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Cuando los resultados están ocultos, aplicar la animación */
+body .search-results.hidden {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important;
+}

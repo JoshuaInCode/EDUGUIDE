@@ -191,6 +191,27 @@ body {
     border-radius: 30px;
     transition: all 0.3s ease;
     background: #f8f9fa;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* Asegurar que el contenedor de búsqueda y filtros esté siempre visible */
+.search-filter-container {
+    position: relative;
+    z-index: 9999;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+/* Prevenir que los overlays interfieran con la búsqueda */
+.university-overlay {
+    z-index: 10;
 }
 
 .highlight {
@@ -208,4 +229,17 @@ body {
     margin-bottom: 18px;
     margin-top: 0;
     letter-spacing: 1px;
+}
+
+.eduguide-brand {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px #1769aa;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.eduguide-brand:hover {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #3ec6ff;
 } 

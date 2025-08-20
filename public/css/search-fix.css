@@ -1,0 +1,369 @@
+/* Search Fix CSS - Professional University Search Styling - MAXIMUM SPECIFICITY */
+
+/* Fix for fixed header - Add margin to body to prevent content overlap */
+body {
+    margin-top: 80px !important;
+    padding-top: 0 !important;
+}
+
+/* Ensure navbar is always on top when scrolling */
+.navbar {
+    z-index: 999999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+/* RESET AND FORCE ALL SEARCH ELEMENTS TO BE VISIBLE */
+body .search-filter-container,
+body .search-filter-container *,
+body #universitySearch,
+body #provinceFilter,
+body .search-container,
+body .search-container * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Professional search container styling - MAXIMUM SPECIFICITY */
+body .search-filter-container {
+    position: relative !important;
+    z-index: 1 !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    padding: 25px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.05) !important;
+    margin-top: 0 !important;
+    margin-bottom: 40px !important;
+    border: 1px solid rgba(33, 150, 243, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body .search-filter-container:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12), 0 6px 15px rgba(0,0,0,0.08) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Professional search input styling - MAXIMUM SPECIFICITY */
+body #universitySearch {
+    width: 100% !important;
+    padding: 18px 50px !important;
+    border: 2px solid #e3f2fd !important;
+    border-radius: 50px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    background: #ffffff !important;
+    outline: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 99999 !important;
+    box-sizing: border-box !important;
+    color: #333 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+body #universitySearch:focus {
+    border-color: #2196f3 !important;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15), 0 4px 12px rgba(0,0,0,0.08) !important;
+    transform: translateY(-1px) !important;
+}
+
+body #universitySearch::placeholder {
+    color: #9e9e9e !important;
+    font-weight: 400 !important;
+}
+
+/* Search icon styling - MAXIMUM SPECIFICITY */
+body .search-container i.fas.fa-search {
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #2196f3 !important;
+    z-index: 5 !important; /* Reducido de 99999 a 5 para evitar interferencia con resultados */
+    pointer-events: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 18px !important;
+    transition: all 0.3s ease !important;
+}
+
+body .search-focused i.fas.fa-search {
+    color: #1976d2 !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Professional province filter styling - MAXIMUM SPECIFICITY */
+body #provinceFilter {
+    width: 100% !important;
+    border-radius: 50px !important;
+    border: 2px solid #e3f2fd !important;
+    padding: 16px 25px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    background: #ffffff !important;
+    outline: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+    z-index: 99999 !important;
+    color: #333 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    cursor: pointer !important;
+}
+
+body #provinceFilter:focus {
+    border-color: #2196f3 !important;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15), 0 4px 12px rgba(0,0,0,0.08) !important;
+    transform: translateY(-1px) !important;
+}
+
+body #provinceFilter:hover {
+    border-color: #bbdefb !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* Search loading state - MAXIMUM SPECIFICITY */
+body #universitySearch.searching {
+    background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%) !important;
+    background-size: 200% 100% !important;
+    animation: searchLoading 1.5s ease-in-out infinite !important;
+}
+
+@keyframes searchLoading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* No results message styling - MAXIMUM SPECIFICITY */
+body .no-results-message {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border-radius: 20px !important;
+    padding: 40px !important;
+    margin: 30px 0 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    border: 1px solid rgba(33, 150, 243, 0.1) !important;
+    text-align: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body .no-results-message:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12) !important;
+}
+
+body .no-results-message i {
+    color: #2196f3 !important;
+    margin-bottom: 20px !important;
+    opacity: 0.7 !important;
+}
+
+body .no-results-message h4 {
+    color: #333 !important;
+    font-weight: 600 !important;
+    margin-bottom: 15px !important;
+}
+
+body .no-results-message p {
+    color: #666 !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
+
+/* Ensure overlays don't interfere - MAXIMUM SPECIFICITY */
+body .university-overlay {
+    z-index: 10 !important;
+    pointer-events: auto !important;
+}
+
+/* Prevent any other elements from hiding search - MAXIMUM SPECIFICITY */
+body .search-filter-container * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Override Bootstrap or any other framework styles - MAXIMUM SPECIFICITY */
+body .search-filter-container,
+body .search-filter-container *,
+body #universitySearch,
+body #provinceFilter,
+body .search-container,
+body .search-container * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+}
+
+/* Ensure the container is always on top - MAXIMUM SPECIFICITY */
+body .search-filter-container {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Responsive design improvements - MAXIMUM SPECIFICITY */
+@media (max-width: 768px) {
+    body .search-filter-container {
+        padding: 20px !important;
+        margin-top: 100px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    body #universitySearch {
+        padding: 16px 45px !important;
+        font-size: 15px !important;
+    }
+    
+    body #provinceFilter {
+        padding: 14px 20px !important;
+        font-size: 15px !important;
+    }
+    
+    body .search-container i.fas.fa-search {
+        left: 18px !important;
+        font-size: 16px !important;
+    }
+}
+
+/* Animation for search container appearance - MAXIMUM SPECIFICITY */
+@keyframes searchContainerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body .search-filter-container {
+    animation: searchContainerFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Focus states for better accessibility - MAXIMUM SPECIFICITY */
+body #universitySearch:focus-visible,
+body #provinceFilter:focus-visible {
+    outline: 2px solid #2196f3 !important;
+    outline-offset: 2px !important;
+}
+
+/* Hover effects for interactive elements - MAXIMUM SPECIFICITY */
+body .search-container:hover #universitySearch {
+    border-color: #bbdefb !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+body .search-container:hover i.fas.fa-search {
+    color: #1976d2 !important;
+}
+
+/* Enhanced focus indicators for accessibility - MAXIMUM SPECIFICITY */
+body .search-container:focus-within {
+    transform: scale(1.02) !important;
+}
+
+/* Smooth transitions for all interactive elements - MAXIMUM SPECIFICITY */
+body .faculty-div {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure proper spacing for the entire universities section */
+body section.py-5 {
+    margin-top: 100px !important;
+    padding-top: 0 !important;
+}
+
+/* OVERRIDE ANY CONFLICTING STYLES FROM OTHER CSS FILES */
+body .search-container {
+    max-width: none !important;
+    margin: 0 !important;
+    position: relative !important;
+}
+
+body .search-input {
+    width: 100% !important;
+    padding: 18px 50px !important;
+    font-size: 16px !important;
+    border: 2px solid #e3f2fd !important;
+    border-radius: 50px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: #ffffff !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 99999 !important;
+    box-sizing: border-box !important;
+    color: #333 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+/* FORCE REMOVE ANY HIDDEN STATES */
+body .search-filter-container[style*="display: none"],
+body .search-filter-container[style*="visibility: hidden"],
+body .search-filter-container[style*="opacity: 0"],
+body #universitySearch[style*="display: none"],
+body #universitySearch[style*="visibility: hidden"],
+body #universitySearch[style*="opacity: 0"],
+body #provinceFilter[style*="display: none"],
+body #provinceFilter[style*="visibility: hidden"],
+body #provinceFilter[style*="opacity: 0"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* FIX OVERLAYS TO NOT INTERFERE WITH SEARCH - MAXIMUM SPECIFICITY */
+body .university-overlay {
+    z-index: 10 !important;
+    pointer-events: auto !important;
+    transition: opacity 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+body .university-overlay:hover {
+    pointer-events: auto !important;
+}
+
+/* ENSURE SEARCH CONTAINER IS ALWAYS ON TOP */
+body .search-filter-container {
+    z-index: 1 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+}
+
+/* SHOW OVERLAYS BY DEFAULT */
+body .university-overlay {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+    transition: opacity 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+/* HIDE OVERLAYS ONLY WHEN SEARCH IS ACTIVE */
+body .search-active .university-overlay {
+    opacity: 0.3 !important;
+}
+
+/* ENSURE OVERLAYS ARE VISIBLE ON HOVER */
+body .faculty-div:hover .university-overlay {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}

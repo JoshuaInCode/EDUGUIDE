@@ -18,6 +18,7 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pages/EduGuide.css">
+    <link rel="stylesheet" href="css/search-results-fix.css">
     
     <style>
         /* Cookie Banner Styles */
@@ -809,32 +810,100 @@
         </style>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 animate-fadein contact-section-bg" style="background: linear-gradient(135deg, #1769aa 0%, #2196f3 60%, #3ec6ff 100%) !important; border-radius: 18px; margin-bottom: 0;">
+            <!-- Contact Section -->
+        <section id="contact" class="py-5 animate-fadein" style="background: linear-gradient(135deg, #1769aa 0%, #2196f3 100%); margin-bottom: 0;">
         <div class="container">
-            <h2 class="text-center header-line fadein-on-scroll" style="color:#fff;font-size:2.2rem;font-weight:900;margin-bottom:24px;">Contact Us</h2>
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <form class="contact-form fadein-on-scroll animate-fadein">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-white-innovative w-100">Send Message</button>
-                    </form>
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="header-line fadein-on-scroll" style="color: white; font-size: 3rem; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                        <i class="fas fa-comments me-3" style="color: #3ec6ff;"></i>¿Tienes dudas?
+                    </h2>
+                    <p class="lead fadein-on-scroll" style="color: rgba(255,255,255,0.95); font-size: 1.3rem; margin-bottom: 0; font-weight: 300;">
+                        ¡No te quedes con las dudas! Estamos aquí para ayudarte con cualquier pregunta sobre universidades, carreras o becas. 
+                        <br><span style="color: #3ec6ff; font-weight: 600;">¡Tu futuro académico nos importa!</span>
+                    </p>
                 </div>
-                <div class="col-md-6">
-                    <div class="contact-image fadein-on-scroll animate-fadein" style="text-align: center;">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Contact Us" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-form-container fadein-on-scroll animate-fadein" style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
+                        <h3 style="color: #1769aa; font-weight: 600; margin-bottom: 30px; text-align: center; font-size: 1.8rem;">
+                            <i class="fas fa-paper-plane me-2" style="color: #2196f3;"></i>Envíanos tu mensaje
+                        </h3>
+                        
+                        <form class="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <input type="text" id="name" class="form-control contact-input" placeholder="Tu nombre completo" required style="border: 2px solid #e3f2fd; border-radius: 12px; padding: 15px 20px; font-size: 16px; transition: all 0.3s ease; background: white;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <input type="email" id="email" class="form-control contact-input" placeholder="Tu correo electrónico" required style="border: 2px solid #e3f2fd; border-radius: 12px; padding: 15px 20px; font-size: 16px; transition: all 0.3s ease; background: white;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <select id="subject" class="form-control contact-input" required style="border: 2px solid #e3f2fd; border-radius: 12px; padding: 15px 20px; font-size: 16px; transition: all 0.3s ease; background: white;">
+                                    <option value="">¿Sobre qué quieres preguntar?</option>
+                                    <option value="universities">Información de Universidades</option>
+                                    <option value="careers">Orientación de Carreras</option>
+                                    <option value="scholarships">Becas y Financiamiento</option>
+                                    <option value="general">Consulta General</option>
+                                    <option value="support">Soporte Técnico</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <textarea id="message" class="form-control contact-input" rows="5" placeholder="Cuéntanos tu pregunta o inquietud..." required style="border: 2px solid #e3f2fd; border-radius: 12px; padding: 15px 20px; font-size: 16px; transition: all 0.3s ease; background: white; resize: vertical;"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-contact-submit w-100" style="background: linear-gradient(135deg, #1769aa, #2196f3); border: none; color: white; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 18px; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(33,150,243,0.3); text-transform: uppercase; letter-spacing: 1px;">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <style>
+            .contact-input:focus {
+                border-color: #2196f3 !important;
+                box-shadow: 0 0 0 0.2rem rgba(33,150,243,0.25) !important;
+                outline: none !important;
+                transform: translateY(-2px);
+            }
+            
+            .contact-input:hover {
+                border-color: #64b5f6 !important;
+                transform: translateY(-1px);
+            }
+            
+            .btn-contact-submit:hover {
+                background: linear-gradient(135deg, #0d47a1, #1976d2) !important;
+                transform: translateY(-3px);
+                box-shadow: 0 12px 35px rgba(33,150,243,0.4) !important;
+            }
+            
+            @media (max-width: 768px) {
+                .contact-form-container {
+                    padding: 20px;
+                    margin: 0 10px;
+                }
+                
+                h2 {
+                    font-size: 2.2rem !important;
+                }
+                
+                .lead {
+                    font-size: 1.1rem !important;
+                }
+            }
+        </style>
     </section>
 
     <!-- Footer -->
