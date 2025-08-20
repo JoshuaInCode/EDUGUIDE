@@ -353,7 +353,7 @@
                         <div class="user-avatar" id="userAvatar">U</div>
                         <span id="userEmail">usuario@ejemplo.com</span>
                     </div>
-                    <a href="#" class="logout-btn" id="logoutBtn">
+                    <a href="#" class="logout-btn" onclick="authManager.logout()">
                         <i class="fas fa-sign-out-alt"></i>
                         Cerrar Sesión
                     </a>
@@ -457,47 +457,66 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Firebase Auth Manager -->
+    <script type="module" src="../js/auth-manager.js"></script>
+    
     <script type="module">
         // Import Firebase functions
-        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
         import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-        import { auth, db } from "../firebase/firebase-config.js";
+        import { db } from "../firebase/firebase-config.js";
 
-        // Check if user is authenticated
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                // User is signed in
-                console.log('User authenticated:', user);
-                
-                try {
-                    // Get user data from Firestore
-                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+        // Wait for auth manager to be ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Wait a bit for auth manager to initialize
+            setTimeout(async () => {
+                if (window.authManager && window.authManager.getCurrentUser()) {
+                    const user = window.authManager.getCurrentUser();
+                    console.log('User authenticated:', user);
                     
-                    if (userDoc.exists()) {
-                        const userData = userDoc.data();
-                        console.log('User data from Firestore:', userData);
+                    try {
+                        // Get user data from Firestore
+                        const userDoc = await getDoc(doc(db, 'users', user.uid));
                         
-                        // Update user info in navbar
-                        const userEmail = document.getElementById('userEmail');
-                        const userAvatar = document.getElementById('userAvatar');
-                        
-                        if (userEmail) {
-                            userEmail.textContent = userData.firstName + ' ' + userData.lastName;
+                        if (userDoc.exists()) {
+                            const userData = userDoc.data();
+                            console.log('User data from Firestore:', userData);
+                            
+                            // Update user info in navbar
+                            const userEmail = document.getElementById('userEmail');
+                            const userAvatar = document.getElementById('userAvatar');
+                            
+                            if (userEmail) {
+                                userEmail.textContent = userData.firstName + ' ' + userData.lastName;
+                            }
+                            
+                            if (userAvatar) {
+                                // Set avatar with first letter of first name
+                                userAvatar.textContent = userData.firstName.charAt(0).toUpperCase();
+                            }
+                            
+                            // Update welcome message
+                            const welcomeText = document.querySelector('.welcome-text');
+                            if (welcomeText) {
+                                welcomeText.textContent = `¡Bienvenido, ${userData.firstName}!`;
+                            }
+                            
+                        } else {
+                            console.log('No user data found in Firestore');
+                            // Fallback to email
+                            const userEmail = document.getElementById('userEmail');
+                            const userAvatar = document.getElementById('userAvatar');
+                            
+                            if (userEmail) {
+                                userEmail.textContent = user.email;
+                            }
+                            
+                            if (userAvatar) {
+                                userAvatar.textContent = user.email.charAt(0).toUpperCase();
+                            }
                         }
                         
-                        if (userAvatar) {
-                            // Set avatar with first letter of first name
-                            userAvatar.textContent = userData.firstName.charAt(0).toUpperCase();
-                        }
-                        
-                        // Update welcome message
-                        const welcomeText = document.querySelector('.welcome-text');
-                        if (welcomeText) {
-                            welcomeText.textContent = `¡Bienvenido, ${userData.firstName}!`;
-                        }
-                        
-                    } else {
-                        console.log('No user data found in Firestore');
+                    } catch (error) {
+                        console.error('Error fetching user data:', error);
                         // Fallback to email
                         const userEmail = document.getElementById('userEmail');
                         const userAvatar = document.getElementById('userAvatar');
@@ -510,42 +529,11 @@
                             userAvatar.textContent = user.email.charAt(0).toUpperCase();
                         }
                     }
-                    
-                } catch (error) {
-                    console.error('Error fetching user data:', error);
-                    // Fallback to email
-                    const userEmail = document.getElementById('userEmail');
-                    const userAvatar = document.getElementById('userAvatar');
-                    
-                    if (userEmail) {
-                        userEmail.textContent = user.email;
-                    }
-                    
-                    if (userAvatar) {
-                        userAvatar.textContent = user.email.charAt(0).toUpperCase();
-                    }
+                } else {
+                    console.log('User not authenticated, redirecting to login');
+                    window.location.href = 'login.html';
                 }
-                
-            } else {
-                // User is signed out, redirect to login
-                console.log('User not authenticated, redirecting to login');
-                window.location.href = 'login.html';
-            }
-        });
-
-        // Logout functionality
-        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            
-            try {
-                await signOut(auth);
-                console.log('User signed out successfully');
-                // Redirect to login page
-                window.location.href = 'login.html';
-            } catch (error) {
-                console.error('Error signing out:', error);
-                alert('Error al cerrar sesión. Inténtalo de nuevo.');
-            }
+            }, 1000);
         });
 
         // Add hover effects to stat cards
