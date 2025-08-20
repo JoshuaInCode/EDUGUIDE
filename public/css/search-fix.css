@@ -89,7 +89,7 @@ body .search-container i.fas.fa-search {
     top: 50% !important;
     transform: translateY(-50%) !important;
     color: #2196f3 !important;
-    z-index: 99999 !important;
+    z-index: 5 !important; /* Reducido de 99999 a 5 para evitar interferencia con resultados */
     pointer-events: none !important;
     display: block !important;
     visibility: visible !important;
@@ -330,8 +330,9 @@ body #provinceFilter[style*="opacity: 0"] {
 /* FIX OVERLAYS TO NOT INTERFERE WITH SEARCH - MAXIMUM SPECIFICITY */
 body .university-overlay {
     z-index: 10 !important;
-    pointer-events: none !important;
+    pointer-events: auto !important;
     transition: opacity 0.3s ease !important;
+    cursor: pointer !important;
 }
 
 body .university-overlay:hover {
@@ -353,6 +354,7 @@ body .university-overlay {
     pointer-events: auto !important;
     z-index: 10 !important;
     transition: opacity 0.3s ease !important;
+    cursor: pointer !important;
 }
 
 /* HIDE OVERLAYS ONLY WHEN SEARCH IS ACTIVE */
