@@ -493,7 +493,41 @@
     <script type="module">
         // Import Firebase functions
         import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-        import { auth } from "../firebase/firebase-config.js";
+        import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+        import { auth, db } from "../firebase/firebase-config.js";
+
+        // Add message container functions
+        function createMessage(message, type = 'error') {
+            // Remove existing messages
+            const existingMessage = document.querySelector('.message-container');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-container';
+            messageDiv.style.cssText = `
+                background: ${type === 'error' ? 'linear-gradient(135deg, #ff6b6b, #ff8e8e)' : 'linear-gradient(135deg, #4caf50, #66bb6a)'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                font-size: 14px;
+                text-align: center;
+                animation: fadeInDown 0.3s ease;
+            `;
+            messageDiv.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-triangle' : 'check-circle'} me-2"></i>${message}`;
+            
+            const form = document.getElementById('signupForm');
+            form.insertBefore(messageDiv, form.firstChild);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.remove();
+                }
+            }, 5000);
+        }
 
         // Password strength checker
         function checkPasswordStrength(password) {
@@ -572,103 +606,65 @@
             }
         });
         
-        // Add error message container
-        function createErrorMessage(message) {
-            // Remove existing error message
-            const existingError = document.querySelector('.error-message');
-            if (existingError) {
-                existingError.remove();
-            }
-
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.style.cssText = `
-                background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-                font-size: 14px;
-                text-align: center;
-                animation: fadeInDown 0.3s ease;
-            `;
-            errorDiv.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i>${message}`;
-            
-            const form = document.getElementById('signupForm');
-            form.insertBefore(errorDiv, form.firstChild);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                if (errorDiv.parentNode) {
-                    errorDiv.remove();
-                }
-            }, 5000);
-        }
-
-        function createSuccessMessage(message) {
-            // Remove existing messages
-            const existingMessage = document.querySelector('.error-message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.style.cssText = `
-                background: linear-gradient(135deg, #4caf50, #66bb6a);
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-                font-size: 14px;
-                text-align: center;
-                animation: fadeInDown 0.3s ease;
-            `;
-            successDiv.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
-            
-            const form = document.getElementById('signupForm');
-            form.insertBefore(successDiv, form.firstChild);
-        }
-
         // Form validation and submission
         document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const formData = new FormData(this);
-            const fullName = this.querySelector('input[placeholder="Full name"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const password = this.querySelector('#password').value;
-            const confirmPassword = this.querySelector('input[placeholder="Confirm password"]').value;
+            // Get form elements with validation
+            const emailInput = this.querySelector('input[type="email"]');
+            const passwordInput = this.querySelector('#password');
+            const confirmPasswordInput = this.querySelector('input[placeholder="Confirm password"]');
+            const firstNameInput = this.querySelector('input[placeholder="First name"]');
+            const lastNameInput = this.querySelector('input[placeholder="Last name"]');
+            
+            // Check if all required elements exist
+            if (!emailInput || !passwordInput || !confirmPasswordInput || !firstNameInput || !lastNameInput) {
+                createMessage('Error: Formulario incompleto. Por favor, recarga la página.', 'error');
+                return;
+            }
+            
+            // Get values
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+            // Phone field doesn't exist in the form, so we'll set it to empty
+            const phone = '';
+            
+            // Clear previous messages
+            const existingMessage = document.querySelector('.message-container');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
             
             // Validation
-            if (!fullName.trim()) {
-                createErrorMessage('Por favor, ingresa tu nombre completo.');
+            if (!email || !password || !firstName || !lastName) {
+                createMessage('Por favor, completa todos los campos obligatorios.', 'error');
                 return;
             }
             
-            if (!email.trim()) {
-                createErrorMessage('Por favor, ingresa tu correo electrónico.');
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                createMessage('Por favor, ingresa un correo electrónico válido.', 'error');
                 return;
             }
             
-            if (!password.trim()) {
-                createErrorMessage('Por favor, ingresa una contraseña.');
-                return;
-            }
-            
+            // Password validation
             if (password.length < 6) {
-                createErrorMessage('La contraseña debe tener al menos 6 caracteres.');
+                createMessage('La contraseña debe tener al menos 6 caracteres.', 'error');
                 return;
             }
             
             if (password !== confirmPassword) {
-                createErrorMessage('Las contraseñas no coinciden.');
+                createMessage('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.', 'error');
                 return;
             }
             
-            const termsCheck = this.querySelector('#termsCheck');
-            if (!termsCheck.checked) {
-                createErrorMessage('Debes aceptar los términos y condiciones.');
+            // Name validation
+            if (firstName.length < 2 || lastName.length < 2) {
+                createMessage('Los nombres deben tener al menos 2 caracteres.', 'error');
                 return;
             }
             
@@ -679,15 +675,34 @@
             btn.disabled = true;
             
             try {
-                // Create user with Firebase Auth
+                console.log('Attempting signup with:', { email, firstName, lastName, phone: phone || 'N/A' });
+                
+                // Create user in Firebase Auth
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 
-                console.log('User registered successfully:', user);
-                createSuccessMessage('¡Cuenta creada exitosamente! Redirigiendo al dashboard...');
+                console.log('User created successfully:', user);
                 
-                // Optional: You can update the user's display name
-                // await updateProfile(user, { displayName: fullName });
+                // Save additional user data to Firestore
+                const userData = {
+                    uid: user.uid,
+                    email: email,
+                    firstName: firstName,
+                    lastName: lastName,
+                    phone: phone || '',
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp(),
+                    profileCompleted: true,
+                    role: 'student'
+                };
+                
+                // Save to Firestore
+                await setDoc(doc(db, 'users', user.uid), userData);
+                
+                console.log('User data saved to Firestore');
+                
+                // Show success message
+                createMessage('¡Cuenta creada exitosamente! Bienvenido a EduGuide. Redirigiendo al dashboard...', 'success');
                 
                 // Redirect to dashboard after short delay
                 setTimeout(() => {
@@ -695,7 +710,7 @@
                 }, 2000);
                 
             } catch (error) {
-                console.error('Registration error:', error);
+                console.error('Signup error:', error);
                 
                 // Reset button
                 btn.innerHTML = originalText;
@@ -706,25 +721,28 @@
                 
                 switch (error.code) {
                     case 'auth/email-already-in-use':
-                        errorMessage = 'Ya existe una cuenta con este correo electrónico.';
+                        errorMessage = 'Ya existe una cuenta con este correo electrónico. Intenta hacer login o usa otro email.';
                         break;
                     case 'auth/invalid-email':
                         errorMessage = 'El correo electrónico no es válido.';
                         break;
+                    case 'auth/operation-not-allowed':
+                        errorMessage = 'El registro con email y contraseña no está habilitado. Contacta al administrador.';
+                        break;
                     case 'auth/weak-password':
-                        errorMessage = 'La contraseña es muy débil. Usa al menos 6 caracteres.';
+                        errorMessage = 'La contraseña es demasiado débil. Debe tener al menos 6 caracteres.';
                         break;
                     case 'auth/network-request-failed':
                         errorMessage = 'Error de conexión. Verifica tu internet.';
                         break;
-                    case 'auth/too-many-requests':
-                        errorMessage = 'Demasiados intentos. Espera un momento e inténtalo de nuevo.';
+                    case 'auth/invalid-credential':
+                        errorMessage = 'Credenciales inválidas. Verifica los datos ingresados.';
                         break;
                     default:
-                        errorMessage = 'Error al crear la cuenta. Verifica tus datos.';
+                        errorMessage = `Error al crear la cuenta: ${error.message}`;
                 }
                 
-                createErrorMessage(errorMessage);
+                createMessage(errorMessage, 'error');
             }
         });
         

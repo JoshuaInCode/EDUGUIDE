@@ -474,66 +474,95 @@
         document.querySelector('form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const email = document.querySelector('input[type="email"]').value;
+            const email = document.querySelector('input[type="email"]').value.trim();
             const password = document.querySelector('input[type="password"]').value;
             
-            if (email && password) {
-                // Show loading state
-                const btn = document.querySelector('.btn-login');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing in...';
-                btn.disabled = true;
-                
-                try {
-                    // Authenticate with Firebase
-                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                    const user = userCredential.user;
-                    
-                    console.log('Login successful:', user);
-                    createSuccessMessage('Login successful! Redirecting to dashboard...');
-                    
-                    // Redirect to dashboard after short delay
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1500);
-                    
-                } catch (error) {
-                    console.error('Login error:', error);
-                    
-                    // Reset button
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    
-                    // Show user-friendly error message
-                    let errorMessage = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
-                    
-                    switch (error.code) {
-                        case 'auth/user-not-found':
-                            errorMessage = 'No existe una cuenta con este correo electrónico.';
-                            break;
-                        case 'auth/wrong-password':
-                            errorMessage = 'Contraseña incorrecta. Por favor, inténtalo de nuevo.';
-                            break;
-                        case 'auth/invalid-email':
-                            errorMessage = 'El correo electrónico no es válido.';
-                            break;
-                        case 'auth/user-disabled':
-                            errorMessage = 'Esta cuenta ha sido deshabilitada.';
-                            break;
-                        case 'auth/too-many-requests':
-                            errorMessage = 'Demasiados intentos fallidos. Inténtalo más tarde.';
-                            break;
-                        case 'auth/network-request-failed':
-                            errorMessage = 'Error de conexión. Verifica tu internet.';
-                            break;
-                        default:
-                            errorMessage = 'Error al iniciar sesión. Verifica tus credenciales.';
-                    }
-                    
-                    createErrorMessage(errorMessage);
-                }
-            } else {
+            // Clear previous messages
+            const existingMessage = document.querySelector('.message-container');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Basic validation
+            if (!email || !password) {
                 createErrorMessage('Por favor, completa todos los campos.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                createErrorMessage('Por favor, ingresa un correo electrónico válido.');
+                return;
+            }
+            
+            // Password validation
+            if (password.length < 6) {
+                createErrorMessage('La contraseña debe tener al menos 6 caracteres.');
+                return;
+            }
+            
+            // Show loading state
+            const btn = document.querySelector('.btn-login');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Iniciando sesión...';
+            btn.disabled = true;
+            
+            try {
+                console.log('Attempting login with:', { email, password: '***' });
+                
+                // Authenticate with Firebase
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                console.log('Login successful:', user);
+                createSuccessMessage('¡Inicio de sesión exitoso! Redirigiendo al dashboard...');
+                
+                // Redirect to dashboard after short delay
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                // Show user-friendly error message
+                let errorMessage = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
+                
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = 'No existe una cuenta con este correo electrónico. Verifica el email o regístrate.';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = 'Contraseña incorrecta. Por favor, verifica tu contraseña.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'El correo electrónico no es válido.';
+                        break;
+                    case 'auth/invalid-credential':
+                        errorMessage = 'Credenciales inválidas. Verifica tu email y contraseña.';
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = 'Esta cuenta ha sido deshabilitada. Contacta al administrador.';
+                        break;
+                    case 'auth/too-many-requests':
+                        errorMessage = 'Demasiados intentos fallidos. Espera unos minutos antes de intentar de nuevo.';
+                        break;
+                    case 'auth/network-request-failed':
+                        errorMessage = 'Error de conexión. Verifica tu conexión a internet.';
+                        break;
+                    case 'auth/operation-not-allowed':
+                        errorMessage = 'El inicio de sesión con email y contraseña no está habilitado.';
+                        break;
+                    default:
+                        errorMessage = `Error al iniciar sesión: ${error.message}`;
+                }
+                
+                createErrorMessage(errorMessage);
             }
         });
         
