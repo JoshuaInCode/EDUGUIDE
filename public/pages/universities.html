@@ -92,26 +92,31 @@
             <!-- Search and Filter Container -->
             <div class="search-filter-container">
                 <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <div class="search-container">
-                            <input type="text" class="search-input" placeholder="Buscar una universidad..." id="universitySearch">
-                            <i class="fas fa-search search-icon"></i>
-                            <div class="search-results" id="searchResults"></div>
+                    <div class="col-md-12">
+                        <div class="search-container d-flex align-items-center">
+                            <div class="search-input-wrapper flex-grow-1 position-relative">
+                                <input type="text" class="search-input" placeholder="Buscar una universidad..." id="universitySearch">
+                                <i class="fas fa-search search-icon"></i>
+                                <button type="button" class="clear-search-btn" id="clearSearchBtn" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="search-results" id="searchResults"></div>
+                            </div>
+                            <div class="province-filter-wrapper ms-3" style="min-width: 200px;">
+                                <select class="form-select" id="provinceFilter">
+                                    <option value="">Todas las Provincias</option>
+                                    <option value="panama">Panamá</option>
+                                    <option value="chiriqui">Chiriquí</option>
+                                    <option value="veraguas">Veraguas</option>
+                                    <option value="cocle">Coclé</option>
+                                    <option value="herrera">Herrera</option>
+                                    <option value="los-santos">Los Santos</option>
+                                    <option value="colon">Colón</option>
+                                    <option value="bocas-del-toro">Bocas del Toro</option>
+                                    <option value="darien">Darién</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-select" id="provinceFilter">
-                            <option value="">Todas las Provincias</option>
-                            <option value="panama">Panamá</option>
-                            <option value="chiriqui">Chiriquí</option>
-                            <option value="veraguas">Veraguas</option>
-                            <option value="cocle">Coclé</option>
-                            <option value="herrera">Herrera</option>
-                            <option value="los-santos">Los Santos</option>
-                            <option value="colon">Colón</option>
-                            <option value="bocas-del-toro">Bocas del Toro</option>
-                            <option value="darien">Darién</option>
-                        </select>
                     </div>
                 </div>
             </div>
