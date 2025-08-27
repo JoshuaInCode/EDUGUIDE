@@ -310,6 +310,348 @@
             }
         }
         
+        /* Edit Profile Section Styles */
+        .edit-profile-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e1e5e9;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #6c757d, #868e96);
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e5e9;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+
+        .card-title i {
+            color: #2196f3;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .checkbox-label input:checked + .checkmark {
+            background: #2196f3;
+            border-color: #2196f3;
+        }
+
+        .checkbox-label input:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Charts Styles */
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .chart-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chart-item h4 {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .progress-circle {
+            position: relative;
+            display: inline-block;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2196f3;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bar-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 40px;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bar-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .bar-container {
+            background: #e1e5e9;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #2196f3, #3ec6ff);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .bar-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .activity-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 120px;
+            padding: 20px 0;
+        }
+
+        .activity-day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-bar {
+            width: 20px;
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.8s ease;
+        }
+
+        .activity-day span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        /* Achievements Styles */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            color: #999;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-icon.earned {
+            background: linear-gradient(135deg, #ffc107, #ffeb3b);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .achievement-item h4 {
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .achievement-item p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement-progress {
+            font-weight: 600;
+            color: #2196f3;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .dashboard-container {
                 padding: 15px;
@@ -328,6 +670,25 @@
             }
             
             .actions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -437,7 +798,7 @@
                     Contacto
                 </a>
                 
-                <a href="#" class="action-btn">
+                <a href="#" class="action-btn" onclick="showEditProfile()">
                     <div class="action-icon">
                         <i class="fas fa-user-edit"></i>
                     </div>
@@ -452,6 +813,235 @@
                 </a>
             </div>
         </div>
+
+        <!-- Edit Profile Section -->
+        <div id="editProfileSection" class="edit-profile-section" style="display: none;">
+            <div class="profile-header">
+                <button class="back-btn" onclick="hideEditProfile()">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h2 class="section-title">
+                    <i class="fas fa-user-edit"></i>
+                    Editar Perfil
+                </h2>
+            </div>
+
+            <div class="profile-content">
+                <!-- User Info Form -->
+                <div class="profile-card">
+                    <h3 class="card-title">
+                        <i class="fas fa-user"></i>
+                        Información Personal
+                    </h3>
+                    <form id="userInfoForm" class="user-form">
+                        <div class="form-group">
+                            <label for="firstName">Nombre</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Apellido</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Tu apellido">
+                        </div>
+                        <div class="form-group">
+                            <label for="userBio">Descripción Personal</label>
+                            <textarea id="userBio" name="userBio" rows="4" placeholder="Cuéntanos un poco sobre ti, tus metas educativas..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentEducation">Nivel Educativo Actual</label>
+                            <select id="currentEducation" name="currentEducation">
+                                <option value="">Selecciona tu nivel</option>
+                                <option value="secundaria">Secundaria</option>
+                                <option value="bachillerato">Bachillerato</option>
+                                <option value="universitario">Universitario</option>
+                                <option value="postgrado">Postgrado</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="save-btn">
+                            <i class="fas fa-save"></i>
+                            Guardar Cambios
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Dashboard Preferences -->
+                <div class="profile-card">
+                    <h3 class="card-title">
+                        <i class="fas fa-palette"></i>
+                        Personalización del Dashboard
+                    </h3>
+                    <div class="preferences-form">
+                        <div class="form-group">
+                            <label for="dashboardTheme">Tema del Dashboard</label>
+                            <select id="dashboardTheme" name="dashboardTheme">
+                                <option value="default">Azul Clásico</option>
+                                <option value="dark">Modo Oscuro</option>
+                                <option value="green">Verde Educativo</option>
+                                <option value="purple">Morado Académico</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dashboardLayout">Diseño de Tarjetas</label>
+                            <select id="dashboardLayout" name="dashboardLayout">
+                                <option value="grid">Cuadrícula</option>
+                                <option value="list">Lista</option>
+                                <option value="compact">Compacto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Notificaciones</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="checkmark"></span>
+                                    Notificaciones por Email
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pushNotifications" checked>
+                                    <span class="checkmark"></span>
+                                    Notificaciones Push
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="save-btn" onclick="savePreferences()">
+                            <i class="fas fa-cog"></i>
+                            Aplicar Configuración
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Charts -->
+                <div class="profile-card full-width">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Tu Progreso Académico
+                    </h3>
+                    <div class="charts-container">
+                        <div class="chart-item">
+                            <h4>Progreso General</h4>
+                            <div class="progress-circle" data-progress="75">
+                                <svg class="progress-ring" width="120" height="120">
+                                    <circle cx="60" cy="60" r="50" stroke="#e1e5e9" stroke-width="8" fill="transparent"></circle>
+                                    <circle cx="60" cy="60" r="50" stroke="#2196f3" stroke-width="8" fill="transparent" 
+                                            stroke-dasharray="314" stroke-dashoffset="78.5" class="progress-bar"></circle>
+                                </svg>
+                                <div class="progress-text">75%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-item">
+                            <h4>Cursos Completados</h4>
+                            <div class="bar-chart">
+                                <div class="bar-item">
+                                    <span class="bar-label">Matemáticas</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 90%"></div>
+                                    </div>
+                                    <span class="bar-value">90%</span>
+                                </div>
+                                <div class="bar-item">
+                                    <span class="bar-label">Ciencias</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span class="bar-value">85%</span>
+                                </div>
+                                <div class="bar-item">
+                                    <span class="bar-label">Historia</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 70%"></div>
+                                    </div>
+                                    <span class="bar-value">70%</span>
+                                </div>
+                                <div class="bar-item">
+                                    <span class="bar-label">Literatura</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 95%"></div>
+                                    </div>
+                                    <span class="bar-value">95%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-item">
+                            <h4>Actividad Semanal</h4>
+                            <div class="activity-chart">
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 60%"></div>
+                                    <span>L</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 80%"></div>
+                                    <span>M</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 45%"></div>
+                                    <span>M</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 90%"></div>
+                                    <span>J</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 75%"></div>
+                                    <span>V</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 30%"></div>
+                                    <span>S</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 20%"></div>
+                                    <span>D</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Stats -->
+                <div class="profile-card full-width">
+                    <h3 class="card-title">
+                        <i class="fas fa-trophy"></i>
+                        Logros y Estadísticas
+                    </h3>
+                    <div class="achievements-grid">
+                        <div class="achievement-item">
+                            <div class="achievement-icon earned">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4>Estudiante Ejemplar</h4>
+                            <p>Completa 10 cursos</p>
+                            <div class="achievement-progress">8/10</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon earned">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>Primera Beca</h4>
+                            <p>Obtén tu primera beca</p>
+                            <div class="achievement-progress">Completado</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Graduado</h4>
+                            <p>Completa tu educación</p>
+                            <div class="achievement-progress">En progreso</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon earned">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>Estudiante Constante</h4>
+                            <p>7 días consecutivos estudiando</p>
+                            <div class="achievement-progress">Completado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
@@ -462,7 +1052,7 @@
     
     <script type="module">
         // Import Firebase functions
-        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+        import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
         import { db } from "../firebase/firebase-config.js";
 
         // Wait for auth manager to be ready
@@ -575,6 +1165,207 @@
                 }, 600);
             });
         });
+
+        // Profile Management Functions
+        function showEditProfile() {
+            const dashboardContent = document.querySelector('.dashboard-container > .navbar-custom').parentElement;
+            const editProfileSection = document.getElementById('editProfileSection');
+            
+            // Hide dashboard content
+            Array.from(dashboardContent.children).forEach(child => {
+                if (!child.id || child.id !== 'editProfileSection') {
+                    child.style.display = 'none';
+                }
+            });
+            
+            // Show edit profile section
+            editProfileSection.style.display = 'block';
+            
+            // Load current user data
+            loadUserData();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function hideEditProfile() {
+            const dashboardContent = document.querySelector('.dashboard-container > .navbar-custom').parentElement;
+            const editProfileSection = document.getElementById('editProfileSection');
+            
+            // Show dashboard content
+            Array.from(dashboardContent.children).forEach(child => {
+                if (!child.id || child.id !== 'editProfileSection') {
+                    child.style.display = '';
+                }
+            });
+            
+            // Hide edit profile section
+            editProfileSection.style.display = 'none';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        async function loadUserData() {
+            if (window.authManager && window.authManager.getCurrentUser()) {
+                const user = window.authManager.getCurrentUser();
+                
+                try {
+                    // Get user data from Firestore
+                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+                    
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        
+                        // Populate form fields
+                        document.getElementById('firstName').value = userData.firstName || '';
+                        document.getElementById('lastName').value = userData.lastName || '';
+                        document.getElementById('userBio').value = userData.bio || '';
+                        document.getElementById('currentEducation').value = userData.education || '';
+                        
+                        // Load preferences
+                        document.getElementById('dashboardTheme').value = userData.theme || 'default';
+                        document.getElementById('dashboardLayout').value = userData.layout || 'grid';
+                        document.getElementById('emailNotifications').checked = userData.emailNotifications !== false;
+                        document.getElementById('pushNotifications').checked = userData.pushNotifications !== false;
+                    }
+                } catch (error) {
+                    console.error('Error loading user data:', error);
+                }
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('userInfoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!window.authManager || !window.authManager.getCurrentUser()) {
+                alert('No estás autenticado');
+                return;
+            }
+            
+            const user = window.authManager.getCurrentUser();
+            const formData = new FormData(this);
+            
+            try {
+                // Update user data in Firestore
+                const userData = {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    bio: formData.get('userBio'),
+                    education: formData.get('currentEducation'),
+                    updatedAt: new Date()
+                };
+                
+                await setDoc(doc(db, 'users', user.uid), userData, { merge: true });
+                
+                // Update navbar display
+                const userEmail = document.getElementById('userEmail');
+                const userAvatar = document.getElementById('userAvatar');
+                
+                if (userEmail) {
+                    userEmail.textContent = userData.firstName + ' ' + userData.lastName;
+                }
+                
+                if (userAvatar) {
+                    userAvatar.textContent = userData.firstName.charAt(0).toUpperCase();
+                }
+                
+                // Update welcome message
+                const welcomeText = document.querySelector('.welcome-text');
+                if (welcomeText) {
+                    welcomeText.textContent = `¡Bienvenido, ${userData.firstName}!`;
+                }
+                
+                // Show success message
+                showNotification('Perfil actualizado exitosamente', 'success');
+                
+            } catch (error) {
+                console.error('Error updating profile:', error);
+                showNotification('Error al actualizar el perfil', 'error');
+            }
+        });
+
+        async function savePreferences() {
+            if (!window.authManager || !window.authManager.getCurrentUser()) {
+                alert('No estás autenticado');
+                return;
+            }
+            
+            const user = window.authManager.getCurrentUser();
+            
+            try {
+                const preferences = {
+                    theme: document.getElementById('dashboardTheme').value,
+                    layout: document.getElementById('dashboardLayout').value,
+                    emailNotifications: document.getElementById('emailNotifications').checked,
+                    pushNotifications: document.getElementById('pushNotifications').checked,
+                    updatedAt: new Date()
+                };
+                
+                await setDoc(doc(db, 'users', user.uid), preferences, { merge: true });
+                
+                // Apply theme changes
+                applyTheme(preferences.theme);
+                
+                showNotification('Configuración guardada exitosamente', 'success');
+                
+            } catch (error) {
+                console.error('Error saving preferences:', error);
+                showNotification('Error al guardar la configuración', 'error');
+            }
+        }
+
+        function applyTheme(theme) {
+            const body = document.body;
+            
+            // Remove existing theme classes
+            body.classList.remove('theme-dark', 'theme-green', 'theme-purple');
+            
+            // Apply new theme
+            if (theme !== 'default') {
+                body.classList.add(`theme-${theme}`);
+            }
+        }
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Add styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4caf50' : '#f44336'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                animation: slideInRight 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Make functions global
+        window.showEditProfile = showEditProfile;
+        window.hideEditProfile = hideEditProfile;
+        window.savePreferences = savePreferences;
     </script>
     
     <style>
@@ -583,6 +1374,64 @@
                 transform: scale(4);
                 opacity: 0;
             }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Theme Styles */
+        .theme-dark {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3b4a5c 100%) !important;
+        }
+
+        .theme-dark .navbar-custom,
+        .theme-dark .dashboard-header,
+        .theme-dark .stat-card,
+        .theme-dark .quick-actions,
+        .theme-dark .edit-profile-section,
+        .theme-dark .profile-card {
+            background: rgba(52, 73, 94, 0.95) !important;
+            color: #ecf0f1 !important;
+        }
+
+        .theme-green {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 50%, #58d68d 100%) !important;
+        }
+
+        .theme-green .stat-icon.courses { background: linear-gradient(135deg, #2980b9, #3498db); }
+        .theme-green .stat-icon.universities { background: linear-gradient(135deg, #e67e22, #f39c12); }
+
+        .theme-purple {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 50%, #bb8fce 100%) !important;
+        }
+
+        .theme-purple .action-icon {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6) !important;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
     </style>
 </body>
