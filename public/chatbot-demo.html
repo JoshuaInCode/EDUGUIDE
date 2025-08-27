@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGuide Chatbot - Demostración de IA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .demo-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .feature-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        .test-question {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .test-question:hover {
+            background: #bbdefb;
+            transform: translateX(10px);
+        }
+        .ai-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .firebase-badge {
+            background: linear-gradient(45deg, #ffa726, #ff9800);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="demo-card p-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-4 fw-bold text-primary mb-3">
+                            <i class="fas fa-robot me-3"></i>
+                            EduGuide Chatbot - Demostración
+                        </h1>
+                        <p class="lead text-muted">Descubre el poder de la IA autónoma en educación</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="fw-bold mb-4">
+                                <i class="fas fa-magic me-2"></i>
+                                Características Principales
+                            </h3>
+                            
+                            <div class="feature-item">
+                                <h5><i class="fas fa-brain me-2"></i>IA Autónoma con Hugging Face</h5>
+                                <p>El chatbot utiliza modelos de IA avanzados para generar respuestas inteligentes y contextuales sobre educación en Panamá.</p>
+                                <span class="ai-badge">Powered by AI</span>
+                            </div>
+
+                            <div class="feature-item">
+                                <h5><i class="fas fa-fire me-2"></i>Integración con Firebase</h5>
+                                <p>Acceso en tiempo real a información actualizada sobre universidades, carreras y becas almacenada en Firebase.</p>
+                                <span class="firebase-badge">Real-time Data</span>
+                            </div>
+
+                            <div class="feature-item">
+                                <h5><i class="fas fa-comments me-2"></i>Conversaciones Inteligentes</h5>
+                                <p>Mantiene contexto de la conversación y ofrece respuestas rápidas y sugerencias relevantes.</p>
+                                <span class="ai-badge">Context Aware</span>
+                            </div>
+
+                            <div class="feature-item">
+                                <h5><i class="fas fa-mobile-alt me-2"></i>Interfaz Responsiva</h5>
+                                <p>Diseño moderno y adaptable que funciona perfectamente en todos los dispositivos.</p>
+                                <span class="ai-badge">Mobile First</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3 class="fw-bold mb-4">
+                                <i class="fas fa-play-circle me-2"></i>
+                                Prueba el Chatbot
+                            </h3>
+                            
+                            <p class="text-muted mb-3">Haz clic en cualquiera de estas preguntas para ver cómo responde la IA:</p>
+                            
+                            <div class="test-question" onclick="testQuestion('¿Qué universidades hay en Panamá?')">
+                                <i class="fas fa-university me-2"></i>
+                                ¿Qué universidades hay en Panamá?
+                            </div>
+                            
+                            <div class="test-question" onclick="testQuestion('¿Qué carreras ofrece la UP?')">
+                                <i class="fas fa-graduation-cap me-2"></i>
+                                ¿Qué carreras ofrece la UP?
+                            </div>
+                            
+                            <div class="test-question" onclick="testQuestion('¿Cómo obtener una beca?')">
+                                <i class="fas fa-dollar-sign me-2"></i>
+                                ¿Cómo obtener una beca?
+                            </div>
+                            
+                            <div class="test-question" onclick="testQuestion('¿Cuáles son los requisitos para Medicina?')">
+                                <i class="fas fa-user-md me-2"></i>
+                                ¿Cuáles son los requisitos para Medicina?
+                            </div>
+                            
+                            <div class="test-question" onclick="testQuestion('¿Cuándo abren las admisiones en la UTP?')">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                ¿Cuándo abren las admisiones en la UTP?
+                            </div>
+                            
+                            <div class="test-question" onclick="testQuestion('¿Qué ingenierías puedo estudiar?')">
+                                <i class="fas fa-cogs me-2"></i>
+                                ¿Qué ingenierías puedo estudiar?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <h3 class="fw-bold mb-4">
+                                <i class="fas fa-cogs me-2"></i>
+                                Configuración Técnica
+                            </h3>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-key fa-3x text-primary mb-3"></i>
+                                            <h5>Hugging Face</h5>
+                                            <p class="text-muted">Modelos de IA avanzados para respuestas inteligentes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-database fa-3x text-warning mb-3"></i>
+                                            <h5>Firebase</h5>
+                                            <p class="text-muted">Base de datos en tiempo real para información actualizada</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-mobile-alt fa-3x text-success mb-3"></i>
+                                            <h5>Responsive</h5>
+                                            <p class="text-muted">Interfaz adaptable a todos los dispositivos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h5><i class="fas fa-info-circle me-2"></i>¿Cómo Funciona?</h5>
+                                <p class="mb-0">
+                                    El chatbot analiza tu pregunta, determina la intención y utiliza la IA de Hugging Face para generar una respuesta contextual. 
+                                    Si la IA no está disponible, usa respuestas predefinidas inteligentes. Todas las conversaciones se guardan para mejorar la experiencia.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="index.html" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-home me-2"></i>
+                            Ir al Sitio Principal
+                        </a>
+                        <a href="chatbot-config.html" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-cog me-2"></i>
+                            Configurar Chatbot
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        function testQuestion(question) {
+            // Simular que el usuario escribió la pregunta
+            const input = document.getElementById('chatbot-input');
+            if (input) {
+                input.value = question;
+                // Enviar la pregunta
+                if (window.eduguideChatbot) {
+                    window.eduguideChatbot.sendMessage();
+                }
+            } else {
+                // Si el chatbot no está disponible, mostrar la pregunta
+                alert(`Pregunta de prueba: "${question}"\n\nPara probar el chatbot, ve al sitio principal y abre el chatbot.`);
+            }
+        }
+
+        // Mostrar notificación cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.eduguideChatbot) {
+                setTimeout(() => {
+                    window.eduguideChatbot.showNotification();
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
