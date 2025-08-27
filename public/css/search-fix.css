@@ -50,6 +50,25 @@ body .search-filter-container:hover {
     transform: translateY(-2px) !important;
 }
 
+/* New horizontal layout styles */
+body .search-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+body .search-input-wrapper {
+    flex: 1 !important;
+    position: relative !important;
+    min-width: 0 !important;
+}
+
+body .province-filter-wrapper {
+    flex-shrink: 0 !important;
+    min-width: 200px !important;
+}
+
 /* Professional search input styling - MAXIMUM SPECIFICITY */
 body #universitySearch {
     width: 100% !important;
@@ -65,7 +84,7 @@ body #universitySearch {
     visibility: visible !important;
     opacity: 1 !important;
     position: relative !important;
-    z-index: 99999 !important;
+    z-index: 999 !important; /* Reducido de 99999 a 999 para mantener consistencia */
     box-sizing: border-box !important;
     color: #333 !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
@@ -118,10 +137,12 @@ body #provinceFilter {
     visibility: visible !important;
     opacity: 1 !important;
     box-sizing: border-box !important;
-    z-index: 99999 !important;
+    z-index: 999 !important; /* Reducido de 99999 a 999 para no interferir con dropdown */
     color: #333 !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
     cursor: pointer !important;
+    height: 60px !important; /* Match the height of the search input */
+    min-width: 200px !important;
 }
 
 body #provinceFilter:focus {
@@ -222,6 +243,20 @@ body .search-filter-container {
         margin-bottom: 30px !important;
     }
     
+    body .search-container {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    body .search-input-wrapper {
+        width: 100% !important;
+    }
+    
+    body .province-filter-wrapper {
+        width: 100% !important;
+        min-width: auto !important;
+    }
+    
     body #universitySearch {
         padding: 16px 45px !important;
         font-size: 15px !important;
@@ -230,6 +265,8 @@ body .search-filter-container {
     body #provinceFilter {
         padding: 14px 20px !important;
         font-size: 15px !important;
+        height: 50px !important;
+        min-width: auto !important;
     }
     
     body .search-container i.fas.fa-search {
