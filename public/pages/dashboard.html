@@ -772,17 +772,73 @@
         </div>
 
         <!-- Vocational Test Card -->
-        <div class="dashboard-header mb-4" style="background: linear-gradient(135deg, #eaf3fb 60%, #2196f3 100%); box-shadow: 0 10px 40px rgba(33,150,243,0.10); border-radius: 20px;">
+        <div class="dashboard-header mb-4" style="background: #fff; box-shadow: 0 10px 40px rgba(33,150,243,0.10); border-radius: 20px; border: 2px solid #2196f3;">
             <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <div class="mb-3 mb-md-0">
-                    <h4 class="mb-2" style="color: #1769aa; font-weight: 700;">¿No estás seguro de tu carrera universitaria?</h4>
-                    <p class="mb-2" style="color: #0a2342; font-size:1.1rem;">
-                        ¡Descubre tu potencial de una forma divertida y profesional! Nuestro <b>Test Vocacional</b> analiza tus habilidades, intereses y personalidad para recomendarte carreras ideales en Panamá. Al finalizar, verás tus resultados en gráficas y tablas comparativas, junto con un análisis personalizado de tus fortalezas. ¡Haz del autodescubrimiento una experiencia entretenida y útil, como los mejores tests internacionales!
-                    </p>
+                <div class="mb-3 mb-md-0 d-flex align-items-start gap-3">
+                    <span style="font-size:2.5rem; color:#2196f3; flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
+                    <div>
+                        <h4 class="mb-2" style="color: #1769aa; font-weight: 700;">¿No estás seguro de tu carrera?</h4>
+                        <p class="mb-2" style="color: #0a2342; font-size:1.05rem; text-align:justify;">
+                            Realiza nuestro <b>Test Vocacional</b> y obtén recomendaciones personalizadas de carreras según tus habilidades e intereses. ¡Descubre tu mejor camino de forma divertida y visual!
+                        </p>
+                    </div>
                 </div>
-                <a href="vocational-test.html" class="btn btn-primary btn-lg mt-3 mt-md-0" style="background: linear-gradient(135deg, #1769aa, #2196f3); border: none; border-radius: 12px; font-weight: 600;">Realizar Test</a>
+                <div class="mt-3 mt-md-0" style="margin-left: 32px;"><a href="vocational-test.html" class="btn btn-primary btn-lg" style="background: #2196f3; border: none; border-radius: 12px; font-weight: 600;">Realizar Test</a></div>
             </div>
         </div>
+
+
+                <!-- Progress Charts -->
+                <div class="profile-card full-width">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Tu Progreso Académico
+                    </h3>
+                    <div class="charts-container">
+                        <div class="chart-item">
+                            <h4>Resultados de test</h4>
+                            <div id="vocationalResults" class="bar-chart" style="min-height: 80px;">
+                                <!-- Aquí se mostrarán los resultados de tests vocacionales completados por el usuario -->
+                            </div>
+                            <script src="../js/vocational-dashboard-visual.js"></script>
+                        </div>
+                    </div>
+                    <div class="charts-container">
+                        <div class="chart-item">
+                            <h4>Actividad Semanal</h4>
+                            <div class="activity-chart">
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 60%"></div>
+                                    <span>L</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 80%"></div>
+                                    <span>M</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 45%"></div>
+                                    <span>M</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 90%"></div>
+                                    <span>J</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 75%"></div>
+                                    <span>V</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 30%"></div>
+                                    <span>S</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 20%"></div>
+                                    <span>D</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         <!-- Statistics Cards -->
         <div class="stats-row">
@@ -1023,94 +1079,6 @@
                     </div>
                 </div>
 
-                <!-- Progress Charts -->
-                <div class="profile-card full-width">
-                    <h3 class="card-title">
-                        <i class="fas fa-chart-line"></i>
-                        Tu Progreso Académico
-                    </h3>
-                    <div class="charts-container">
-                        <div class="chart-item">
-                            <h4>Progreso General</h4>
-                            <div class="progress-circle" data-progress="75">
-                                <svg class="progress-ring" width="120" height="120">
-                                    <circle cx="60" cy="60" r="50" stroke="#e1e5e9" stroke-width="8" fill="transparent"></circle>
-                                    <circle cx="60" cy="60" r="50" stroke="#2196f3" stroke-width="8" fill="transparent" 
-                                            stroke-dasharray="314" stroke-dashoffset="78.5" class="progress-bar"></circle>
-                                </svg>
-                                <div class="progress-text">75%</div>
-                            </div>
-                        </div>
-                        
-                        <div class="chart-item">
-                            <h4>Cursos Completados</h4>
-                            <div class="bar-chart">
-                                <div class="bar-item">
-                                    <span class="bar-label">Matemáticas</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 90%"></div>
-                                    </div>
-                                    <span class="bar-value">90%</span>
-                                </div>
-                                <div class="bar-item">
-                                    <span class="bar-label">Ciencias</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 85%"></div>
-                                    </div>
-                                    <span class="bar-value">85%</span>
-                                </div>
-                                <div class="bar-item">
-                                    <span class="bar-label">Historia</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 70%"></div>
-                                    </div>
-                                    <span class="bar-value">70%</span>
-                                </div>
-                                <div class="bar-item">
-                                    <span class="bar-label">Literatura</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 95%"></div>
-                                    </div>
-                                    <span class="bar-value">95%</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="chart-item">
-                            <h4>Actividad Semanal</h4>
-                            <div class="activity-chart">
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 60%"></div>
-                                    <span>L</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 80%"></div>
-                                    <span>M</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 45%"></div>
-                                    <span>M</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 90%"></div>
-                                    <span>J</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 75%"></div>
-                                    <span>V</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 30%"></div>
-                                    <span>S</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 20%"></div>
-                                    <span>D</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Achievement Stats -->
                 <div class="profile-card full-width">

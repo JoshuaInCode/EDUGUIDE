@@ -161,18 +161,28 @@ function renderQuestion() {
   const msg = funMessages[Math.floor(Math.random() * funMessages.length)];
   document.getElementById('questionBox').innerHTML = `<div class='question'>${q.question}</div><div style='color:#2196f3;font-size:1.1rem;margin-bottom:10px;'>${msg}</div>`;
   document.getElementById('optionsBox').innerHTML = q.options.map((opt, i) =>
-    `<button class='option-btn' onclick='selectOption(${i})'>${opt.text}</button>`
+    `<button class='option-btn' data-idx='${i}' onclick='toggleOption(${i})'>${opt.text}</button>`
   ).join('');
   document.getElementById('nextBtn').style.display = 'none';
   updateProgress();
 }
 
-function selectOption(idx) {
-  answers[current] = questions[current].options[idx].type;
-  document.querySelectorAll('.option-btn').forEach((btn, i) => {
-    btn.classList.toggle('selected', i === idx);
-  });
-  document.getElementById('nextBtn').style.display = 'inline-block';
+
+
+function toggleOption(idx) {
+  if (!answers[current]) answers[current] = [];
+  const type = questions[current].options[idx].type;
+  const btns = document.querySelectorAll('.option-btn');
+  const selectedIdx = answers[current].indexOf(type);
+  if (selectedIdx === -1) {
+    answers[current].push(type);
+    btns[idx].classList.add('selected', 'pulse-anim');
+    setTimeout(() => btns[idx].classList.remove('pulse-anim'), 500);
+  } else {
+    answers[current].splice(selectedIdx, 1);
+    btns[idx].classList.remove('selected');
+  }
+  document.getElementById('nextBtn').style.display = answers[current].length > 0 ? 'inline-block' : 'none';
 }
 
 document.getElementById('nextBtn').onclick = function() {
@@ -201,3 +211,17 @@ function restartTest() {
 
 // Inicializar
 renderQuestion();
+
+// Animación CSS para la selección
+const style = document.createElement('style');
+style.innerHTML = `
+.pulse-anim {
+  animation: pulseGrow 0.5s cubic-bezier(.4,2,.3,1);
+}
+@keyframes pulseGrow {
+  0% { box-shadow: 0 0 0 0 #2196f3; transform: scale(1); }
+  60% { box-shadow: 0 0 0 16px rgba(33,150,243,0.15); transform: scale(1.08); }
+  100% { box-shadow: 0 0 0 0 #2196f3; transform: scale(1); }
+}
+`;
+document.head.appendChild(style);
