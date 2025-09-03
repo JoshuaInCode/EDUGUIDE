@@ -23,40 +23,93 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Header Section - Estilo original como en index */
+/* Header Section - Estilo dinámico como en index */
 .header-section {
-    background: transparent !important;
+    position: relative;
     margin: 0 -50vw 2rem -50vw;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     border-radius: 0;
     width: 100vw;
-    position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    height: 200px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 50%, #1565C0 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 .section-title-animation {
-    color: #333 !important;
+    color: white !important;
     margin-bottom: 0;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 900;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
 .section-subtitle-animation {
-    color: #666 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
     text-align: center;
     margin-top: 20px;
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 1.2rem;
+    opacity: 0.95;
     line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: subtitleFloat 4s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+    100% { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 255, 255, 0.1); }
+}
+
+@keyframes subtitleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
 }
 
 /* Scholarship Cards con diseño azul */
@@ -257,6 +310,19 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .header-section {
+        height: 250px;
+        padding: 4rem 1rem;
+    }
+    
+    .section-title-animation {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle-animation {
+        font-size: 1rem;
+    }
+    
     .scholarship-card {
         padding: 20px;
         margin-bottom: 20px;
