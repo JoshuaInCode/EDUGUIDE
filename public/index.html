@@ -18,6 +18,7 @@
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pages/EduGuide.css">
+    <link rel="stylesheet" href="css/search-results-fix.css">
     
     <style>
         /* Cookie Banner Styles */
@@ -126,6 +127,28 @@
                 padding: 15px;
             }
         }
+        
+        /* Add this new CSS for footer contact alignment */
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-contact span {
+            flex: 1;
+        }
+        
+        /* Ensure the footer section has proper spacing */
+        .footer-section {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -168,16 +191,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="pages/contact.html">Contact</a>
                     </li>
-                    <li class="nav-item ms-3">
-                        <a class="nav-link btn btn-outline-primary btn-sm" href="pages/login.html" style="border-radius: 20px; padding: 8px 20px; border: 2px solid #2196f3; color: #2196f3; font-weight: 600; transition: all 0.3s ease;">
-                            <i class="fas fa-sign-in-alt me-1"></i>Login
-                        </a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link btn btn-primary btn-sm" href="pages/signup.html" style="border-radius: 20px; padding: 8px 20px; background: linear-gradient(135deg, #1769aa, #2196f3); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
-                            <i class="fas fa-user-plus me-1"></i>Sign Up
-                        </a>
-                    </li>
+                    <!-- Los elementos de autenticación se cargarán dinámicamente aquí -->
                 </ul>
             </div>
         </div>
@@ -869,7 +883,7 @@
             @media (max-width: 768px) {
                 .contact-form-container {
                     padding: 20px;
-                    margin: 0 10px;
+                    margin: 0;
                 }
                 
                 h2 {
@@ -938,6 +952,18 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Firebase Auth Manager -->
+    <script type="module" src="js/auth-manager.js"></script>
+    
+              <!-- Chatbot Configuration -->
+          <script src="js/config.js"></script>
+        
+          <!-- Environment Setup (Development) -->
+          <script src="js/setup-env.js"></script>
+        
+          <!-- EduGuide Chatbot -->
+          <script src="js/chatbot.js"></script>
 
     <!-- Asegurarse de que el carrusel funcione automáticamente -->
     <script>
@@ -1008,4 +1034,4 @@ document.addEventListener('DOMContentLoaded', revealOnScroll);
     });
 </script>
 </body>
-</html> 
+</html>

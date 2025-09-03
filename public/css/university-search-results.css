@@ -1,0 +1,425 @@
+/* University Search Results CSS - Estilos específicos para resultados de búsqueda de universidades */
+
+/* Asegurar que el contenedor de búsqueda tenga posición relativa */
+body .search-container {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* Asegurar que el wrapper del input tenga posición relativa */
+body .search-input-wrapper {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* Estilos para los resultados de búsqueda de universidades */
+body .search-results {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    border: 2px solid #e3f2fd !important;
+    border-top: none !important;
+    border-radius: 0 0 20px 20px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+    z-index: 99999 !important; /* Aumentado significativamente para estar por encima de todo */
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    display: none !important;
+    margin-top: 0 !important;
+    /* Asegurar que no afecte el flujo del documento */
+    position: absolute !important;
+}
+
+/* Cuando los resultados están visibles */
+body .search-results[style*="display: block"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Estilos para los elementos individuales de resultados de universidades */
+body .search-result-item {
+    padding: 15px 20px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+    background: #ffffff !important;
+    position: relative !important;
+}
+
+body .search-result-item:last-child {
+    border-bottom: none !important;
+    border-radius: 0 0 18px 18px !important;
+}
+
+body .search-result-item:hover {
+    background-color: #f8f9fa !important;
+    transform: translateX(2px) !important;
+}
+
+body .search-result-item:active {
+    background-color: #e3f2fd !important;
+    transform: translateX(1px) !important;
+}
+
+/* Estado seleccionado para navegación con teclado */
+body .search-result-item.selected {
+    background-color: #e3f2fd !important;
+    border-left: 4px solid #2196f3 !important;
+    padding-left: 16px !important;
+}
+
+body .search-result-item.selected .university-name {
+    color: #1976d2 !important;
+    font-weight: 700 !important;
+}
+
+/* Estilos para el nombre de la universidad */
+body .search-result-item .university-name {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #2196f3 !important;
+    margin-bottom: 5px !important;
+    line-height: 1.3 !important;
+    transition: color 0.2s ease !important;
+}
+
+/* Estilos para los detalles de la universidad */
+body .search-result-item .university-details {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 14px !important;
+    color: #666 !important;
+    margin-top: 5px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+}
+
+body .search-result-item .university-details .location {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+body .search-result-item .university-details .location i {
+    color: #2196f3 !important;
+    font-size: 12px !important;
+    flex-shrink: 0 !important;
+}
+
+body .search-result-item .university-details .province {
+    background: #e3f2fd !important;
+    color: #1976d2 !important;
+    padding: 2px 8px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+}
+
+/* Asegurar que los resultados de búsqueda sean visibles cuando se muestran */
+body .search-results[style*="display: block"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ajustar el padding del input para que no se superponga con el ícono */
+body .search-input {
+    padding-left: 50px !important; /* Espacio para el ícono */
+    padding-right: 20px !important;
+}
+
+/* Responsive design para móviles */
+@media (max-width: 768px) {
+    body .search-results {
+        max-height: 250px !important;
+        border-radius: 0 0 15px 15px !important;
+    }
+    
+    body .search-result-item {
+        padding: 12px 15px !important;
+        font-size: 15px !important;
+    }
+    
+    body .search-result-item .university-name {
+        font-size: 15px !important;
+    }
+    
+    body .search-result-item .university-details {
+        font-size: 13px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 3px !important;
+    }
+    
+    body .search-result-item .university-details .location {
+        width: 100% !important;
+    }
+    
+    body .search-result-item.selected {
+        padding-left: 11px !important;
+    }
+}
+
+/* Animación suave para mostrar/ocultar resultados */
+body .search-results {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Cuando los resultados están ocultos, aplicar la animación */
+body .search-results.hidden {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important;
+    pointer-events: none !important;
+}
+
+/* Estilos para el highlight de la tarjeta seleccionada */
+body .faculty-div.highlight {
+    box-shadow: 0 0 0 3px #2196f3 !important;
+    transform: scale(1.02) !important;
+    transition: all 0.3s ease !important;
+    border-radius: 15px !important;
+    animation: highlightPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes highlightPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 3px #2196f3 !important;
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(33, 150, 243, 0.3) !important;
+    }
+}
+
+/* Estilos para el ícono de búsqueda */
+body .search-container .search-icon {
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #2196f3 !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 18px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Asegurar que el dropdown no interfiera con otros elementos */
+body .search-results {
+    /* Asegurar que no afecte el layout */
+    position: absolute !important;
+    /* Asegurar que esté por encima de otros elementos */
+    z-index: 99999 !important; /* Aumentado significativamente para estar por encima de todo */
+    /* Asegurar que no cause scroll horizontal */
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Estilos para el scrollbar del dropdown */
+body .search-results::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+body .search-results::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 3px !important;
+}
+
+body .search-results::-webkit-scrollbar-thumb {
+    background: #c1c1c1 !important;
+    border-radius: 3px !important;
+}
+
+body .search-results::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8 !important;
+}
+
+/* Asegurar que el contenedor de búsqueda no se desborde */
+body .search-container {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* Estilos para cuando no hay resultados */
+body .search-results:empty::after {
+    content: "No se encontraron universidades" !important;
+    display: block !important;
+    padding: 20px !important;
+    text-align: center !important;
+    color: #666 !important;
+    font-style: italic !important;
+}
+
+/* Asegurar que el dropdown se posicione correctamente en diferentes tamaños de pantalla */
+@media (max-width: 576px) {
+    body .search-results {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Estilos para el estado activo del dropdown */
+body .search-results.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Asegurar que el dropdown no cause problemas de layout */
+body .search-results {
+    /* Asegurar que no cause reflow */
+    contain: layout style paint !important;
+    /* Asegurar que no afecte el scroll */
+    overscroll-behavior: contain !important;
+}
+
+/* Estilos para el estado de carga */
+body .search-results.loading::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid #f3f3f3 !important;
+    border-top: 2px solid #2196f3 !important;
+    border-radius: 50% !important;
+    animation: spin 1s linear infinite !important;
+    z-index: 1002 !important;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Estilos para el estado de error */
+body .search-results.error::after {
+    content: "Error al buscar universidades" !important;
+    display: block !important;
+    padding: 20px !important;
+    text-align: center !important;
+    color: #f44336 !important;
+    font-weight: 500 !important;
+}
+
+/* Mejoras de accesibilidad */
+body .search-result-item:focus {
+    outline: 2px solid #2196f3 !important;
+    outline-offset: -2px !important;
+}
+
+body .search-result-item:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
+/* Estilos para el estado de búsqueda activa */
+body .search-container.searching .search-icon {
+    animation: searchPulse 1.5s ease-in-out infinite !important;
+}
+
+@keyframes searchPulse {
+    0%, 100% {
+        transform: translateY(-50%) scale(1) !important;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1) !important;
+    }
+}
+
+/* Estilos para el botón de limpieza */
+body .clear-search-btn {
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: none !important;
+    border: none !important;
+    color: #999 !important;
+    cursor: pointer !important;
+    padding: 5px !important;
+    border-radius: 50% !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    z-index: 10 !important;
+}
+
+body .clear-search-btn:hover {
+    background-color: #f0f0f0 !important;
+    color: #666 !important;
+}
+
+body .clear-search-btn:active {
+    background-color: #e0e0e0 !important;
+    color: #333 !important;
+}
+
+body .clear-search-btn i {
+    font-size: 12px !important;
+}
+
+/* Ajustar el padding del input cuando el botón de limpieza está visible */
+body .search-input.has-clear-btn {
+    padding-right: 50px !important;
+}
+
+/* Asegurar que el dropdown sea completamente visible */
+body .search-results {
+    /* Asegurar que esté por encima de todo */
+    z-index: 999999 !important;
+    /* Asegurar que sea visible */
+    visibility: visible !important;
+    /* Asegurar que tenga el contenido correcto */
+    pointer-events: auto !important;
+    /* Asegurar que no se oculte */
+    display: block !important;
+    /* Asegurar que tenga el tamaño correcto */
+    width: 100% !important;
+    /* Asegurar que tenga la posición correcta */
+    position: absolute !important;
+    /* Asegurar que tenga el fondo correcto */
+    background: #ffffff !important;
+    /* Asegurar que tenga el borde correcto */
+    border: 2px solid #e3f2fd !important;
+    /* Asegurar que tenga la sombra correcta */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+/* Asegurar que los elementos del dropdown sean clickeables */
+body .search-result-item {
+    /* Asegurar que sea clickeable */
+    cursor: pointer !important;
+    /* Asegurar que tenga el pointer events correcto */
+    pointer-events: auto !important;
+    /* Asegurar que sea visible */
+    visibility: visible !important;
+    /* Asegurar que tenga el display correcto */
+    display: block !important;
+    /* Asegurar que tenga el z-index correcto */
+    z-index: 1000000 !important;
+    /* Asegurar que tenga la posición correcta */
+    position: relative !important;
+}

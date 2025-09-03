@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración del Chatbot - EduGuide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .config-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-success { background-color: #28a745; }
+        .status-warning { background-color: #ffc107; }
+        .status-error { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="config-card p-5">
+                    <div class="text-center mb-4">
+                        <h1 class="display-5 fw-bold text-primary mb-3">
+                            <i class="fas fa-robot me-3"></i>
+                            Configuración del Chatbot
+                        </h1>
+                        <p class="text-muted">Configura las credenciales para que tu chatbot funcione correctamente</p>
+                    </div>
+
+                    <form id="chatbotConfigForm">
+                        <!-- Hugging Face Token -->
+                        <div class="mb-4">
+                            <label for="huggingFaceToken" class="form-label fw-bold">
+                                <i class="fas fa-key me-2"></i>
+                                Token de Hugging Face
+                            </label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="huggingFaceToken" 
+                                       placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+                                <button class="btn btn-outline-secondary" type="button" id="toggleToken">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="form-text">
+                                <span class="status-indicator" id="tokenStatus"></span>
+                                <span id="tokenStatusText">No configurado</span>
+                            </div>
+                        </div>
+
+                        <!-- Firebase Configuration -->
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3">
+                                <i class="fas fa-fire me-2"></i>
+                                Configuración de Firebase
+                            </h5>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firebaseApiKey" class="form-label">API Key</label>
+                                    <input type="password" class="form-control" id="firebaseApiKey" 
+                                           placeholder="AIzaSy...">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="firebaseAuthDomain" class="form-label">Auth Domain</label>
+                                    <input type="text" class="form-control" id="firebaseAuthDomain" 
+                                           placeholder="proyecto.firebaseapp.com">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firebaseProjectId" class="form-label">Project ID</label>
+                                    <input type="text" class="form-control" id="firebaseProjectId" 
+                                           placeholder="proyecto-id">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="firebaseStorageBucket" class="form-label">Storage Bucket</label>
+                                    <input type="text" class="form-control" id="firebaseStorageBucket" 
+                                           placeholder="proyecto.appspot.com">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firebaseMessagingSenderId" class="form-label">Messaging Sender ID</label>
+                                    <input type="text" class="form-control" id="firebaseMessagingSenderId" 
+                                           placeholder="123456789">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="firebaseAppId" class="form-label">App ID</label>
+                                    <input type="text" class="form-control" id="firebaseAppId" 
+                                           placeholder="1:123456789:web:abcdef">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chatbot Settings -->
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3">
+                                <i class="fas fa-cog me-2"></i>
+                                Configuración del Chatbot
+                            </h5>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="chatbotModel" class="form-label">Modelo de IA</label>
+                                    <select class="form-select" id="chatbotModel">
+                                        <option value="facebook/blenderbot-400M-distill">BlenderBot 400M</option>
+                                        <option value="microsoft/DialoGPT-medium">DialoGPT Medium</option>
+                                        <option value="facebook/blenderbot-1B-distill">BlenderBot 1B</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="chatbotMaxLength" class="form-label">Longitud Máxima</label>
+                                    <input type="number" class="form-control" id="chatbotMaxLength" 
+                                           value="200" min="50" max="500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-outline-secondary me-md-2" id="loadFromEnv">
+                                <i class="fas fa-upload me-2"></i>
+                                Cargar desde .env
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>
+                                Guardar Configuración
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-4 p-3 bg-light rounded">
+                        <h6 class="fw-bold mb-2">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Estado de la Configuración
+                        </h6>
+                        <div id="configStatus">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="status-indicator status-warning"></span>
+                                <span>Hugging Face: No configurado</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="status-indicator status-success"></span>
+                                <span>Firebase: Configurado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+        // Configuración inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCurrentConfig();
+            setupEventListeners();
+        });
+
+        function loadCurrentConfig() {
+            const config = getChatbotConfig();
+            
+            // Cargar valores actuales
+            document.getElementById('huggingFaceToken').value = config.HUGGING_FACE_TOKEN;
+            document.getElementById('firebaseApiKey').value = config.FIREBASE.apiKey;
+            document.getElementById('firebaseAuthDomain').value = config.FIREBASE.authDomain;
+            document.getElementById('firebaseProjectId').value = config.FIREBASE.projectId;
+            document.getElementById('firebaseStorageBucket').value = config.FIREBASE.storageBucket;
+            document.getElementById('firebaseMessagingSenderId').value = config.FIREBASE.messagingSenderId;
+            document.getElementById('firebaseAppId').value = config.FIREBASE.appId;
+            document.getElementById('chatbotModel').value = config.CHATBOT.model;
+            document.getElementById('chatbotMaxLength').value = config.CHATBOT.maxLength;
+            
+            updateStatus();
+        }
+
+        function setupEventListeners() {
+            // Toggle token visibility
+            document.getElementById('toggleToken').addEventListener('click', function() {
+                const input = document.getElementById('huggingFaceToken');
+                const icon = this.querySelector('i');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.className = 'fas fa-eye-slash';
+                } else {
+                    input.type = 'password';
+                    icon.className = 'fas fa-eye';
+                }
+            });
+
+            // Load from .env button
+            document.getElementById('loadFromEnv').addEventListener('click', function() {
+                alert('Para cargar desde .env, necesitas configurar las variables en tu servidor o usar un proceso de build. Por ahora, puedes copiar y pegar manualmente los valores.');
+            });
+
+            // Form submission
+            document.getElementById('chatbotConfigForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveConfig();
+            });
+        }
+
+        function saveConfig() {
+            const config = {
+                HUGGING_FACE_TOKEN: document.getElementById('huggingFaceToken').value,
+                FIREBASE_API_KEY: document.getElementById('firebaseApiKey').value,
+                FIREBASE_AUTH_DOMAIN: document.getElementById('firebaseAuthDomain').value,
+                FIREBASE_PROJECT_ID: document.getElementById('firebaseProjectId').value,
+                FIREBASE_STORAGE_BUCKET: document.getElementById('firebaseStorageBucket').value,
+                FIREBASE_MESSAGING_SENDER_ID: document.getElementById('firebaseMessagingSenderId').value,
+                FIREBASE_APP_ID: document.getElementById('firebaseAppId').value,
+                CHATBOT_MODEL: document.getElementById('chatbotModel').value,
+                CHATBOT_MAX_LENGTH: document.getElementById('chatbotMaxLength').value
+            };
+
+            // Guardar en localStorage
+            Object.keys(config).forEach(key => {
+                if (config[key]) {
+                    localStorage.setItem(key, config[key]);
+                }
+            });
+
+            // Recargar configuración
+            location.reload();
+        }
+
+        function updateStatus() {
+            const config = getChatbotConfig();
+            const tokenStatus = document.getElementById('tokenStatus');
+            const tokenStatusText = document.getElementById('tokenStatusText');
+            
+            if (config.HUGGING_FACE_TOKEN && config.HUGGING_FACE_TOKEN !== 'your_hugging_face_token_here') {
+                tokenStatus.className = 'status-indicator status-success';
+                tokenStatusText.textContent = 'Configurado correctamente';
+            } else {
+                tokenStatus.className = 'status-indicator status-error';
+                tokenStatusText.textContent = 'No configurado';
+            }
+        }
+    </script>
+</body>
+</html>

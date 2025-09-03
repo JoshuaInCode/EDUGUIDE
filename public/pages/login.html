@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/search-results-fix.css">
     
     <style>
         body {
@@ -407,33 +408,162 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
+    <script type="module">
+        // Import Firebase functions
+        import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { auth } from "../firebase/firebase-config.js";
+
+        // Add error message container
+        function createErrorMessage(message) {
+            // Remove existing error message
+            const existingError = document.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.cssText = `
+                background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                font-size: 14px;
+                text-align: center;
+                animation: fadeInDown 0.3s ease;
+            `;
+            errorDiv.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i>${message}`;
+            
+            const form = document.querySelector('form');
+            form.insertBefore(errorDiv, form.firstChild);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.remove();
+                }
+            }, 5000);
+        }
+
+        function createSuccessMessage(message) {
+            // Remove existing messages
+            const existingMessage = document.querySelector('.error-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.style.cssText = `
+                background: linear-gradient(135deg, #4caf50, #66bb6a);
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                font-size: 14px;
+                text-align: center;
+                animation: fadeInDown 0.3s ease;
+            `;
+            successDiv.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
+            
+            const form = document.querySelector('form');
+            form.insertBefore(successDiv, form.firstChild);
+        }
+
         // Form validation and submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const email = document.querySelector('input[type="email"]').value;
+            const email = document.querySelector('input[type="email"]').value.trim();
             const password = document.querySelector('input[type="password"]').value;
             
-            if (email && password) {
-                // Simulate loading
-                const btn = document.querySelector('.btn-login');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing in...';
-                btn.disabled = true;
+            // Clear previous messages
+            const existingMessage = document.querySelector('.message-container');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Basic validation
+            if (!email || !password) {
+                createErrorMessage('Por favor, completa todos los campos.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                createErrorMessage('Por favor, ingresa un correo electrónico válido.');
+                return;
+            }
+            
+            // Password validation
+            if (password.length < 6) {
+                createErrorMessage('La contraseña debe tener al menos 6 caracteres.');
+                return;
+            }
+            
+            // Show loading state
+            const btn = document.querySelector('.btn-login');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Iniciando sesión...';
+            btn.disabled = true;
+            
+            try {
+                console.log('Attempting login with:', { email, password: '***' });
                 
+                // Authenticate with Firebase
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                console.log('Login successful:', user);
+                createSuccessMessage('¡Inicio de sesión exitoso! Redirigiendo al dashboard...');
+                
+                // Redirect to dashboard after short delay
                 setTimeout(() => {
-                    // Here you would typically send the data to your backend
-                    console.log('Login attempt:', { email, password });
-                    
-                    // Reset button
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    
-                    // Show success message (you can customize this)
-                    alert('Login successful! Redirecting...');
-                }, 2000);
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                // Show user-friendly error message
+                let errorMessage = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
+                
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = 'No existe una cuenta con este correo electrónico. Verifica el email o regístrate.';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = 'Contraseña incorrecta. Por favor, verifica tu contraseña.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'El correo electrónico no es válido.';
+                        break;
+                    case 'auth/invalid-credential':
+                        errorMessage = 'Credenciales inválidas. Verifica tu email y contraseña.';
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = 'Esta cuenta ha sido deshabilitada. Contacta al administrador.';
+                        break;
+                    case 'auth/too-many-requests':
+                        errorMessage = 'Demasiados intentos fallidos. Espera unos minutos antes de intentar de nuevo.';
+                        break;
+                    case 'auth/network-request-failed':
+                        errorMessage = 'Error de conexión. Verifica tu conexión a internet.';
+                        break;
+                    case 'auth/operation-not-allowed':
+                        errorMessage = 'El inicio de sesión con email y contraseña no está habilitado.';
+                        break;
+                    default:
+                        errorMessage = `Error al iniciar sesión: ${error.message}`;
+                }
+                
+                createErrorMessage(errorMessage);
             }
         });
         
@@ -448,5 +578,11 @@
             });
         });
     </script>
+    
+    <!-- Chatbot Configuration -->
+    <script src="../js/config.js"></script>
+    
+    <!-- EduGuide Chatbot -->
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>
