@@ -15,6 +15,44 @@ const universitiesByType = {
   investigador: ["Universidad de Panamá", "Universidad Tecnológica de Panamá"]
 };
 
+function generateInforme(counts, topTypes) {
+  // Análisis simple: destaca áreas altas, combinaciones y posibles interpretaciones
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  const max = Math.max(...Object.values(counts));
+  const principales = Object.entries(counts).filter(([k, v]) => v === max).map(([k]) => k);
+  let informe = '';
+  if (principales.length === 1) {
+    informe += `Tu perfil muestra una marcada preferencia por el área <b>${principales[0][0].toUpperCase() + principales[0].slice(1)}</b>, lo que indica que tus respuestas reflejan habilidades y motivaciones claras hacia este campo.`;
+  } else if (principales.length > 1) {
+    informe += `Tus respuestas muestran intereses equilibrados entre las áreas de <b>${principales.map(p => p[0].toUpperCase() + p.slice(1)).join(' y ')}</b>, lo que sugiere una versatilidad y apertura a diferentes tipos de carreras.`;
+  }
+  if (counts['social'] && counts['social'] === max) {
+    informe += ' Se observa una tendencia a carreras orientadas al trabajo con personas y ayuda social.';
+  }
+  if (counts['analitico'] && counts['analitico'] === max) {
+    informe += ' Destacas en razonamiento lógico y análisis de problemas complejos.';
+  }
+  if (counts['artistico'] && counts['artistico'] === max) {
+    informe += ' Tienes inclinación por la creatividad, el arte y la expresión visual.';
+  }
+  if (counts['tecnologico'] && counts['tecnologico'] === max) {
+    informe += ' Tus respuestas reflejan afinidad por la tecnología y la innovación.';
+  }
+  if (counts['liderazgo'] && counts['liderazgo'] === max) {
+    informe += ' Se evidencia capacidad de liderazgo y toma de decisiones.';
+  }
+  if (counts['organizador'] && counts['organizador'] === max) {
+    informe += ' Eres una persona organizada, orientada a la planificación y gestión.';
+  }
+  if (counts['investigador'] && counts['investigador'] === max) {
+    informe += ' Tienes interés por la investigación, la ciencia y el descubrimiento.';
+  }
+  if (max <= 2) {
+    informe += ' Tus respuestas muestran intereses variados, te recomendamos explorar más áreas para definir tu vocación.';
+  }
+  return informe;
+}
+
 function showResult() {
   document.getElementById('test-section').style.display = 'none';
   const counts = {};
@@ -38,6 +76,9 @@ function showResult() {
     `<tr><td>${careerMap[type].name.split(',')[0]}</td><td>${counts[type] || 0}</td></tr>`
   ).join('');
 
+  // Informe personalizado
+  const informe = generateInforme(counts, topTypes);
+
   // Guardar resultado en localStorage
   const fecha = new Date().toLocaleString();
   const testResult = {
@@ -46,7 +87,8 @@ function showResult() {
     resultName: result.name,
     resultDesc: result.desc,
     counts,
-    universidades
+    universidades,
+    informe
   };
   let history = JSON.parse(localStorage.getItem('vocationalResults') || '[]');
   history.push(testResult);
@@ -57,6 +99,9 @@ function showResult() {
     <div class='result-title'>¡Resultado del Test Vocacional!</div>
     <div class='result-career'>${result.name}</div>
     <div class='result-desc'>${result.desc}</div>
+    <div class='result-informe' style='background:#eaf3fb;border-radius:10px;padding:16px 18px;margin:18px 0 10px 0;color:#1769aa;font-size:1.07rem;text-align:justify;'>
+      <b>Análisis personalizado:</b> ${informe}
+    </div>
     <canvas id='resultChart' height='120'></canvas>
     <div class='mt-4'>
       <table class='table table-bordered table-sm' style='max-width:400px;margin:20px auto;'>
@@ -73,9 +118,6 @@ function showResult() {
     <div class='d-flex flex-column flex-md-row gap-2 justify-content-center'>
       <button class='btn btn-secondary btn-restart' onclick='restartTest()'>Volver a intentar</button>
       <button class='btn btn-success' id='finishAttemptBtn'>Finalizar intento</button>
-    </div>
-    <div class='mt-4 text-start' style='font-size:0.95rem;color:#888;'>
-      <b>Fuentes:</b> Holland, J. L. (1997). Making Vocational Choices. Super, D. E. (1990). A life-span, life-space approach to career development. Brown, D. (2002). Career Choice and Development. Deci & Ryan (2000). Self-Determination Theory. Universidades de Panamá, UTP, U. Latina, UNESCO.
     </div>
   `;
   document.getElementById('result-section').style.display = 'block';
