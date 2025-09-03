@@ -1,0 +1,130 @@
+/* Estilos para arreglar el parpadeo de botones de autenticación */
+
+/* Contenedor principal del navbar */
+.navbar {
+    transition: all 0.3s ease;
+}
+
+/* Navbar nav con altura mínima para evitar saltos */
+.navbar-nav {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Botones de autenticación con transiciones suaves */
+.auth-item {
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+    position: relative;
+}
+
+/* Animación de entrada suave */
+.auth-item.entering {
+    animation: slideInFromTop 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Animación de salida suave */
+.auth-item.leaving {
+    animation: slideOutToTop 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Keyframes para las animaciones */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOutToTop {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Espacio reservado para evitar saltos en el layout */
+.navbar-nav::after {
+    content: '';
+    display: block;
+    width: 220px;
+    height: 1px;
+    visibility: hidden;
+    flex-shrink: 0;
+}
+
+/* Estilos específicos para los botones */
+.auth-item .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover mejorado */
+.auth-item .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Estado de carga */
+.auth-item.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Prevenir cambios bruscos en el layout */
+.navbar .container {
+    position: relative;
+}
+
+/* Asegurar que los botones tengan el mismo tamaño */
+.auth-item .btn {
+    min-width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar-nav::after {
+        width: 100%;
+        height: 0;
+    }
+    
+    .auth-item .btn {
+        min-width: 100%;
+        margin: 5px 0;
+    }
+    
+    .navbar-nav {
+        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Estilos para evitar FOUC (Flash of Unstyled Content) */
+.navbar-nav {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Transición suave para cambios de estado */
+.navbar-nav * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
