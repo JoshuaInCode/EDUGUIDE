@@ -1,161 +1,313 @@
+/* EduGuide Scholarships - Estilos con Tonalidades Azules */
+
+/* Variables de colores azules */
+:root {
+    --primary-blue: #2196F3;
+    --primary-dark: #1976D2;
+    --primary-light: #64B5F6;
+    --accent-blue: #03A9F4;
+    --accent-light: #81D4FA;
+    --deep-blue: #1565C0;
+    --light-blue: #E3F2FD;
+    --medium-blue: #42A5F5;
+    --gradient-primary: linear-gradient(135deg, #2196F3, #1976D2);
+    --gradient-accent: linear-gradient(135deg, #03A9F4, #2196F3);
+    --gradient-light: linear-gradient(135deg, #64B5F6, #42A5F5);
+    --shadow-blue: rgba(33, 150, 243, 0.3);
+    --shadow-dark: rgba(25, 118, 210, 0.4);
+}
+
+/* Estilos generales */
 body {
+    background: linear-gradient(135deg, #f8fbff 0%, #e3f2fd 100%);
     font-family: 'Poppins', sans-serif;
-    padding-top: 76px;
 }
 
-.navbar {
-    background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%);
-    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
-    padding: 15px 0;
-}
-
-.navbar .nav-link {
-    color: #fff !important;
-    font-weight: 500;
-    transition: color 0.2s;
+/* Header Section - Estilo original como en index */
+.header-section {
+    background: transparent !important;
+    margin: 0 -50vw 2rem -50vw;
+    padding: 4rem 2rem;
+    border-radius: 0;
+    width: 100vw;
     position: relative;
-}
-
-.navbar .nav-link.active, .navbar .nav-link:hover {
-    color: #3ec6ff !important;
-    text-shadow: 0 2px 8px #1769aa;
-}
-
-.navbar .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: #3ec6ff;
-    transition: all 0.3s;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.navbar .nav-link:hover::after, .navbar .nav-link.active::after {
-    width: 100%;
-}
-
-.header-line {
-    position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #fff;
-    background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%);
-    border-radius: 12px;
-    padding: 18px 0 18px 0;
-    font-size: 2.2rem;
+.section-title-animation {
+    color: #333 !important;
+    margin-bottom: 0;
+    font-size: 2.5rem;
     font-weight: 900;
+    text-align: center;
     letter-spacing: 1px;
-    box-shadow: 0 2px 10px rgba(10,35,66,0.08);
-    animation: colorchange 4s infinite alternate;
 }
 
-.header-line:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: #3ec6ff;
-}
-
-@keyframes colorchange {
-    0% { background: linear-gradient(90deg, #1769aa 0%, #0a2342 100%); color: #fff; }
-    100% { background: linear-gradient(90deg, #0a2342 0%, #3ec6ff 100%); color: #3ec6ff; }
-}
-
-.scholarship-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.scholarship-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.scholarship-header {
-    border-bottom: 2px solid #f0f0f0;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-}
-
-.scholarship-badge {
-    background: #e3f2fd;
-    color: #1976d2;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    margin-right: 10px;
-}
-
-.deadline-badge {
-    background: #fbe9e7;
-    color: #d84315;
-}
-
-.requirements-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.requirements-list li {
-    margin-bottom: 10px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.requirements-list li:before {
-    content: '\2713';
-    position: absolute;
-    left: 0;
-    color: #4caf50;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: #333;
-}
-
-p {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    color: #666;
+.section-subtitle-animation {
+    color: #666 !important;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    opacity: 0.9;
     line-height: 1.6;
 }
 
-.btn-primary {
-    background: linear-gradient(45deg, #007bff, #00e1ff);
+/* Scholarship Cards con diseño azul */
+.scholarship-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px var(--shadow-blue);
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.scholarship-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.scholarship-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px var(--shadow-dark);
+    border-color: var(--primary-blue);
+}
+
+/* Header de becas */
+.scholarship-header {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--light-blue);
+}
+
+.program-title-animation {
+    color: var(--deep-blue);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Badges de becas */
+.scholarship-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.scholarship-badge:first-of-type {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 15px var(--shadow-blue);
+}
+
+.deadline-badge {
+    background: var(--gradient-accent);
+    color: white;
+    box-shadow: 0 4px 15px rgba(3, 169, 244, 0.4);
+}
+
+/* Contenido de becas */
+.scholarship-card h4 {
+    color: var(--deep-blue);
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.scholarship-card p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* Lista de requisitos */
+.requirements-list {
+    list-style: none;
+    padding: 0;
+}
+
+.requirements-list li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #555;
+    font-weight: 500;
+}
+
+.requirements-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Card lateral con información */
+.scholarship-card .card {
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #f8fbff, #e3f2fd);
+    border: 1px solid var(--light-blue);
+}
+
+.scholarship-card .card-body {
+    padding: 25px;
+}
+
+.scholarship-card .card h5 {
+    color: var(--deep-blue);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.scholarship-card .card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.scholarship-card .card li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    color: #555;
+}
+
+.scholarship-card .card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Botón de aplicación */
+.scholarship-card .btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px var(--shadow-blue);
     transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.scholarship-card .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    background: var(--gradient-accent);
 }
 
-.eduguide-brand {
-    color: #fff !important;
-    font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 4px #1769aa;
-    transition: color 0.3s, text-shadow 0.3s;
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.eduguide-brand:hover {
-    color: #3ec6ff !important;
-    text-shadow: 0 2px 8px #3ec6ff;
+
+.scholarship-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.scholarship-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.scholarship-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.scholarship-card:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .scholarship-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .program-title-animation {
+        font-size: 1.5rem;
+    }
+    
+    .scholarship-badge {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+    }
+}
+
+/* Efectos de hover adicionales */
+.scholarship-card:hover .program-title-animation {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Footer con colores azules */
+.footer {
+    background: var(--gradient-primary);
+    color: white;
+    margin-top: 50px;
+}
+
+.footer-brand {
+    color: var(--accent-light);
+    font-weight: bold;
+}
+
+/* Scrollbar personalizado */
+.scholarship-card::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scholarship-card::-webkit-scrollbar-track {
+    background: var(--light-blue);
+    border-radius: 4px;
+}
+
+.scholarship-card::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 4px;
+}
+
+.scholarship-card::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-blue);
 } 

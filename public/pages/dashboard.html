@@ -690,11 +690,13 @@
                 left: -280px;
             }
 
+            .dashboard-container.sidebar-open {
+                margin-left: 280px;
+            }
+
             .sidebar-toggle {
-                top: 15px;
-                left: 15px;
-                padding: 10px 12px;
-                font-size: 0.9rem;
+                padding: 6px;
+                font-size: 1rem;
             }
 
             .sidebar-header {
@@ -749,7 +751,12 @@
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">EduGuide</a>
+                <div class="navbar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">EduGuide</a>
+                </div>
                 
                 <div class="d-flex align-items-center gap-3">
                     <div class="user-info">
@@ -772,17 +779,73 @@
         </div>
 
         <!-- Vocational Test Card -->
-        <div class="dashboard-header mb-4" style="background: linear-gradient(135deg, #eaf3fb 60%, #2196f3 100%); box-shadow: 0 10px 40px rgba(33,150,243,0.10); border-radius: 20px;">
+        <div class="dashboard-header mb-4" style="background: #fff; box-shadow: 0 10px 40px rgba(33,150,243,0.10); border-radius: 20px; border: 2px solid #2196f3;">
             <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <div class="mb-3 mb-md-0">
-                    <h4 class="mb-2" style="color: #1769aa; font-weight: 700;">¿No estás seguro de tu carrera universitaria?</h4>
-                    <p class="mb-2" style="color: #0a2342; font-size:1.1rem;">
-                        ¡Descubre tu potencial de una forma divertida y profesional! Nuestro <b>Test Vocacional</b> analiza tus habilidades, intereses y personalidad para recomendarte carreras ideales en Panamá. Al finalizar, verás tus resultados en gráficas y tablas comparativas, junto con un análisis personalizado de tus fortalezas. ¡Haz del autodescubrimiento una experiencia entretenida y útil, como los mejores tests internacionales!
-                    </p>
+                <div class="mb-3 mb-md-0 d-flex align-items-start gap-3">
+                    <span style="font-size:2.5rem; color:#2196f3; flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
+                    <div>
+                        <h4 class="mb-2" style="color: #1769aa; font-weight: 700;">¿No estás seguro de tu carrera?</h4>
+                        <p class="mb-2" style="color: #0a2342; font-size:1.05rem; text-align:justify;">
+                            Realiza nuestro <b>Test Vocacional</b> y obtén recomendaciones personalizadas de carreras según tus habilidades e intereses. ¡Descubre tu mejor camino de forma divertida y visual!
+                        </p>
+                    </div>
                 </div>
-                <a href="vocational-test.html" class="btn btn-primary btn-lg mt-3 mt-md-0" style="background: linear-gradient(135deg, #1769aa, #2196f3); border: none; border-radius: 12px; font-weight: 600;">Realizar Test</a>
+                <div class="mt-3 mt-md-0" style="margin-left: 32px;"><a href="vocational-test.html" class="btn btn-primary btn-lg" style="background: #2196f3; border: none; border-radius: 12px; font-weight: 600;">Realizar Test</a></div>
             </div>
         </div>
+
+
+                <!-- Progress Charts -->
+                <div class="profile-card full-width">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Tu Progreso Académico
+                    </h3>
+                    <div class="charts-container">
+                        <div class="chart-item">
+                            <h4>Resultados de test</h4>
+                            <div id="vocationalResults" class="bar-chart" style="min-height: 80px;">
+                                <!-- Aquí se mostrarán los resultados de tests vocacionales completados por el usuario -->
+                            </div>
+                            <script src="../js/vocational-dashboard-visual.js"></script>
+                        </div>
+                    </div>
+                    <div class="charts-container">
+                        <div class="chart-item">
+                            <h4>Actividad Semanal</h4>
+                            <div class="activity-chart">
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 60%"></div>
+                                    <span>L</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 80%"></div>
+                                    <span>M</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 45%"></div>
+                                    <span>M</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 90%"></div>
+                                    <span>J</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 75%"></div>
+                                    <span>V</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 30%"></div>
+                                    <span>S</span>
+                                </div>
+                                <div class="activity-day">
+                                    <div class="activity-bar" style="height: 20%"></div>
+                                    <span>D</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         <!-- Statistics Cards -->
         <div class="stats-row">
@@ -819,11 +882,7 @@
             </div>
         </div>
 
-        <!-- Sidebar Toggle Button -->
-        <button class="sidebar-toggle" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </button>
+
 
         <!-- Sidebar Overlay -->
         <div class="sidebar-overlay" onclick="closeSidebar()"></div>
@@ -1023,94 +1082,6 @@
                     </div>
                 </div>
 
-                <!-- Progress Charts -->
-                <div class="profile-card full-width">
-                    <h3 class="card-title">
-                        <i class="fas fa-chart-line"></i>
-                        Tu Progreso Académico
-                    </h3>
-                    <div class="charts-container">
-                        <div class="chart-item">
-                            <h4>Progreso General</h4>
-                            <div class="progress-circle" data-progress="75">
-                                <svg class="progress-ring" width="120" height="120">
-                                    <circle cx="60" cy="60" r="50" stroke="#e1e5e9" stroke-width="8" fill="transparent"></circle>
-                                    <circle cx="60" cy="60" r="50" stroke="#2196f3" stroke-width="8" fill="transparent" 
-                                            stroke-dasharray="314" stroke-dashoffset="78.5" class="progress-bar"></circle>
-                                </svg>
-                                <div class="progress-text">75%</div>
-                            </div>
-                        </div>
-                        
-                        <div class="chart-item">
-                            <h4>Cursos Completados</h4>
-                            <div class="bar-chart">
-                                <div class="bar-item">
-                                    <span class="bar-label">Matemáticas</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 90%"></div>
-                                    </div>
-                                    <span class="bar-value">90%</span>
-                                </div>
-                                <div class="bar-item">
-                                    <span class="bar-label">Ciencias</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 85%"></div>
-                                    </div>
-                                    <span class="bar-value">85%</span>
-                                </div>
-                                <div class="bar-item">
-                                    <span class="bar-label">Historia</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 70%"></div>
-                                    </div>
-                                    <span class="bar-value">70%</span>
-                                </div>
-                                <div class="bar-item">
-                                    <span class="bar-label">Literatura</span>
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 95%"></div>
-                                    </div>
-                                    <span class="bar-value">95%</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="chart-item">
-                            <h4>Actividad Semanal</h4>
-                            <div class="activity-chart">
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 60%"></div>
-                                    <span>L</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 80%"></div>
-                                    <span>M</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 45%"></div>
-                                    <span>M</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 90%"></div>
-                                    <span>J</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 75%"></div>
-                                    <span>V</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 30%"></div>
-                                    <span>S</span>
-                                </div>
-                                <div class="activity-day">
-                                    <div class="activity-bar" style="height: 20%"></div>
-                                    <span>D</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Achievement Stats -->
                 <div class="profile-card full-width">
@@ -1720,14 +1691,17 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('modernSidebar');
             const overlay = document.querySelector('.sidebar-overlay');
+            const dashboardContainer = document.querySelector('.dashboard-container');
             
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
             
-            // Prevent body scrolling when sidebar is open
+            // Adjust dashboard content when sidebar is open
             if (sidebar.classList.contains('active')) {
+                dashboardContainer.classList.add('sidebar-open');
                 document.body.style.overflow = 'hidden';
             } else {
+                dashboardContainer.classList.remove('sidebar-open');
                 document.body.style.overflow = '';
             }
         }
@@ -1735,9 +1709,11 @@
         function closeSidebar() {
             const sidebar = document.getElementById('modernSidebar');
             const overlay = document.querySelector('.sidebar-overlay');
+            const dashboardContainer = document.querySelector('.dashboard-container');
             
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            dashboardContainer.classList.remove('sidebar-open');
             document.body.style.overflow = '';
         }
 
@@ -2563,31 +2539,30 @@
         }
 
         /* Modern Sidebar Styles */
-        .sidebar-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: none;
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #333;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .navbar-left {
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            gap: 15px;
+        }
+
+        .sidebar-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sidebar-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            background: #2196f3;
-            color: white;
+            background: rgba(33, 150, 243, 0.1);
+            color: #2196f3;
+            transform: scale(1.1);
         }
 
         .sidebar-overlay {
@@ -2596,7 +2571,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
             z-index: 1001;
             opacity: 0;
             visibility: hidden;
@@ -2625,6 +2600,15 @@
 
         .modern-sidebar.active {
             left: 0;
+        }
+
+        /* Dashboard content adjustment when sidebar is open */
+        .dashboard-container {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .dashboard-container.sidebar-open {
+            margin-left: 320px;
         }
 
         .sidebar-header {
