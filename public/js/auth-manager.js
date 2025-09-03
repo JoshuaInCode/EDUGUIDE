@@ -6,10 +6,16 @@ class AuthManager {
     constructor() {
         this.currentUser = null;
         this.isAuthenticated = false;
+        this.authElementsCreated = false; // Flag para evitar recrear elementos
+        this.isInitialized = false; // Flag para evitar inicialización múltiple
         this.init();
     }
 
     init() {
+        // Evitar inicialización múltiple
+        if (this.isInitialized) return;
+        this.isInitialized = true;
+
         // Escuchar cambios en el estado de autenticación
         onAuthStateChanged(auth, (user) => {
             this.currentUser = user;
@@ -23,6 +29,29 @@ class AuthManager {
         const navbarNav = document.querySelector('#navbarNav .navbar-nav');
         if (!navbarNav) return;
 
+        // Solo crear elementos si no existen o si el estado de autenticación cambió
+        if (!this.authElementsCreated || this.shouldUpdateAuthElements()) {
+            this.createAuthElements(navbarNav);
+            this.authElementsCreated = true;
+        }
+    }
+
+    shouldUpdateAuthElements() {
+        // Solo actualizar si el estado de autenticación cambió significativamente
+        const existingAuthItems = document.querySelectorAll('.auth-item');
+        const hasLoginSignup = existingAuthItems.length === 2 && 
+                              Array.from(existingAuthItems).some(item => 
+                                  item.textContent.includes('Login') || item.textContent.includes('Sign Up'));
+        const hasProfileLogout = existingAuthItems.length === 2 && 
+                                Array.from(existingAuthItems).some(item => 
+                                    item.textContent.includes('Mi Perfil') || item.textContent.includes('Cerrar Sesión'));
+        
+        if (this.isAuthenticated && hasLoginSignup) return true;
+        if (!this.isAuthenticated && hasProfileLogout) return true;
+        return false;
+    }
+
+    createAuthElements(navbarNav) {
         // Limpiar elementos de autenticación existentes
         const existingAuthItems = navbarNav.querySelectorAll('.auth-item');
         existingAuthItems.forEach(item => item.remove());
