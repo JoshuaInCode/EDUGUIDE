@@ -227,4 +227,63 @@
     .navbar-nav .ms-2 {
         margin-left: 0 !important;
     }
+}
+
+/* Estilos para evitar parpadeo en botones de autenticación */
+.auth-item {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform;
+}
+
+.auth-item.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.auth-item.fade-out {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Asegurar que los botones de autenticación tengan un espacio reservado */
+.navbar-nav::after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 1px;
+    visibility: hidden;
+}
+
+/* Estilos para el estado de carga de autenticación */
+.auth-loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Prevenir cambios bruscos en el layout */
+.navbar-nav {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
 } 
