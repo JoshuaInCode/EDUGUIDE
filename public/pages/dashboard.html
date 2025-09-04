@@ -778,19 +778,50 @@
             <p class="welcome-subtitle">Gestiona tu experiencia educativa desde aquí</p>
         </div>
 
-        <!-- Vocational Test Card -->
-        <div class="dashboard-header mb-4" style="background: #fff; box-shadow: 0 10px 40px rgba(33,150,243,0.10); border-radius: 20px; border: 2px solid #2196f3;">
-            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <div class="mb-3 mb-md-0 d-flex align-items-start gap-3">
-                    <span style="font-size:2.5rem; color:#2196f3; flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
-                    <div>
-                        <h4 class="mb-2" style="color: #1769aa; font-weight: 700;">¿No estás seguro de tu carrera?</h4>
-                        <p class="mb-2" style="color: #0a2342; font-size:1.05rem; text-align:justify;">
-                            Realiza nuestro <b>Test Vocacional</b> y obtén recomendaciones personalizadas de carreras según tus habilidades e intereses. ¡Descubre tu mejor camino de forma divertida y visual!
-                        </p>
+        <!-- Tests Section -->
+        <div class="row mb-4">
+            <!-- Vocational Test Card -->
+            <div class="col-lg-6 mb-4">
+                <div class="dashboard-header h-100" style="background: #fff; box-shadow: 0 10px 40px rgba(33,150,243,0.10); border-radius: 20px; border: 2px solid #2196f3;">
+                    <div class="d-flex flex-column h-100">
+                        <div class="mb-3 d-flex align-items-start gap-3">
+                            <span style="font-size:2.5rem; color:#2196f3; flex-shrink:0;"><i class="fas fa-lightbulb"></i></span>
+                            <div>
+                                <h4 class="mb-2" style="color: #1769aa; font-weight: 700;">Test Vocacional</h4>
+                                <p class="mb-3" style="color: #0a2342; font-size:1rem; text-align:justify;">
+                                    Descubre tu potencial analizando tus habilidades, intereses y personalidad para recomendarte carreras ideales.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="vocational-test.html" class="btn btn-primary btn-lg w-100" style="background: #2196f3; border: none; border-radius: 12px; font-weight: 600;">
+                                <i class="fas fa-play me-2"></i>Realizar Test Vocacional
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="mt-3 mt-md-0" style="margin-left: 32px;"><a href="vocational-test.html" class="btn btn-primary btn-lg" style="background: #2196f3; border: none; border-radius: 12px; font-weight: 600;">Realizar Test</a></div>
+            </div>
+
+            <!-- Career Compatibility Test Card -->
+            <div class="col-lg-6 mb-4">
+                <div class="dashboard-header h-100" style="background: #fff; box-shadow: 0 10px 40px rgba(255,107,53,0.10); border-radius: 20px; border: 2px solid #ff6b35;">
+                    <div class="d-flex flex-column h-100">
+                        <div class="mb-3 d-flex align-items-start gap-3">
+                            <span style="font-size:2.5rem; color:#ff6b35; flex-shrink:0;"><i class="fas fa-chart-line"></i></span>
+                            <div>
+                                <h4 class="mb-2" style="color: #e65100; font-weight: 700;">Test de Compatibilidad</h4>
+                                <p class="mb-3" style="color: #bf360c; font-size:1rem; text-align:justify;">
+                                    Evalúa qué tan compatible eres con tu carrera deseada. Obtén un análisis detallado con gráficas y recomendaciones.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="career-compatibility-test.html" class="btn btn-primary btn-lg w-100" style="background: #ff6b35; border: none; border-radius: 12px; font-weight: 600;">
+                                <i class="fas fa-chart-bar me-2"></i>Realizar Test de Compatibilidad
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -930,6 +961,13 @@
                             </div>
                             <span class="sidebar-text">Test Vocacional</span>
                         </a>
+
+                        <a href="career-compatibility-test.html" class="sidebar-item">
+                            <div class="sidebar-icon compatibility">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <span class="sidebar-text">Test de Compatibilidad</span>
+                        </a>
                     </div>
                 </div>
 
@@ -941,6 +979,18 @@
                                 <i class="fas fa-user-edit"></i>
                             </div>
                             <span class="sidebar-text">Editar Perfil</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Navegación</h3>
+                    <div class="sidebar-items">
+                        <a href="../index.html" class="sidebar-item">
+                            <div class="sidebar-icon home">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <span class="sidebar-text">Inicio</span>
                         </a>
                         
                         <a href="#" class="sidebar-item" onclick="showDashboard()">
@@ -960,7 +1010,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <span class="sidebar-text">Contacto</span>
-                        </a>
+                            </a>
                         
                         <a href="#" class="sidebar-item">
                             <div class="sidebar-icon help">
@@ -2713,7 +2763,9 @@
         .sidebar-icon.careers { background: linear-gradient(135deg, #4caf50, #66bb6a); }
         .sidebar-icon.scholarships { background: linear-gradient(135deg, #9c27b0, #ba68c8); }
         .sidebar-icon.test { background: linear-gradient(135deg, #f44336, #ef5350); }
+        .sidebar-icon.compatibility { background: linear-gradient(135deg, #ff6b35, #f7931e); }
         .sidebar-icon.profile { background: linear-gradient(135deg, #2196f3, #3ec6ff); }
+        .sidebar-icon.home { background: linear-gradient(135deg, #00bcd4, #26c6da); }
         .sidebar-icon.dashboard { background: linear-gradient(135deg, #607d8b, #90a4ae); }
         .sidebar-icon.contact { background: linear-gradient(135deg, #795548, #a1887f); }
         .sidebar-icon.help { background: linear-gradient(135deg, #3f51b5, #7986cb); }

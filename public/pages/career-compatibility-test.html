@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Compatibilidad de Carrera - EduGuide</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .test-container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .test-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+        
+        .test-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+        
+        .test-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .career-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .career-option {
+            background: white;
+            border: 3px solid #e1e5e9;
+            border-radius: 16px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .career-option:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+        
+        .career-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+        
+        .career-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .career-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .career-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .question-section {
+            display: none;
+        }
+        
+        .question-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .question-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .option-btn {
+            background: #f8f9fa;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .option-btn:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .option-btn.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        /* Estilos para checkboxes personalizados */
+        .option-checkbox {
+            background: #f8f9fa;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .option-checkbox:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .option-checkbox.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .option-checkbox input[type="checkbox"] {
+            display: none;
+        }
+        
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .option-checkbox.selected .checkmark {
+            background: white;
+            border-color: white;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 10px;
+            border: solid #667eea;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .option-checkbox.selected .checkmark:after {
+            display: block;
+        }
+        
+        .option-text {
+            flex: 1;
+        }
+        
+        .progress-bar {
+            background: #e1e5e9;
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .results-section {
+            display: none;
+        }
+        
+        .results-section.active {
+            display: block;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .compatibility-score {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #667eea 0deg, #764ba2 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .score-inner {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .score-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .score-label {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .analysis-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .analysis-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .skill-level {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .skill-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e1e5e9;
+        }
+        
+        .skill-dot.active {
+            background: #667eea;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 15px;
+            }
+            
+            .test-title {
+                font-size: 2rem;
+            }
+            
+            .career-selection {
+                grid-template-columns: 1fr;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .score-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .score-inner {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .score-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <!-- Header -->
+        <div class="test-header">
+            <h1 class="test-title">Test de Compatibilidad de Carrera</h1>
+            <p class="test-subtitle">Descubre qué tan compatible eres con tu carrera deseada</p>
+        </div>
+
+        <!-- Career Selection -->
+        <div class="test-card" id="careerSelection">
+            <h2 class="mb-4">Selecciona tu carrera de interés</h2>
+            <div class="career-selection" id="careerOptions">
+                <!-- Las opciones se cargarán dinámicamente -->
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" id="startTestBtn" disabled onclick="startTest()">
+                    <i class="fas fa-play"></i> Comenzar Test
+                </button>
+            </div>
+        </div>
+
+        <!-- Test Questions -->
+        <div class="test-card question-section" id="testQuestions">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div id="questionContainer">
+                <!-- Las preguntas se cargarán dinámicamente -->
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-secondary me-3" onclick="previousQuestion()" id="prevBtn" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> Anterior
+                </button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" disabled>
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="test-card results-section" id="resultsSection">
+            <div class="compatibility-score">
+                <div class="score-circle" id="scoreCircle">
+                    <div class="score-inner">
+                        <div class="score-number" id="scoreNumber">0%</div>
+                        <div class="score-label">Compatibilidad</div>
+                    </div>
+                </div>
+                <h2 id="compatibilityTitle">Tu Compatibilidad</h2>
+                <p id="compatibilityDescription" class="text-muted">Análisis detallado de tu compatibilidad</p>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h3 class="analysis-title">
+                        <i class="fas fa-chart-bar text-primary"></i>
+                        Análisis de Habilidades
+                    </h3>
+                    <div id="skillsAnalysis">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3 class="analysis-title">
+                        <i class="fas fa-star text-warning"></i>
+                        Fortalezas
+                    </h3>
+                    <div id="strengthsList">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3 class="analysis-title">
+                        <i class="fas fa-arrow-up text-success"></i>
+                        Áreas de Mejora
+                    </h3>
+                    <div id="improvementsList">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3 class="analysis-title">
+                        <i class="fas fa-graduation-cap text-info"></i>
+                        Recomendaciones
+                    </h3>
+                    <div id="recommendationsList">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-card">
+                <h3 class="analysis-title">
+                    <i class="fas fa-chart-pie text-danger"></i>
+                    Distribución de Competencias
+                </h3>
+                <div class="chart-container">
+                    <canvas id="competencyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-primary me-3" onclick="retakeTest()">
+                    <i class="fas fa-redo"></i> Repetir Test
+                </button>
+                <button class="btn btn-secondary" onclick="goToDashboard()">
+                    <i class="fas fa-home"></i> Ir al Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Datos de carreras expandidas
+        const careers = {
+            'medicina': {
+                name: 'Medicina',
+                icon: 'fas fa-user-md',
+                color: '#e74c3c',
+                description: 'Carrera enfocada en el cuidado de la salud y tratamiento de enfermedades.',
+                skills: ['empatía', 'análisis', 'memoria', 'trabajo_equipo', 'presión', 'comunicación', 'ética', 'investigación', 'atención_detalle', 'persistencia']
+            },
+            'ingenieria': {
+                name: 'Ingeniería',
+                icon: 'fas fa-cogs',
+                color: '#3498db',
+                description: 'Aplicación de principios científicos para resolver problemas técnicos.',
+                skills: ['lógica', 'matemáticas', 'creatividad', 'análisis', 'resolución_problemas', 'trabajo_equipo', 'innovación', 'persistencia', 'atención_detalle', 'adaptabilidad']
+            },
+            'derecho': {
+                name: 'Derecho',
+                icon: 'fas fa-gavel',
+                color: '#9b59b6',
+                description: 'Estudio y aplicación de las leyes y el sistema judicial.',
+                skills: ['análisis', 'comunicación', 'ética', 'memoria', 'persuasión', 'investigación', 'lógica', 'empatía', 'atención_detalle', 'persistencia']
+            },
+            'psicologia': {
+                name: 'Psicología',
+                icon: 'fas fa-brain',
+                color: '#f39c12',
+                description: 'Estudio del comportamiento humano y procesos mentales.',
+                skills: ['empatía', 'comunicación', 'análisis', 'paciencia', 'escucha_activa', 'investigación', 'ética', 'trabajo_equipo', 'adaptabilidad', 'persistencia']
+            },
+            'arquitectura': {
+                name: 'Arquitectura',
+                icon: 'fas fa-drafting-compass',
+                color: '#2ecc71',
+                description: 'Diseño y planificación de espacios y estructuras.',
+                skills: ['creatividad', 'visualización', 'matemáticas', 'comunicación', 'análisis', 'innovación', 'trabajo_equipo', 'persistencia', 'atención_detalle', 'adaptabilidad']
+            },
+            'contabilidad': {
+                name: 'Contabilidad',
+                icon: 'fas fa-calculator',
+                color: '#34495e',
+                description: 'Gestión financiera y análisis de datos contables.',
+                skills: ['matemáticas', 'análisis', 'atención_detalle', 'organización', 'ética', 'comunicación', 'lógica', 'persistencia', 'memoria', 'adaptabilidad']
+            },
+            'marketing': {
+                name: 'Marketing',
+                icon: 'fas fa-bullhorn',
+                color: '#e67e22',
+                description: 'Estrategias de promoción y comunicación de productos o servicios.',
+                skills: ['creatividad', 'comunicación', 'análisis', 'innovación', 'trabajo_equipo', 'persuasión', 'adaptabilidad', 'investigación', 'empatía', 'persistencia']
+            },
+            'educacion': {
+                name: 'Educación',
+                icon: 'fas fa-chalkboard-teacher',
+                color: '#1abc9c',
+                description: 'Formación y desarrollo de conocimientos en otros.',
+                skills: ['comunicación', 'empatía', 'paciencia', 'creatividad', 'trabajo_equipo', 'organización', 'ética', 'adaptabilidad', 'persistencia', 'innovación']
+            },
+            'computacion': {
+                name: 'Ciencias de la Computación',
+                icon: 'fas fa-laptop-code',
+                color: '#1abc9c',
+                description: 'Programación, desarrollo de software y tecnología digital.',
+                skills: ['lógica', 'matemáticas', 'análisis', 'creatividad', 'persistencia', 'atención_detalle', 'innovación', 'adaptabilidad', 'trabajo_equipo', 'resolución_problemas']
+            },
+            'administracion': {
+                name: 'Administración de Empresas',
+                icon: 'fas fa-briefcase',
+                color: '#e67e22',
+                description: 'Gestión, liderazgo y dirección de organizaciones.',
+                skills: ['liderazgo', 'comunicación', 'análisis', 'trabajo_equipo', 'organización', 'adaptabilidad', 'persuasión', 'innovación', 'ética', 'persistencia']
+            },
+            'enfermeria': {
+                name: 'Enfermería',
+                icon: 'fas fa-heartbeat',
+                color: '#e91e63',
+                description: 'Cuidado integral de la salud y atención al paciente.',
+                skills: ['empatía', 'comunicación', 'trabajo_equipo', 'atención_detalle', 'presión', 'ética', 'persistencia', 'adaptabilidad', 'organización', 'paciencia']
+            },
+            'periodismo': {
+                name: 'Periodismo',
+                icon: 'fas fa-newspaper',
+                color: '#795548',
+                description: 'Comunicación, investigación y difusión de información.',
+                skills: ['comunicación', 'investigación', 'análisis', 'creatividad', 'adaptabilidad', 'persistencia', 'ética', 'empatía', 'atención_detalle', 'innovación']
+            },
+            'trabajo_social': {
+                name: 'Trabajo Social',
+                icon: 'fas fa-hands-helping',
+                color: '#607d8b',
+                description: 'Apoyo, desarrollo comunitario y bienestar social.',
+                skills: ['empatía', 'comunicación', 'trabajo_equipo', 'ética', 'adaptabilidad', 'persistencia', 'organización', 'investigación', 'paciencia', 'innovación']
+            },
+            'veterinaria': {
+                name: 'Veterinaria',
+                icon: 'fas fa-paw',
+                color: '#8bc34a',
+                description: 'Salud, cuidado y tratamiento de animales.',
+                skills: ['empatía', 'análisis', 'atención_detalle', 'comunicación', 'trabajo_equipo', 'persistencia', 'ética', 'adaptabilidad', 'organización', 'presión']
+            },
+            'farmacia': {
+                name: 'Farmacia',
+                icon: 'fas fa-pills',
+                color: '#ff9800',
+                description: 'Medicamentos, salud pública y atención farmacéutica.',
+                skills: ['análisis', 'atención_detalle', 'comunicación', 'ética', 'organización', 'persistencia', 'memoria', 'trabajo_equipo', 'empatía', 'adaptabilidad']
+            },
+            'nutricion': {
+                name: 'Nutrición',
+                icon: 'fas fa-apple-alt',
+                color: '#4caf50',
+                description: 'Alimentación, bienestar y salud nutricional.',
+                skills: ['análisis', 'comunicación', 'empatía', 'organización', 'investigación', 'ética', 'adaptabilidad', 'persistencia', 'trabajo_equipo', 'innovación']
+            },
+            'turismo': {
+                name: 'Turismo',
+                icon: 'fas fa-plane',
+                color: '#00bcd4',
+                description: 'Servicios turísticos, hospitalidad y gestión de viajes.',
+                skills: ['comunicación', 'empatía', 'adaptabilidad', 'trabajo_equipo', 'organización', 'creatividad', 'persistencia', 'innovación', 'atención_detalle', 'persuasión']
+            },
+            'diseno_grafico': {
+                name: 'Diseño Gráfico',
+                icon: 'fas fa-palette',
+                color: '#9c27b0',
+                description: 'Creatividad visual, comunicación gráfica y diseño.',
+                skills: ['creatividad', 'visualización', 'comunicación', 'innovación', 'atención_detalle', 'adaptabilidad', 'persistencia', 'análisis', 'trabajo_equipo', 'empatía']
+            }
+        };
+
+        // Preguntas del test expandidas y más profundas
+        const questions = [
+            {
+                question: "Cuando enfrentas un problema complejo, ¿cuál es tu primer instinto?",
+                options: [
+                    { text: "Analizar todos los datos disponibles sistemáticamente", value: { análisis: 5, lógica: 4, atención_detalle: 4, persistencia: 3 } },
+                    { text: "Buscar diferentes perspectivas y opiniones", value: { comunicación: 4, trabajo_equipo: 4, empatía: 3, adaptabilidad: 4 } },
+                    { text: "Experimentar con soluciones creativas", value: { creatividad: 5, innovación: 4, adaptabilidad: 3, persistencia: 3 } },
+                    { text: "Investigar casos similares del pasado", value: { investigación: 5, memoria: 4, análisis: 3, persistencia: 4 } }
+                ]
+            },
+            {
+                question: "¿Qué tipo de ambiente de trabajo te hace sentir más productivo?",
+                options: [
+                    { text: "Silencioso y sin distracciones", value: { atención_detalle: 4, persistencia: 4, análisis: 3, organización: 4 } },
+                    { text: "Colaborativo con discusiones constantes", value: { trabajo_equipo: 5, comunicación: 4, empatía: 3, adaptabilidad: 4 } },
+                    { text: "Dinámico con cambios frecuentes", value: { adaptabilidad: 5, innovación: 4, creatividad: 3, persistencia: 2 } },
+                    { text: "Estructurado con rutinas claras", value: { organización: 5, persistencia: 4, atención_detalle: 3, ética: 3 } }
+                ]
+            },
+            {
+                question: "Cuando alguien te explica algo que no entiendes, ¿qué haces?",
+                options: [
+                    { text: "Hago preguntas específicas hasta entender completamente", value: { comunicación: 4, análisis: 4, persistencia: 4, atención_detalle: 3 } },
+                    { text: "Busco ejemplos prácticos o analogías", value: { creatividad: 4, comunicación: 3, adaptabilidad: 4, innovación: 3 } },
+                    { text: "Investigo por mi cuenta para complementar", value: { investigación: 5, persistencia: 4, análisis: 3, adaptabilidad: 3 } },
+                    { text: "Pido que me lo muestren paso a paso", value: { atención_detalle: 4, organización: 3, persistencia: 3, comunicación: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué te motiva más cuando trabajas en un proyecto?",
+                options: [
+                    { text: "La posibilidad de ayudar a otros", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
+                    { text: "Resolver un desafío intelectual", value: { análisis: 5, lógica: 4, persistencia: 4, investigación: 3 } },
+                    { text: "Crear algo único y original", value: { creatividad: 5, innovación: 5, visualización: 3, persistencia: 3 } },
+                    { text: "Ver resultados tangibles y medibles", value: { organización: 4, persistencia: 4, atención_detalle: 3, análisis: 3 } }
+                ]
+            },
+            {
+                question: "¿Cómo manejas la información cuando tienes que tomar una decisión importante?",
+                options: [
+                    { text: "Recopilo todos los datos posibles antes de decidir", value: { análisis: 5, investigación: 4, atención_detalle: 4, persistencia: 3 } },
+                    { text: "Consulto con personas de confianza", value: { comunicación: 4, trabajo_equipo: 4, empatía: 3, ética: 3 } },
+                    { text: "Confío en mi intuición y experiencia", value: { adaptabilidad: 4, creatividad: 3, persistencia: 3, innovación: 3 } },
+                    { text: "Analizo los pros y contras sistemáticamente", value: { lógica: 5, análisis: 4, organización: 3, persistencia: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué tipo de feedback prefieres recibir sobre tu trabajo?",
+                options: [
+                    { text: "Detallado y específico sobre mejoras", value: { atención_detalle: 4, persistencia: 4, análisis: 3, organización: 3 } },
+                    { text: "Constructivo y alentador", value: { comunicación: 4, empatía: 3, trabajo_equipo: 3, adaptabilidad: 3 } },
+                    { text: "Honesto y directo", value: { comunicación: 4, ética: 3, persistencia: 3, análisis: 3 } },
+                    { text: "Enfocado en resultados y métricas", value: { análisis: 4, organización: 4, persistencia: 3, atención_detalle: 3 } }
+                ]
+            },
+            {
+                question: "Cuando trabajas en equipo, ¿cuál es tu rol natural?",
+                options: [
+                    { text: "Líder que organiza y dirige", value: { liderazgo: 5, organización: 4, comunicación: 4, trabajo_equipo: 3 } },
+                    { text: "Colaborador que apoya a otros", value: { trabajo_equipo: 5, empatía: 4, comunicación: 3, adaptabilidad: 3 } },
+                    { text: "Especialista que aporta conocimiento técnico", value: { análisis: 4, persistencia: 4, atención_detalle: 3, investigación: 3 } },
+                    { text: "Mediador que resuelve conflictos", value: { comunicación: 4, empatía: 4, ética: 3, adaptabilidad: 4 } }
+                ]
+            },
+            {
+                question: "¿Cómo prefieres aprender algo nuevo?",
+                options: [
+                    { text: "Leyendo y estudiando teoría", value: { investigación: 4, análisis: 4, memoria: 3, persistencia: 3 } },
+                    { text: "Practicando y experimentando", value: { creatividad: 4, adaptabilidad: 4, persistencia: 3, innovación: 3 } },
+                    { text: "Observando a otros hacerlo", value: { comunicación: 3, empatía: 3, trabajo_equipo: 3, adaptabilidad: 4 } },
+                    { text: "Recibiendo instrucciones paso a paso", value: { organización: 4, atención_detalle: 4, persistencia: 3, comunicación: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué te frustra más en el trabajo?",
+                options: [
+                    { text: "La falta de organización y planificación", value: { organización: 5, atención_detalle: 4, persistencia: 3, análisis: 3 } },
+                    { text: "La falta de comunicación clara", value: { comunicación: 5, trabajo_equipo: 3, empatía: 3, ética: 3 } },
+                    { text: "La resistencia al cambio y la innovación", value: { innovación: 5, creatividad: 4, adaptabilidad: 4, persistencia: 2 } },
+                    { text: "La falta de ética y transparencia", value: { ética: 5, comunicación: 3, empatía: 3, trabajo_equipo: 3 } }
+                ]
+            },
+            {
+                question: "¿Cómo manejas los plazos ajustados?",
+                options: [
+                    { text: "Me organizo mejor y trabajo más eficientemente", value: { organización: 5, persistencia: 4, atención_detalle: 3, presión: 4 } },
+                    { text: "Busco ayuda y delego tareas", value: { trabajo_equipo: 5, comunicación: 4, liderazgo: 3, adaptabilidad: 3 } },
+                    { text: "Me enfoco en lo esencial y simplifico", value: { análisis: 4, adaptabilidad: 4, persistencia: 3, presión: 3 } },
+                    { text: "Trabajo más horas pero mantengo la calidad", value: { persistencia: 5, ética: 4, atención_detalle: 3, presión: 4 } }
+                ]
+            },
+            {
+                question: "¿Qué tipo de proyectos te dan más satisfacción personal?",
+                options: [
+                    { text: "Los que tienen un impacto social positivo", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
+                    { text: "Los que requieren soluciones innovadoras", value: { creatividad: 5, innovación: 5, análisis: 3, persistencia: 3 } },
+                    { text: "Los que mejoran procesos existentes", value: { análisis: 4, organización: 4, persistencia: 3, atención_detalle: 3 } },
+                    { text: "Los que generan conocimiento nuevo", value: { investigación: 5, análisis: 4, persistencia: 4, innovación: 3 } }
+                ]
+            },
+            {
+                question: "¿Cómo prefieres comunicar tus ideas?",
+                options: [
+                    { text: "Presentaciones visuales y gráficas", value: { creatividad: 4, visualización: 5, comunicación: 3, innovación: 3 } },
+                    { text: "Documentos escritos detallados", value: { comunicación: 4, atención_detalle: 4, organización: 3, análisis: 3 } },
+                    { text: "Discusiones y debates en grupo", value: { comunicación: 5, trabajo_equipo: 4, persuasión: 3, empatía: 3 } },
+                    { text: "Demostraciones prácticas", value: { creatividad: 3, comunicación: 4, persistencia: 3, adaptabilidad: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué te hace sentir más realizado profesionalmente?",
+                options: [
+                    { text: "Ver el impacto positivo en la vida de otros", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
+                    { text: "Resolver problemas que nadie más pudo", value: { análisis: 5, persistencia: 4, creatividad: 3, innovación: 3 } },
+                    { text: "Crear algo que perdure en el tiempo", value: { creatividad: 4, persistencia: 4, innovación: 3, organización: 3 } },
+                    { text: "Contribuir al avance del conocimiento", value: { investigación: 5, análisis: 4, persistencia: 3, innovación: 4 } }
+                ]
+            },
+            {
+                question: "¿Cómo manejas la incertidumbre en proyectos?",
+                options: [
+                    { text: "Investigo y planifico para reducir la incertidumbre", value: { investigación: 5, análisis: 4, organización: 3, persistencia: 3 } },
+                    { text: "Me adapto y ajusto según surgen cambios", value: { adaptabilidad: 5, creatividad: 3, innovación: 3, comunicación: 3 } },
+                    { text: "Busco orientación de expertos", value: { comunicación: 4, trabajo_equipo: 3, empatía: 3, investigación: 3 } },
+                    { text: "Confío en mi experiencia y sigo adelante", value: { persistencia: 4, análisis: 3, adaptabilidad: 3, ética: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué tipo de desafíos te motivan más?",
+                options: [
+                    { text: "Desafíos técnicos complejos", value: { análisis: 5, lógica: 4, persistencia: 4, investigación: 3 } },
+                    { text: "Desafíos de comunicación y relaciones", value: { comunicación: 5, empatía: 4, trabajo_equipo: 3, adaptabilidad: 3 } },
+                    { text: "Desafíos creativos y artísticos", value: { creatividad: 5, innovación: 4, visualización: 3, persistencia: 3 } },
+                    { text: "Desafíos éticos y morales", value: { ética: 5, empatía: 4, comunicación: 3, análisis: 3 } }
+                ]
+            },
+            {
+                question: "¿Cómo prefieres recibir reconocimiento por tu trabajo?",
+                options: [
+                    { text: "Reconocimiento público y visible", value: { comunicación: 4, persuasión: 3, trabajo_equipo: 3, liderazgo: 3 } },
+                    { text: "Reconocimiento personal y privado", value: { empatía: 4, comunicación: 3, ética: 3, trabajo_equipo: 3 } },
+                    { text: "Reconocimiento basado en resultados", value: { análisis: 4, organización: 3, persistencia: 3, atención_detalle: 3 } },
+                    { text: "Reconocimiento de pares y expertos", value: { trabajo_equipo: 4, comunicación: 3, ética: 3, investigación: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué te hace sentir más cómodo en un ambiente laboral?",
+                options: [
+                    { text: "Tener claridad en roles y responsabilidades", value: { organización: 5, atención_detalle: 3, persistencia: 3, ética: 3 } },
+                    { text: "Poder colaborar libremente con otros", value: { trabajo_equipo: 5, comunicación: 4, empatía: 3, adaptabilidad: 3 } },
+                    { text: "Tener autonomía para tomar decisiones", value: { liderazgo: 4, adaptabilidad: 4, persistencia: 3, análisis: 3 } },
+                    { text: "Tener acceso a recursos y herramientas", value: { investigación: 4, análisis: 3, persistencia: 3, organización: 3 } }
+                ]
+            },
+            {
+                question: "¿Cómo manejas los conflictos en el trabajo?",
+                options: [
+                    { text: "Analizo la situación y busco soluciones objetivas", value: { análisis: 5, lógica: 4, comunicación: 3, ética: 3 } },
+                    { text: "Busco entender todas las perspectivas", value: { empatía: 5, comunicación: 4, trabajo_equipo: 3, adaptabilidad: 3 } },
+                    { text: "Medio y busco compromisos", value: { comunicación: 4, trabajo_equipo: 4, empatía: 3, adaptabilidad: 4 } },
+                    { text: "Me enfoco en los hechos y evidencia", value: { análisis: 4, investigación: 4, ética: 3, persistencia: 3 } }
+                ]
+            },
+            {
+                question: "¿Qué te motiva más a largo plazo en tu carrera?",
+                options: [
+                    { text: "Hacer una diferencia positiva en el mundo", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
+                    { text: "Alcanzar la excelencia técnica en mi campo", value: { análisis: 5, persistencia: 4, investigación: 3, atención_detalle: 3 } },
+                    { text: "Innovar y crear cosas nuevas", value: { creatividad: 5, innovación: 5, persistencia: 3, adaptabilidad: 3 } },
+                    { text: "Liderar y desarrollar a otros", value: { liderazgo: 5, comunicación: 4, empatía: 3, trabajo_equipo: 4 } }
+                ]
+            },
+            {
+                question: "¿Cómo prefieres que te evalúen en el trabajo?",
+                options: [
+                    { text: "Basado en resultados y métricas específicas", value: { análisis: 4, organización: 4, persistencia: 3, atención_detalle: 3 } },
+                    { text: "Basado en contribución al equipo", value: { trabajo_equipo: 5, comunicación: 3, empatía: 3, adaptabilidad: 3 } },
+                    { text: "Basado en innovación y creatividad", value: { creatividad: 5, innovación: 4, adaptabilidad: 3, persistencia: 3 } },
+                    { text: "Basado en desarrollo personal y profesional", value: { persistencia: 4, investigación: 3, adaptabilidad: 4, comunicación: 3 } }
+                ]
+            }
+        ];
+
+        let currentCareer = null;
+        let currentQuestion = 0;
+        let answers = {};
+        let userScores = {};
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCareerOptions();
+        });
+
+        function loadCareerOptions() {
+            const container = document.getElementById('careerOptions');
+            container.innerHTML = '';
+
+            Object.keys(careers).forEach(careerId => {
+                const career = careers[careerId];
+                const option = document.createElement('div');
+                option.className = 'career-option';
+                option.onclick = () => selectCareer(careerId);
+                option.innerHTML = `
+                    <div class="career-icon" style="background: ${career.color}">
+                        <i class="${career.icon}"></i>
+                    </div>
+                    <h3 class="career-name">${career.name}</h3>
+                    <p class="career-description">${career.description}</p>
+                `;
+                container.appendChild(option);
+            });
+        }
+
+        function selectCareer(careerId) {
+            // Remover selección anterior
+            document.querySelectorAll('.career-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Seleccionar nueva carrera
+            event.target.closest('.career-option').classList.add('selected');
+            currentCareer = careerId;
+            document.getElementById('startTestBtn').disabled = false;
+        }
+
+        function startTest() {
+            document.getElementById('careerSelection').style.display = 'none';
+            document.getElementById('testQuestions').classList.add('active');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            const container = document.getElementById('questionContainer');
+            
+            // Obtener respuestas previas para esta pregunta
+            const previousAnswers = answers[currentQuestion] || [];
+            
+            container.innerHTML = `
+                <div class="question-card">
+                    <h3 class="question-title">Pregunta ${currentQuestion + 1} de ${questions.length}</h3>
+                    <h4 class="mb-4">${question.question}</h4>
+                    <p class="text-muted mb-3"><small><i class="fas fa-info-circle"></i> Puedes seleccionar múltiples opciones que se apliquen a ti</small></p>
+                    <div class="options-grid">
+                        ${question.options.map((option, index) => `
+                            <label class="option-checkbox ${previousAnswers.includes(index) ? 'selected' : ''}" onclick="toggleOption(${index})">
+                                <input type="checkbox" ${previousAnswers.includes(index) ? 'checked' : ''} onchange="toggleOption(${index})">
+                                <span class="checkmark"></span>
+                                <span class="option-text">${option.text}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            updateProgress();
+            updateNavigationButtons();
+        }
+
+        function toggleOption(optionIndex) {
+            // Inicializar array de respuestas si no existe
+            if (!answers[currentQuestion]) {
+                answers[currentQuestion] = [];
+            }
+            
+            const currentAnswers = answers[currentQuestion];
+            const optionElement = document.querySelector(`label.option-checkbox:nth-child(${optionIndex + 1})`);
+            const checkbox = optionElement.querySelector('input[type="checkbox"]');
+            
+            if (checkbox.checked) {
+                // Agregar opción si no está ya seleccionada
+                if (!currentAnswers.includes(optionIndex)) {
+                    currentAnswers.push(optionIndex);
+                    optionElement.classList.add('selected');
+                }
+            } else {
+                // Remover opción si está seleccionada
+                const index = currentAnswers.indexOf(optionIndex);
+                if (index > -1) {
+                    currentAnswers.splice(index, 1);
+                    optionElement.classList.remove('selected');
+                }
+            }
+            
+            updateNavigationButtons();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+                
+                // Las respuestas se restauran automáticamente en loadQuestion()
+                // ya que usa answers[currentQuestion] para marcar las opciones
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function updateNavigationButtons() {
+            document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+            // Habilitar siguiente si hay al menos una respuesta seleccionada
+            const hasAnswers = answers[currentQuestion] && answers[currentQuestion].length > 0;
+            document.getElementById('nextBtn').disabled = !hasAnswers;
+        }
+
+        function calculateResults() {
+            // Calcular puntuaciones
+            const career = careers[currentCareer];
+            userScores = {};
+
+            // Inicializar puntuaciones
+            career.skills.forEach(skill => {
+                userScores[skill] = 0;
+            });
+
+            // Sumar puntuaciones de respuestas múltiples
+            Object.keys(answers).forEach(questionIndex => {
+                const question = questions[questionIndex];
+                const selectedOptions = answers[questionIndex]; // Array de índices seleccionados
+                
+                selectedOptions.forEach(optionIndex => {
+                    const selectedOption = question.options[optionIndex];
+                    
+                    Object.keys(selectedOption.value).forEach(skill => {
+                        if (userScores[skill] !== undefined) {
+                            userScores[skill] += selectedOption.value[skill];
+                        }
+                    });
+                });
+            });
+
+            // Normalizar puntuaciones (0-100)
+            const maxPossibleScore = questions.length * 5;
+            Object.keys(userScores).forEach(skill => {
+                userScores[skill] = Math.round((userScores[skill] / maxPossibleScore) * 100);
+            });
+
+            // Calcular compatibilidad general
+            const totalScore = Object.values(userScores).reduce((sum, score) => sum + score, 0);
+            const compatibilityScore = Math.round(totalScore / career.skills.length);
+
+            showResults(compatibilityScore, career);
+        }
+
+        function showResults(score, career) {
+            document.getElementById('testQuestions').classList.remove('active');
+            document.getElementById('resultsSection').classList.add('active');
+
+            // Actualizar score
+            document.getElementById('scoreNumber').textContent = score + '%';
+            document.getElementById('compatibilityTitle').textContent = `Compatibilidad con ${career.name}`;
+            
+            // Descripción basada en el score
+            let description = '';
+            if (score >= 80) {
+                description = '¡Excelente! Tienes una compatibilidad muy alta con esta carrera.';
+            } else if (score >= 60) {
+                description = 'Buena compatibilidad. Con dedicación puedes tener éxito en esta carrera.';
+            } else if (score >= 40) {
+                description = 'Compatibilidad moderada. Considera desarrollar las habilidades necesarias.';
+            } else {
+                description = 'Compatibilidad baja. Podrías considerar otras opciones o trabajar en tus debilidades.';
+            }
+            document.getElementById('compatibilityDescription').textContent = description;
+
+            // Análisis de habilidades
+            showSkillsAnalysis();
+            showStrengthsAndImprovements();
+            showRecommendations();
+            createCompetencyChart();
+        }
+
+        function showSkillsAnalysis() {
+            const container = document.getElementById('skillsAnalysis');
+            const career = careers[currentCareer];
+            
+            container.innerHTML = career.skills.map(skill => {
+                const score = userScores[skill];
+                const skillName = skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const dots = Array.from({length: 5}, (_, i) => 
+                    `<div class="skill-dot ${i < Math.round(score / 20) ? 'active' : ''}"></div>`
+                ).join('');
+                
+                return `
+                    <div class="skill-item">
+                        <span class="skill-name">${skillName}</span>
+                        <div class="skill-level">${dots}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showStrengthsAndImprovements() {
+            const career = careers[currentCareer];
+            const sortedSkills = Object.entries(userScores)
+                .sort((a, b) => b[1] - a[1]);
+
+            // Fortalezas (top 3)
+            const strengths = sortedSkills.slice(0, 3);
+            document.getElementById('strengthsList').innerHTML = strengths.map(([skill, score]) => {
+                const skillName = skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                return `<div class="skill-item"><span class="skill-name">${skillName} (${score}%)</span></div>`;
+            }).join('');
+
+            // Áreas de mejora (bottom 3)
+            const improvements = sortedSkills.slice(-3).reverse();
+            document.getElementById('improvementsList').innerHTML = improvements.map(([skill, score]) => {
+                const skillName = skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                return `<div class="skill-item"><span class="skill-name">${skillName} (${score}%)</span></div>`;
+            }).join('');
+        }
+
+        function showRecommendations() {
+            const score = parseInt(document.getElementById('scoreNumber').textContent);
+            let recommendations = [];
+
+            if (score >= 80) {
+                recommendations = [
+                    'Mantén tu nivel de motivación y continúa desarrollando tus fortalezas',
+                    'Considera especializarte en áreas específicas de la carrera',
+                    'Busca oportunidades de liderazgo y mentoría'
+                ];
+            } else if (score >= 60) {
+                recommendations = [
+                    'Enfócate en desarrollar las habilidades con menor puntuación',
+                    'Busca experiencias prácticas en el campo',
+                    'Considera tomar cursos adicionales en áreas débiles'
+                ];
+            } else {
+                recommendations = [
+                    'Evalúa si realmente te interesa esta carrera',
+                    'Considera explorar carreras relacionadas',
+                    'Desarrolla las habilidades fundamentales antes de decidir'
+                ];
+            }
+
+            document.getElementById('recommendationsList').innerHTML = recommendations
+                .map(rec => `<div class="skill-item"><span class="skill-name">• ${rec}</span></div>`)
+                .join('');
+        }
+
+        function createCompetencyChart() {
+            const ctx = document.getElementById('competencyChart').getContext('2d');
+            const career = careers[currentCareer];
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: career.skills.map(skill => 
+                        skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
+                    ),
+                    datasets: [{
+                        label: 'Tu Perfil',
+                        data: career.skills.map(skill => userScores[skill]),
+                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(102, 126, 234, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function retakeTest() {
+            currentCareer = null;
+            currentQuestion = 0;
+            answers = {};
+            userScores = {};
+
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('careerSelection').style.display = 'block';
+            document.getElementById('startTestBtn').disabled = true;
+            
+            // Limpiar selecciones
+            document.querySelectorAll('.career-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+        }
+
+        function goToDashboard() {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
