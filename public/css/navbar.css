@@ -1,0 +1,237 @@
+/* Estilos del Navbar para todas las páginas (excepto dashboard) */
+.navbar,
+nav.navbar {
+    background: linear-gradient(90deg, #0a2342 60%, #1769aa 100%) !important;
+    background-image: linear-gradient(90deg, #0a2342 60%, #1769aa 100%) !important;
+    background-color: #0a2342 !important;
+    box-shadow: 0 2px 10px rgba(10,35,66,0.08) !important;
+    padding: 15px 0 !important;
+    z-index: 1030 !important;
+    position: relative !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 70px !important;
+}
+
+/* Mejorar el espaciado del contenedor del navbar */
+.navbar .container {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Estilos para el navbar-brand */
+.navbar-brand {
+    color: #2196F3 !important;
+    font-weight: 900 !important;
+    font-size: 2.2rem !important;
+    letter-spacing: 2px !important;
+    text-decoration: none !important;
+    text-shadow: 0 2px 8px #1769aa !important;
+}
+
+.navbar-brand:hover {
+    color: #1769aa !important;
+    text-decoration: none !important;
+}
+
+/* Estilos para los enlaces de navegación - MÁXIMA ESPECIFICIDAD */
+.navbar .navbar-nav,
+nav.navbar .navbar-nav,
+body .navbar .navbar-nav {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    min-height: auto !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500 !important;
+    transition: color 0.2s !important;
+    position: relative !important;
+    padding: 8px 15px !important;
+    margin-left: 0 !important;
+}
+
+/* Estilos específicos para los elementos de autenticación - MÁXIMA ESPECIFICIDAD */
+.navbar .navbar-nav .auth-item,
+nav.navbar .navbar-nav .auth-item,
+body .navbar .navbar-nav .auth-item {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    order: 999 !important;
+}
+
+.navbar .navbar-nav .auth-item:last-child,
+nav.navbar .navbar-nav .auth-item:last-child,
+body .navbar .navbar-nav .auth-item:last-child {
+    margin-right: 0 !important;
+    order: 1000 !important;
+}
+
+/* Asegurar que los botones de autenticación estén pegados al margen derecho */
+.navbar-nav .auth-item .nav-link {
+    margin-right: 0 !important;
+}
+
+.navbar-nav .auth-item:last-child .nav-link {
+    margin-right: 0 !important;
+}
+
+/* ELIMINAR el pseudo-elemento ::after que está agregando espacio extra */
+.navbar .navbar-nav::after,
+nav.navbar .navbar-nav::after,
+body .navbar .navbar-nav::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #3ec6ff !important;
+    text-shadow: 0 2px 8px #1769aa !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3ec6ff;
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Estilos para el botón hamburguesa */
+.navbar-toggler {
+    border: 2px solid rgba(255,255,255,0.5) !important;
+    padding: 4px 8px !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.25) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Estilos responsive */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(10,35,66,0.95) !important;
+        border-radius: 10px !important;
+        margin-top: 10px !important;
+        padding: 20px !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+    .navbar-nav {
+        margin-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 12px 0 !important;
+        margin-left: 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    }
+
+    .navbar-nav .nav-link:last-child {
+        border-bottom: none !important;
+    }
+}
+
+/* EXCEPCIÓN: Estilos específicos para el dashboard - mantener su estilo original */
+.dashboard-container .navbar,
+.dashboard-container .navbar-custom {
+    background: rgba(255, 255, 255, 0.95) !important;
+    background-image: none !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 16px !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    animation: slideInDown 0.6s ease !important;
+}
+
+.dashboard-container .navbar-brand {
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #1769aa, #2196f3) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: none !important;
+}
+
+.dashboard-container .navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 500 !important;
+}
+
+.dashboard-container .navbar-nav .nav-link:hover,
+.dashboard-container .navbar-nav .nav-link.active {
+    color: #1769aa !important;
+    text-shadow: none !important;
+}
+
+.dashboard-container .navbar-nav .nav-link::after {
+    background: #1769aa !important;
+}
+
+/* Estilos para botones de autenticación en el navbar */
+.navbar .btn-primary,
+.navbar .btn-outline-danger {
+    border-radius: 20px !important;
+    padding: 8px 20px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    margin: 0 5px !important;
+}
+
+.navbar .btn-primary {
+    background: linear-gradient(135deg, #1769aa, #2196f3) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.navbar .btn-outline-danger {
+    border: 2px solid #dc3545 !important;
+    color: #dc3545 !important;
+    background: transparent !important;
+}
+
+.navbar .btn-primary:hover {
+    background: linear-gradient(135deg, #0a2342, #1769aa) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3) !important;
+}
+
+.navbar .btn-outline-danger:hover {
+    background: #dc3545 !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3) !important;
+}

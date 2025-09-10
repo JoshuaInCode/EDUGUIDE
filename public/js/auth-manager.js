@@ -72,7 +72,7 @@ class AuthManager {
         
         // Crear elemento de perfil
         const profileItem = document.createElement('li');
-        profileItem.className = 'nav-item auth-item ms-3';
+        profileItem.className = 'nav-item auth-item';
         profileItem.innerHTML = `
             <a class="nav-link btn btn-primary btn-sm" href="${basePath}dashboard.html" style="border-radius: 20px; padding: 8px 20px; background: linear-gradient(135deg, #1769aa, #2196f3); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                 <i class="fas fa-user me-1"></i>Mi Perfil
@@ -81,7 +81,7 @@ class AuthManager {
 
         // Crear elemento de logout
         const logoutItem = document.createElement('li');
-        logoutItem.className = 'nav-item auth-item ms-2';
+        logoutItem.className = 'nav-item auth-item';
         logoutItem.innerHTML = `
             <a class="nav-link btn btn-outline-danger btn-sm" href="#" onclick="authManager.logout()" style="border-radius: 20px; padding: 8px 20px; border: 2px solid #dc3545; color: #dc3545; font-weight: 600; transition: all 0.3s ease;">
                 <i class="fas fa-sign-out-alt me-1"></i>Cerrar Sesión
@@ -99,7 +99,7 @@ class AuthManager {
         
         // Crear elemento de login
         const loginItem = document.createElement('li');
-        loginItem.className = 'nav-item auth-item ms-3';
+        loginItem.className = 'nav-item auth-item';
         loginItem.innerHTML = `
             <a class="nav-link btn btn-outline-primary btn-sm" href="${basePath}login.html" style="border-radius: 20px; padding: 8px 20px; border: 2px solid #2196f3; color: #2196f3; font-weight: 600; transition: all 0.3s ease;">
                 <i class="fas fa-sign-in-alt me-1"></i>Login
@@ -108,7 +108,7 @@ class AuthManager {
 
         // Crear elemento de signup
         const signupItem = document.createElement('li');
-        signupItem.className = 'nav-item auth-item ms-2';
+        signupItem.className = 'nav-item auth-item';
         signupItem.innerHTML = `
             <a class="nav-link btn btn-primary btn-sm" href="${basePath}signup.html" style="border-radius: 20px; padding: 8px 20px; background: linear-gradient(135deg, #1769aa, #2196f3); border: none; color: white; font-weight: 600; transition: all 0.3s ease;">
                 <i class="fas fa-user-plus me-1"></i>Sign Up

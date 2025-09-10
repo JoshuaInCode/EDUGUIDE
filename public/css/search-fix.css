@@ -1,8 +1,8 @@
 /* Search Fix CSS - Professional University Search Styling - MAXIMUM SPECIFICITY */
 
-/* Fix for fixed header - Add margin to body to prevent content overlap */
+/* Fix for fixed header - Remove margin from body to prevent spacing issues */
 body {
-    margin-top: 80px !important;
+    margin-top: 0 !important;
     padding-top: 0 !important;
 }
 
@@ -320,8 +320,8 @@ body .faculty-div {
 
 /* Ensure proper spacing for the entire universities section */
 body section.py-5 {
-    margin-top: 100px !important;
-    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 100px !important;
 }
 
 /* OVERRIDE ANY CONFLICTING STYLES FROM OTHER CSS FILES */

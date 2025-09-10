@@ -1,6 +1,11 @@
 body {
     font-family: 'Poppins', sans-serif;
-    padding-top: 76px;
+}
+
+/* Asegurar espaciado adecuado para la sección principal */
+body section.py-5 {
+    margin-top: 0 !important;
+    padding-top: 100px !important;
 }
 
 .navbar {
