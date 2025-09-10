@@ -11,6 +11,84 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <style>
         body { font-family: 'Poppins', sans-serif; background: #f4f8fb; }
+        
+        /* Dashboard Header Styles */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 0.6s ease;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1769aa, #2196f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1769aa, #2196f3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sidebar-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background: rgba(23, 105, 170, 0.1);
+            color: #1769aa;
+        }
+
+        .logout-btn {
+            color: #e74c3c;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(231, 76, 60, 0.1);
+            color: #c0392b;
+        }
+        
         .vocational-container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 18px; box-shadow: 0 8px 32px rgba(33,150,243,0.10); padding: 40px 30px; }
         .question { font-size: 1.3rem; font-weight: 600; color: #1769aa; margin-bottom: 20px; }
         .option-btn { display: block; width: 100%; margin-bottom: 15px; padding: 14px 18px; border-radius: 12px; border: 2px solid #2196f3; background: #eaf3fb; color: #1769aa; font-weight: 500; font-size: 1.1rem; transition: all 0.2s; text-align: left; }
@@ -26,6 +104,29 @@
     </style>
 </head>
 <body>
+    <!-- Dashboard Header -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-left">
+                <button class="sidebar-toggle" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <a class="navbar-brand" href="dashboard.html">EduGuide</a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userEmail">Usuario</span>
+                </div>
+                <a href="#" class="logout-btn" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="vocational-container">
         <div id="test-section">
             <div class="progress mb-4">
