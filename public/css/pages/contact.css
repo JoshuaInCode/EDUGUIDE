@@ -59,11 +59,31 @@ body section.py-5 {
 
 .contact-info i {
     font-size: 2rem;
-    margin-bottom: 15px;
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .contact-info h4 {
     margin-bottom: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.contact-item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-item-header i {
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+
+.contact-item-header h4 {
+    margin-bottom: 0;
+    display: inline-block;
 }
 
 .form-control {
