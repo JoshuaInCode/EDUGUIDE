@@ -1,0 +1,69 @@
+/* HEADER SPACING FIX CSS - SOLUCIÓN DEFINITIVA PARA EL ESPACIADO */
+/* Este archivo debe cargarse AL FINAL para sobrescribir todos los demás */
+
+/* SOBRESCRIBIR LA CLASE py-5 DE BOOTSTRAP QUE ESTÁ CAUSANDO EL PROBLEMA */
+html body section.py-5 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* SOBRESCRIBIR CUALQUIER ESTILO INLINE O CSS ANTERIOR */
+html body section.py-5 .header-section,
+html body section.py-5 .header-section[style*="margin-top"],
+html body section.py-5 .header-section[style*="padding-top"] {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    padding: 6rem 2rem !important;
+    position: relative !important;
+    width: 100vw !important;
+    left: 50% !important;
+    right: 50% !important;
+    height: 300px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+/* SOBRESCRIBIR CUALQUIER MARGIN EN EL BODY */
+html body,
+html body[style*="margin-top"],
+html body[style*="padding-top"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Asegurar que el contenedor de búsqueda esté correctamente posicionado */
+html body .search-filter-container,
+html body .search-filter-container[style*="margin-top"] {
+    margin-top: 0 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* Asegurar que el input de búsqueda sea interactivo */
+html body #universitySearch,
+html body .search-input {
+    pointer-events: auto !important;
+    z-index: 1001 !important;
+    position: relative !important;
+}
+
+/* Asegurar que el contenedor de búsqueda sea interactivo */
+html body .search-container,
+html body .search-input-wrapper {
+    pointer-events: auto !important;
+    z-index: 1000 !important;
+    position: relative !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    html body section.py-5 .header-section {
+        height: 250px !important;
+        padding: 4rem 1rem !important;
+    }
+}

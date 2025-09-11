@@ -41,8 +41,8 @@ body .search-filter-container {
     margin-bottom: 40px !important;
     border: 1px solid rgba(33, 150, 243, 0.1) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 body .search-filter-container:hover {
@@ -239,7 +239,7 @@ body .search-filter-container {
 @media (max-width: 768px) {
     body .search-filter-container {
         padding: 20px !important;
-        margin-top: 100px !important;
+        margin-top: 0 !important;
         margin-bottom: 30px !important;
     }
     
@@ -321,7 +321,12 @@ body .faculty-div {
 /* Ensure proper spacing for the entire universities section */
 body section.py-5 {
     margin-top: 0 !important;
-    padding-top: 100px !important;
+    padding-top: 0 !important;
+}
+
+/* Fix header section positioning to eliminate gap */
+body section.py-5 .header-section {
+    margin-top: 80px !important;
 }
 
 /* OVERRIDE ANY CONFLICTING STYLES FROM OTHER CSS FILES */

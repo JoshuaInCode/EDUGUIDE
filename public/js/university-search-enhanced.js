@@ -89,7 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (searchTerm.length < 2) {
             searchResults.style.display = 'none';
             clearSearchBtn.style.display = 'none';
-            showAllUniversities();
+            // NO llamar showAllUniversities() aquí para evitar mensajes molestos
+            // Solo mostrar todas las universidades sin mensaje
+            universityCards.forEach(card => {
+                card.style.display = 'block';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
             return;
         }
 
@@ -134,7 +140,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => card.classList.remove('highlight'), 2000);
             });
             
-            showSuccessMessage(`Se encontraron ${foundUniversities.length} universidad(es)`);
+            // Solo mostrar mensaje si hay más de 5 universidades encontradas
+            if (foundUniversities.length > 5) {
+                showSuccessMessage(`Se encontraron ${foundUniversities.length} universidad(es)`);
+            }
         } else {
             showNoResultsMessage(searchTerm);
         }
@@ -204,10 +213,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Mostrar sugerencias al hacer focus en el input
-    if (searchInput) {
-        searchInput.addEventListener('focus', showSearchSuggestions);
-    }
+    // Mostrar sugerencias al hacer focus en el input - DESHABILITADO TEMPORALMENTE
+    // if (searchInput) {
+    //     searchInput.addEventListener('focus', showSearchSuggestions);
+    // }
 });
 
 // Estilos CSS adicionales para las mejoras

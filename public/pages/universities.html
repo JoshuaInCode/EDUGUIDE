@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/pages/universities.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
     <link rel="stylesheet" href="../css/search-fix.css">
     <link rel="stylesheet" href="../css/title-animations.css">
     <link rel="stylesheet" href="../css/search-results-fix.css">
@@ -41,6 +42,56 @@
         /* Enhanced focus indicators for accessibility */
         .search-container:focus-within {
             transform: scale(1.02) !important;
+        }
+        
+        /* SOLUCIÓN DEFINITIVA PARA EL ESPACIADO - ESTILOS INLINE */
+        section.py-5 {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+        }
+        
+        .header-section {
+            margin-top: 0 !important;
+            margin-bottom: 2rem !important;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+            padding: 6rem 2rem !important;
+            position: relative !important;
+            width: 100vw !important;
+            left: 50% !important;
+            right: 50% !important;
+            height: 300px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: hidden !important;
+        }
+        
+        body {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        /* ASEGURAR QUE LA BÚSQUEDA FUNCIONE */
+        #universitySearch,
+        .search-input {
+            pointer-events: auto !important;
+            z-index: 1001 !important;
+            position: relative !important;
+        }
+        
+        .search-container,
+        .search-input-wrapper {
+            pointer-events: auto !important;
+            z-index: 1000 !important;
+            position: relative !important;
+        }
+        
+        .search-filter-container {
+            pointer-events: auto !important;
+            z-index: 1000 !important;
+            position: relative !important;
         }
     </style>
 </head>
@@ -131,7 +182,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="up-block">
                         <div class="university-overlay" id="up-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/Logo UP.png" alt="Logo Universidad de Panamá" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/Logo UP.png" alt="Logo Universidad de Panamá" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -154,7 +205,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="utp-block">
                         <div class="university-overlay" id="utp-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UTP.png" alt="Logo UTP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UTP.png" alt="Logo UTP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">TECHNOLOGICAL UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -177,7 +228,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="udelas-block">
                         <div class="university-overlay" id="udelas-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UDELAS.png" alt="Logo UDELAS" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UDELAS.png" alt="Logo UDELAS" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">UDELAS</h2>
                         </div>
                         <div class="content">
@@ -202,7 +253,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="umip-block">
                         <div class="university-overlay" id="umip-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UMIP.png" alt="Logo UMIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UMIP.png" alt="Logo UMIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">MARITIME UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -225,7 +276,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="unachi-block">
                         <div class="university-overlay" id="unachi-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UNACHI.png" alt="Logo UNACHI" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UNACHI.png" alt="Logo UNACHI" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">UNACHI</h2>
                         </div>
                         <div class="content">
@@ -248,7 +299,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="ulatina-block">
                         <div class="university-overlay" id="ulatina-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/ULatina.png" alt="Logo ULatina" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/ULatina.png" alt="Logo ULatina" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">LATIN UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -273,7 +324,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="usma-block">
                         <div class="university-overlay" id="usma-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/USMA.png" alt="Logo USMA" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/USMA.png" alt="Logo USMA" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">SANTA MARÍA LA ANTIGUA CATHOLIC UNIVERSITY</h2>
                         </div>
                         <div class="content">
@@ -296,7 +347,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="uip-block">
                         <div class="university-overlay" id="uip-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UIP.png" alt="Logo UIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UIP.png" alt="Logo UIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">INTERAMERICAN UNIVERSITY OF PANAMÁ</h2>
                         </div>
                         <div class="content">
@@ -319,7 +370,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="udi-block">
                         <div class="university-overlay" id="udi-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UdelIstmo.png" alt="Logo UdelIstmo" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UdelIstmo.png" alt="Logo UdelIstmo" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">ISTHMUS UNIVERSITY</h2>
                         </div>
                         <div class="content">
@@ -344,7 +395,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="upancon-block">
                         <div class="university-overlay" id="upancon-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/Logo UP.png" alt="Logo Universidad de Panamá" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/Logo UP.png" alt="Logo Universidad de Panamá" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -367,7 +418,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="utpveraguas-block">
                         <div class="university-overlay" id="utpveraguas-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UTP.png" alt="Logo UTP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UTP.png" alt="Logo UTP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">TECHNOLOGICAL UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -390,7 +441,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="udelaschiriqui-block">
                         <div class="university-overlay" id="udelaschiriqui-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UDELAS.png" alt="Logo UDELAS" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UDELAS.png" alt="Logo UDELAS" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">UDELAS</h2>
                         </div>
                         <div class="content">
@@ -415,7 +466,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="umipcolon-block">
                         <div class="university-overlay" id="umipcolon-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UMIP.png" alt="Logo UMIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UMIP.png" alt="Logo UMIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">MARITIME UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -438,7 +489,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="unachibocas-block">
                         <div class="university-overlay" id="unachibocas-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UNACHI.png" alt="Logo UNACHI" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UNACHI.png" alt="Logo UNACHI" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">UNACHI</h2>
                         </div>
                         <div class="content">
@@ -461,7 +512,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="ulatinavg-block">
                         <div class="university-overlay" id="ulatinavg-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/ULatina.png" alt="Logo ULatina" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/ULatina.png" alt="Logo ULatina" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">LATIN UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -486,7 +537,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="usmachiriqui-block">
                         <div class="university-overlay" id="usmachiriqui-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/USMA.png" alt="Logo USMA" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/USMA.png" alt="Logo USMA" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">SANTA MARÍA LA ANTIGUA CATHOLIC UNIVERSITY</h2>
                         </div>
                         <div class="content">
@@ -509,7 +560,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="uipchiriqui-block">
                         <div class="university-overlay" id="uipchiriqui-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UIP.png" alt="Logo UIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UIP.png" alt="Logo UIP" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">INTERAMERICAN UNIVERSITY OF PANAMA</h2>
                         </div>
                         <div class="content">
@@ -532,7 +583,7 @@
                 <div class="col-md-4">
                     <div class="faculty-div position-relative" id="udichiriqui-block">
                         <div class="university-overlay" id="udichiriqui-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.97);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;">
-                            <img src="/public/img/UdelIstmo.png" alt="Logo UdelIstmo" style="max-width:110px;max-height:110px;margin-bottom:18px;">
+                            <img src="../img/UdelIstmo.png" alt="Logo UdelIstmo" style="max-width:110px;max-height:110px;margin-bottom:18px;">
                             <h2 class="university-title">ISTHMUS UNIVERSITY - CHIRIQUÍ CAMPUS</h2>
                         </div>
                         <div class="content">
@@ -620,8 +671,8 @@
     <!-- EduGuide Chatbot -->
     <script src="../js/chatbot.js"></script>
     
-    <!-- Enhanced University Search Script -->
-    <script src="../js/university-search-enhanced.js"></script>
+    <!-- Enhanced University Search Script - TEMPORALMENTE DESHABILITADO -->
+    <!-- <script src="../js/university-search-enhanced.js"></script> -->
     
     <!-- University Search and Filter Script - Load first -->
     <script src="../js/university-search.js"></script>
@@ -638,13 +689,16 @@
     <!-- Simple Search Fix Script -->
     <script src="../js/simple-search-fix.js"></script>
     
-    <!-- Spacing Fix Script -->
-    <script src="../js/spacing-fix.js"></script>
+    <!-- Spacing Fix Script - DISABLED TO FIX HEADER SPACING -->
+    <!-- <script src="../js/spacing-fix.js"></script> -->
     
-    <!-- Emergency Spacing Fix Script -->
-    <script src="../js/emergency-spacing.js"></script>
+    <!-- Emergency Spacing Fix Script - DISABLED TO FIX HEADER SPACING -->
+    <!-- <script src="../js/emergency-spacing.js"></script> -->
     
     <!-- Title Animations -->
     <script src="../js/title-animations.js"></script>
+    
+    <!-- Force Header Spacing - Script definitivo para corregir el espaciado -->
+    <script src="../js/force-header-spacing.js"></script>
 </body>
 </html> 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -265,6 +265,38 @@
             </div>
             <!-- Agregar overlay degradado animado -->
             <div class="carousel-gradient-overlay"></div>
+        </div>
+    </section>
+
+    <!-- Resultados del Test Vocacional -->
+    <section id="test-results" class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="header-line" style="color: #1769aa; margin-bottom: 0;">RESULTADOS DEL TEST VOCACIONAL</h2>
+                    <p class="lead" style="color: #0a2342; margin-top: 10px;">Aquí puedes ver los resultados de los tests vocacionales que has guardado. Selecciona uno para ver detalles o elimina los que no desees conservar.</p>
+                </div>
+            </div>
+            <div id="savedTestResults" class="row justify-content-center">
+                <!-- Los resultados guardados se mostrarán aquí dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Gráfica de Avance -->
+    <section id="dashboard-progress" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="header-line" style="color: #1769aa; margin-bottom: 0;">TU AVANCE EN ÁREAS VOCACIONALES</h2>
+                    <p class="lead" style="color: #0a2342; margin-top: 10px;">Visualiza tu progreso en las diferentes áreas según los tests vocacionales que has guardado.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <canvas id="vocationalProgressChart" style="width:100%;max-width:700px;"></canvas>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -803,8 +835,8 @@
         </style>
     </section>
 
-            <!-- Contact Section -->
-        <section id="contact" class="py-5 animate-fadein" style="background: linear-gradient(135deg, #1769aa 0%, #2196f3 100%); margin-bottom: 0;">
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 animate-fadein" style="background: linear-gradient(135deg, #1769aa 0%, #2196f3 100%); margin-bottom: 0;">
         <div class="container">
             <div class="row text-center mb-5">
                 <div class="col-lg-8 mx-auto">
@@ -1038,5 +1070,86 @@ document.addEventListener('DOMContentLoaded', revealOnScroll);
         showCookieBanner();
     });
 </script>
+
+    <!-- Scripts para la gráfica y resultados del test -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // Ejemplo de integración para mostrar resultados guardados y gráfica de avance
+    // Los datos reales deben ser obtenidos del backend o localStorage
+    const savedResults = JSON.parse(localStorage.getItem('vocationalTestResults') || '[]');
+    const resultsContainer = document.getElementById('savedTestResults');
+    if (resultsContainer) {
+        if (savedResults.length === 0) {
+            resultsContainer.innerHTML = '<div class="col-12 text-center"><p>No hay resultados guardados aún.</p></div>';
+        } else {
+            savedResults.forEach((result, idx) => {
+                const card = document.createElement('div');
+                card.className = 'col-md-6 mb-3';
+                card.innerHTML = `
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Test #${idx + 1} - ${result.date || ''}</h5>
+                            <p class="card-text">${result.summary || 'Sin resumen disponible.'}</p>
+                            <button class="btn btn-danger btn-sm" onclick="deleteTestResult(${idx})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+    }
+    function deleteTestResult(idx) {
+        savedResults.splice(idx, 1);
+        localStorage.setItem('vocationalTestResults', JSON.stringify(savedResults));
+        location.reload();
+    }
+    // Gráfica de avance
+    if (document.getElementById('vocationalProgressChart')) {
+        const areaLabels = ['Ingeniería', 'Salud', 'Arte', 'Negocios'];
+        // Sumar puntajes por área de todos los tests guardados
+        const areaScores = [0,0,0,0];
+        savedResults.forEach(r => {
+            (r.scores || []).forEach((score, i) => areaScores[i] += score);
+        });
+        new Chart(document.getElementById('vocationalProgressChart'), {
+            type: 'bar',
+            data: {
+                labels: areaLabels,
+                datasets: [{
+                    label: 'Puntaje acumulado',
+                    data: areaScores,
+                    backgroundColor: ['#1976d2','#42a5f5','#64b5f6','#90caf9']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+    // Al terminar el test vocacional, mostrar opciones para guardar/eliminar
+    // Ejemplo de función que se llama al finalizar el test
+    function onVocationalTestFinish(result) {
+        const container = document.createElement('div');
+        container.className = 'test-finish-options';
+        container.innerHTML = `
+            <button class="btn btn-success" onclick="saveVocationalResult()">Guardar resultado</button>
+            <button class="btn btn-danger" onclick="discardVocationalResult()">Eliminar resultado</button>
+        `;
+        document.body.appendChild(container);
+        window.saveVocationalResult = function() {
+            const results = JSON.parse(localStorage.getItem('vocationalTestResults') || '[]');
+            results.push(result);
+            localStorage.setItem('vocationalTestResults', JSON.stringify(results));
+            container.remove();
+            alert('Resultado guardado en Resultados del Test.');
+        };
+        window.discardVocationalResult = function() {
+            container.remove();
+            alert('Resultado eliminado.');
+        };
+    }
+    // ...Integrar esta función en el flujo del test vocacional...
+    </script>
 </body>
 </html>
