@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     
     <style>
         body {
@@ -25,6 +26,83 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             overflow-x: hidden;
+        }
+        
+        /* Dashboard Header Styles */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 0.6s ease;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1769aa, #2196f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1769aa, #2196f3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sidebar-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background: rgba(23, 105, 170, 0.1);
+            color: #1769aa;
+        }
+
+        .logout-btn {
+            color: #e74c3c;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(231, 76, 60, 0.1);
+            color: #c0392b;
         }
         
         .test-container {
@@ -244,6 +322,68 @@
             flex: 1;
         }
         
+        /* Estilos para radio buttons */
+        .option-radio {
+            background: #f8f9fa;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .option-radio:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .option-radio.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .option-radio input[type="radio"] {
+            display: none;
+        }
+        
+        .radio-mark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .option-radio.selected .radio-mark {
+            background: white;
+            border-color: white;
+        }
+        
+        .radio-mark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #667eea;
+        }
+        
+        .option-radio.selected .radio-mark:after {
+            display: block;
+        }
+        
         .progress-bar {
             background: #e1e5e9;
             border-radius: 10px;
@@ -450,6 +590,29 @@
 </head>
 
 <body>
+    <!-- Dashboard Header -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-left">
+                <button class="sidebar-toggle" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <a class="navbar-brand" href="dashboard.html">EduGuide</a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span id="userEmail">Usuario</span>
+                </div>
+                <a href="#" class="logout-btn" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="test-container">
         <!-- Header -->
         <div class="test-header">
@@ -698,64 +861,61 @@
             }
         };
 
-        // Preguntas del test expandidas y más profundas
+        // Preguntas del test mejoradas para mayor precisión
         const questions = [
             {
-                question: "Cuando enfrentas un problema complejo, ¿cuál es tu primer instinto?",
+                question: "En una situación donde debes elegir entre dos opciones importantes, ¿qué factor pesa más en tu decisión?",
+                multipleChoice: false, // Selección única
                 options: [
-                    { text: "Analizar todos los datos disponibles sistemáticamente", value: { análisis: 5, lógica: 4, atención_detalle: 4, persistencia: 3 } },
-                    { text: "Buscar diferentes perspectivas y opiniones", value: { comunicación: 4, trabajo_equipo: 4, empatía: 3, adaptabilidad: 4 } },
-                    { text: "Experimentar con soluciones creativas", value: { creatividad: 5, innovación: 4, adaptabilidad: 3, persistencia: 3 } },
-                    { text: "Investigar casos similares del pasado", value: { investigación: 5, memoria: 4, análisis: 3, persistencia: 4 } }
+                    { text: "Los datos objetivos y evidencia disponible", value: { análisis: 5, lógica: 4, investigación: 3, atención_detalle: 3 } },
+                    { text: "El impacto que tendrá en las personas involucradas", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
+                    { text: "La oportunidad de innovar o crear algo nuevo", value: { creatividad: 5, innovación: 4, adaptabilidad: 3, persistencia: 2 } },
+                    { text: "La eficiencia y resultados medibles que obtendré", value: { organización: 4, persistencia: 4, análisis: 3, atención_detalle: 3 } }
                 ]
             },
             {
-                question: "¿Qué tipo de ambiente de trabajo te hace sentir más productivo?",
+                question: "Cuando trabajas en un proyecto que requiere múltiples pasos, ¿cómo prefieres organizarte?",
+                multipleChoice: true, // Selección múltiple
                 options: [
-                    { text: "Silencioso y sin distracciones", value: { atención_detalle: 4, persistencia: 4, análisis: 3, organización: 4 } },
-                    { text: "Colaborativo con discusiones constantes", value: { trabajo_equipo: 5, comunicación: 4, empatía: 3, adaptabilidad: 4 } },
-                    { text: "Dinámico con cambios frecuentes", value: { adaptabilidad: 5, innovación: 4, creatividad: 3, persistencia: 2 } },
-                    { text: "Estructurado con rutinas claras", value: { organización: 5, persistencia: 4, atención_detalle: 3, ética: 3 } }
+                    { text: "Creo una lista detallada y la sigo paso a paso", value: { organización: 5, atención_detalle: 4, persistencia: 3, análisis: 3 } },
+                    { text: "Me adapto según van surgiendo las necesidades", value: { adaptabilidad: 5, creatividad: 3, innovación: 3, comunicación: 2 } },
+                    { text: "Colaboro con otros para dividir las tareas", value: { trabajo_equipo: 5, comunicación: 4, liderazgo: 3, empatía: 3 } },
+                    { text: "Me enfoco en los aspectos más complejos primero", value: { análisis: 4, persistencia: 4, lógica: 3, investigación: 3 } }
                 ]
             },
             {
-                question: "Cuando alguien te explica algo que no entiendes, ¿qué haces?",
+                question: "Si tuvieras que explicar un concepto complejo a alguien que no lo conoce, ¿qué método usarías?",
+                multipleChoice: false, // Selección única
                 options: [
-                    { text: "Hago preguntas específicas hasta entender completamente", value: { comunicación: 4, análisis: 4, persistencia: 4, atención_detalle: 3 } },
-                    { text: "Busco ejemplos prácticos o analogías", value: { creatividad: 4, comunicación: 3, adaptabilidad: 4, innovación: 3 } },
-                    { text: "Investigo por mi cuenta para complementar", value: { investigación: 5, persistencia: 4, análisis: 3, adaptabilidad: 3 } },
-                    { text: "Pido que me lo muestren paso a paso", value: { atención_detalle: 4, organización: 3, persistencia: 3, comunicación: 3 } }
+                    { text: "Usar analogías y ejemplos de la vida cotidiana", value: { creatividad: 4, comunicación: 4, empatía: 3, adaptabilidad: 3 } },
+                    { text: "Explicar paso a paso con definiciones claras", value: { organización: 4, atención_detalle: 4, persistencia: 3, comunicación: 3 } },
+                    { text: "Mostrar ejemplos prácticos y casos reales", value: { investigación: 4, análisis: 3, comunicación: 3, persistencia: 3 } },
+                    { text: "Hacer preguntas para entender su nivel de conocimiento", value: { empatía: 4, comunicación: 4, trabajo_equipo: 3, adaptabilidad: 3 } }
                 ]
             },
             {
-                question: "¿Qué te motiva más cuando trabajas en un proyecto?",
+                question: "En un ambiente de trabajo, ¿qué tipo de feedback te resulta más útil?",
+                multipleChoice: true, // Selección múltiple
                 options: [
-                    { text: "La posibilidad de ayudar a otros", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
-                    { text: "Resolver un desafío intelectual", value: { análisis: 5, lógica: 4, persistencia: 4, investigación: 3 } },
-                    { text: "Crear algo único y original", value: { creatividad: 5, innovación: 5, visualización: 3, persistencia: 3 } },
-                    { text: "Ver resultados tangibles y medibles", value: { organización: 4, persistencia: 4, atención_detalle: 3, análisis: 3 } }
+                    { text: "Feedback específico sobre qué mejorar y cómo", value: { atención_detalle: 4, persistencia: 4, análisis: 3, organización: 3 } },
+                    { text: "Reconocimiento de lo que hice bien y motivación", value: { empatía: 4, comunicación: 3, trabajo_equipo: 3, ética: 3 } },
+                    { text: "Sugerencias creativas para abordar el problema", value: { creatividad: 4, innovación: 4, adaptabilidad: 3, comunicación: 3 } },
+                    { text: "Análisis detallado de los resultados obtenidos", value: { análisis: 5, investigación: 4, lógica: 3, persistencia: 3 } }
                 ]
             },
             {
-                question: "¿Cómo manejas la información cuando tienes que tomar una decisión importante?",
+                question: "Cuando enfrentas un obstáculo inesperado en tu trabajo, ¿cuál es tu reacción inicial?",
+                multipleChoice: false, // Selección única
                 options: [
-                    { text: "Recopilo todos los datos posibles antes de decidir", value: { análisis: 5, investigación: 4, atención_detalle: 4, persistencia: 3 } },
-                    { text: "Consulto con personas de confianza", value: { comunicación: 4, trabajo_equipo: 4, empatía: 3, ética: 3 } },
-                    { text: "Confío en mi intuición y experiencia", value: { adaptabilidad: 4, creatividad: 3, persistencia: 3, innovación: 3 } },
-                    { text: "Analizo los pros y contras sistemáticamente", value: { lógica: 5, análisis: 4, organización: 3, persistencia: 3 } }
-                ]
-            },
-            {
-                question: "¿Qué tipo de feedback prefieres recibir sobre tu trabajo?",
-                options: [
-                    { text: "Detallado y específico sobre mejoras", value: { atención_detalle: 4, persistencia: 4, análisis: 3, organización: 3 } },
-                    { text: "Constructivo y alentador", value: { comunicación: 4, empatía: 3, trabajo_equipo: 3, adaptabilidad: 3 } },
-                    { text: "Honesto y directo", value: { comunicación: 4, ética: 3, persistencia: 3, análisis: 3 } },
-                    { text: "Enfocado en resultados y métricas", value: { análisis: 4, organización: 4, persistencia: 3, atención_detalle: 3 } }
+                    { text: "Analizo la situación para entender la causa raíz", value: { análisis: 5, lógica: 4, investigación: 3, persistencia: 3 } },
+                    { text: "Busco ayuda o consejo de colegas o superiores", value: { trabajo_equipo: 5, comunicación: 4, empatía: 3, adaptabilidad: 3 } },
+                    { text: "Experimento con diferentes enfoques hasta encontrar uno que funcione", value: { creatividad: 4, innovación: 4, adaptabilidad: 4, persistencia: 3 } },
+                    { text: "Me enfoco en mantener la calma y buscar soluciones prácticas", value: { organización: 4, persistencia: 4, ética: 3, atención_detalle: 3 } }
                 ]
             },
             {
                 question: "Cuando trabajas en equipo, ¿cuál es tu rol natural?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "Líder que organiza y dirige", value: { liderazgo: 5, organización: 4, comunicación: 4, trabajo_equipo: 3 } },
                     { text: "Colaborador que apoya a otros", value: { trabajo_equipo: 5, empatía: 4, comunicación: 3, adaptabilidad: 3 } },
@@ -765,6 +925,7 @@
             },
             {
                 question: "¿Cómo prefieres aprender algo nuevo?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Leyendo y estudiando teoría", value: { investigación: 4, análisis: 4, memoria: 3, persistencia: 3 } },
                     { text: "Practicando y experimentando", value: { creatividad: 4, adaptabilidad: 4, persistencia: 3, innovación: 3 } },
@@ -774,6 +935,7 @@
             },
             {
                 question: "¿Qué te frustra más en el trabajo?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "La falta de organización y planificación", value: { organización: 5, atención_detalle: 4, persistencia: 3, análisis: 3 } },
                     { text: "La falta de comunicación clara", value: { comunicación: 5, trabajo_equipo: 3, empatía: 3, ética: 3 } },
@@ -783,6 +945,7 @@
             },
             {
                 question: "¿Cómo manejas los plazos ajustados?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Me organizo mejor y trabajo más eficientemente", value: { organización: 5, persistencia: 4, atención_detalle: 3, presión: 4 } },
                     { text: "Busco ayuda y delego tareas", value: { trabajo_equipo: 5, comunicación: 4, liderazgo: 3, adaptabilidad: 3 } },
@@ -792,6 +955,7 @@
             },
             {
                 question: "¿Qué tipo de proyectos te dan más satisfacción personal?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "Los que tienen un impacto social positivo", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
                     { text: "Los que requieren soluciones innovadoras", value: { creatividad: 5, innovación: 5, análisis: 3, persistencia: 3 } },
@@ -801,6 +965,7 @@
             },
             {
                 question: "¿Cómo prefieres comunicar tus ideas?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Presentaciones visuales y gráficas", value: { creatividad: 4, visualización: 5, comunicación: 3, innovación: 3 } },
                     { text: "Documentos escritos detallados", value: { comunicación: 4, atención_detalle: 4, organización: 3, análisis: 3 } },
@@ -810,6 +975,7 @@
             },
             {
                 question: "¿Qué te hace sentir más realizado profesionalmente?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "Ver el impacto positivo en la vida de otros", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
                     { text: "Resolver problemas que nadie más pudo", value: { análisis: 5, persistencia: 4, creatividad: 3, innovación: 3 } },
@@ -819,6 +985,7 @@
             },
             {
                 question: "¿Cómo manejas la incertidumbre en proyectos?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Investigo y planifico para reducir la incertidumbre", value: { investigación: 5, análisis: 4, organización: 3, persistencia: 3 } },
                     { text: "Me adapto y ajusto según surgen cambios", value: { adaptabilidad: 5, creatividad: 3, innovación: 3, comunicación: 3 } },
@@ -828,6 +995,7 @@
             },
             {
                 question: "¿Qué tipo de desafíos te motivan más?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "Desafíos técnicos complejos", value: { análisis: 5, lógica: 4, persistencia: 4, investigación: 3 } },
                     { text: "Desafíos de comunicación y relaciones", value: { comunicación: 5, empatía: 4, trabajo_equipo: 3, adaptabilidad: 3 } },
@@ -837,6 +1005,7 @@
             },
             {
                 question: "¿Cómo prefieres recibir reconocimiento por tu trabajo?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Reconocimiento público y visible", value: { comunicación: 4, persuasión: 3, trabajo_equipo: 3, liderazgo: 3 } },
                     { text: "Reconocimiento personal y privado", value: { empatía: 4, comunicación: 3, ética: 3, trabajo_equipo: 3 } },
@@ -846,6 +1015,7 @@
             },
             {
                 question: "¿Qué te hace sentir más cómodo en un ambiente laboral?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "Tener claridad en roles y responsabilidades", value: { organización: 5, atención_detalle: 3, persistencia: 3, ética: 3 } },
                     { text: "Poder colaborar libremente con otros", value: { trabajo_equipo: 5, comunicación: 4, empatía: 3, adaptabilidad: 3 } },
@@ -855,6 +1025,7 @@
             },
             {
                 question: "¿Cómo manejas los conflictos en el trabajo?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Analizo la situación y busco soluciones objetivas", value: { análisis: 5, lógica: 4, comunicación: 3, ética: 3 } },
                     { text: "Busco entender todas las perspectivas", value: { empatía: 5, comunicación: 4, trabajo_equipo: 3, adaptabilidad: 3 } },
@@ -864,6 +1035,7 @@
             },
             {
                 question: "¿Qué te motiva más a largo plazo en tu carrera?",
+                multipleChoice: true, // Selección múltiple
                 options: [
                     { text: "Hacer una diferencia positiva en el mundo", value: { empatía: 5, ética: 4, comunicación: 3, trabajo_equipo: 3 } },
                     { text: "Alcanzar la excelencia técnica en mi campo", value: { análisis: 5, persistencia: 4, investigación: 3, atención_detalle: 3 } },
@@ -873,6 +1045,7 @@
             },
             {
                 question: "¿Cómo prefieres que te evalúen en el trabajo?",
+                multipleChoice: false, // Selección única
                 options: [
                     { text: "Basado en resultados y métricas específicas", value: { análisis: 4, organización: 4, persistencia: 3, atención_detalle: 3 } },
                     { text: "Basado en contribución al equipo", value: { trabajo_equipo: 5, comunicación: 3, empatía: 3, adaptabilidad: 3 } },
@@ -937,19 +1110,38 @@
             // Obtener respuestas previas para esta pregunta
             const previousAnswers = answers[currentQuestion] || [];
             
+            // Determinar si es selección múltiple o única
+            const isMultipleChoice = question.multipleChoice !== false; // Por defecto es true si no se especifica
+            
             container.innerHTML = `
                 <div class="question-card">
                     <h3 class="question-title">Pregunta ${currentQuestion + 1} de ${questions.length}</h3>
                     <h4 class="mb-4">${question.question}</h4>
-                    <p class="text-muted mb-3"><small><i class="fas fa-info-circle"></i> Puedes seleccionar múltiples opciones que se apliquen a ti</small></p>
+                    <p class="text-muted mb-3">
+                        <small><i class="fas fa-info-circle"></i> 
+                        ${isMultipleChoice ? 'Puedes seleccionar múltiples opciones que se apliquen a ti' : 'Selecciona la opción que mejor te describa'}
+                        </small>
+                    </p>
                     <div class="options-grid">
-                        ${question.options.map((option, index) => `
-                            <label class="option-checkbox ${previousAnswers.includes(index) ? 'selected' : ''}" onclick="toggleOption(${index})">
-                                <input type="checkbox" ${previousAnswers.includes(index) ? 'checked' : ''} onchange="toggleOption(${index})">
-                                <span class="checkmark"></span>
-                                <span class="option-text">${option.text}</span>
-                            </label>
-                        `).join('')}
+                        ${question.options.map((option, index) => {
+                            if (isMultipleChoice) {
+                                return `
+                                    <label class="option-checkbox ${previousAnswers.includes(index) ? 'selected' : ''}" onclick="toggleOption(${index})">
+                                        <input type="checkbox" ${previousAnswers.includes(index) ? 'checked' : ''} onchange="toggleOption(${index})">
+                                        <span class="checkmark"></span>
+                                        <span class="option-text">${option.text}</span>
+                                    </label>
+                                `;
+                            } else {
+                                return `
+                                    <label class="option-radio ${previousAnswers.includes(index) ? 'selected' : ''}" onclick="selectSingleOption(${index})">
+                                        <input type="radio" name="question_${currentQuestion}" ${previousAnswers.includes(index) ? 'checked' : ''} onchange="selectSingleOption(${index})">
+                                        <span class="radio-mark"></span>
+                                        <span class="option-text">${option.text}</span>
+                                    </label>
+                                `;
+                            }
+                        }).join('')}
                     </div>
                 </div>
             `;
@@ -983,6 +1175,22 @@
                 }
             }
             
+            updateNavigationButtons();
+        }
+
+        function selectSingleOption(optionIndex) {
+            // Para selección única, reemplazar todas las respuestas anteriores
+            answers[currentQuestion] = [optionIndex];
+            
+            // Remover selección de todas las opciones
+            document.querySelectorAll('.option-radio').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Agregar selección a la opción elegida
+            const optionElement = document.querySelector(`label.option-radio:nth-child(${optionIndex + 1})`);
+            optionElement.classList.add('selected');
+
             updateNavigationButtons();
         }
 
@@ -1027,6 +1235,13 @@
                 userScores[skill] = 0;
             });
 
+            // Contar respuestas por pregunta
+            let totalQuestions = Object.keys(answers).length;
+            let totalResponses = 0;
+            Object.keys(answers).forEach(questionIndex => {
+                totalResponses += answers[questionIndex].length;
+            });
+
             // Sumar puntuaciones de respuestas múltiples
             Object.keys(answers).forEach(questionIndex => {
                 const question = questions[questionIndex];
@@ -1043,15 +1258,80 @@
                 });
             });
 
-            // Normalizar puntuaciones (0-100)
-            const maxPossibleScore = questions.length * 5;
+            // Calcular puntuaciones normalizadas de manera más realista
+            // Usar el promedio de respuestas por pregunta para normalizar
+            const avgResponsesPerQuestion = totalResponses / totalQuestions;
+            
             Object.keys(userScores).forEach(skill => {
-                userScores[skill] = Math.round((userScores[skill] / maxPossibleScore) * 100);
+                // Calcular el máximo posible para esta habilidad
+                // Asumiendo que en promedio se seleccionan 1.5 opciones por pregunta
+                const maxPossibleForSkill = totalQuestions * avgResponsesPerQuestion * 5;
+                
+                if (maxPossibleForSkill > 0) {
+                    // Normalizar y ajustar para que los resultados sean más realistas
+                    let normalizedScore = (userScores[skill] / maxPossibleForSkill) * 100;
+                    
+                    // Aplicar un factor de ajuste para evitar resultados muy bajos
+                    // Si alguien responde consistentemente, debería tener al menos 40-50%
+                    normalizedScore = Math.max(normalizedScore * 1.3, normalizedScore + 20);
+                    
+                    // Asegurar que no exceda 100%
+                    userScores[skill] = Math.min(Math.round(normalizedScore), 100);
+                } else {
+                    userScores[skill] = 0;
+                }
             });
 
-            // Calcular compatibilidad general
-            const totalScore = Object.values(userScores).reduce((sum, score) => sum + score, 0);
-            const compatibilityScore = Math.round(totalScore / career.skills.length);
+            // Calcular compatibilidad general con ponderación más suave
+            const skillWeights = {
+                'análisis': 1.1,
+                'comunicación': 1.05,
+                'trabajo_equipo': 1.05,
+                'empatía': 1.0,
+                'creatividad': 1.0,
+                'persistencia': 1.0,
+                'liderazgo': 1.15,
+                'innovación': 1.05,
+                'ética': 1.0,
+                'adaptabilidad': 1.0,
+                'atención_detalle': 1.0,
+                'organización': 1.0,
+                'investigación': 1.0,
+                'lógica': 1.0,
+                'matemáticas': 1.0,
+                'visualización': 1.0,
+                'presión': 1.0,
+                'memoria': 1.0,
+                'persuasión': 1.0,
+                'paciencia': 1.0,
+                'escucha_activa': 1.0,
+                'resolución_problemas': 1.1
+            };
+
+            let weightedScore = 0;
+            let totalWeight = 0;
+            
+            Object.keys(userScores).forEach(skill => {
+                const weight = skillWeights[skill] || 1.0;
+                weightedScore += userScores[skill] * weight;
+                totalWeight += weight;
+            });
+
+            let compatibilityScore = Math.round(weightedScore / totalWeight);
+            
+            // Ajuste final para asegurar resultados más realistas
+            // Si alguien completa el test, debería tener al menos 35-40% de compatibilidad
+            compatibilityScore = Math.max(compatibilityScore, 35);
+            
+            // Si tiene buenas puntuaciones en habilidades clave, aumentar el score
+            const keySkills = ['análisis', 'comunicación', 'trabajo_equipo', 'persistencia'];
+            const keySkillsScore = keySkills.reduce((sum, skill) => sum + (userScores[skill] || 0), 0) / keySkills.length;
+            
+            if (keySkillsScore > 60) {
+                compatibilityScore = Math.min(compatibilityScore + 15, 95);
+            } else if (keySkillsScore > 40) {
+                compatibilityScore = Math.min(compatibilityScore + 10, 90);
+            }
 
             showResults(compatibilityScore, career);
         }
@@ -1066,11 +1346,11 @@
             
             // Descripción basada en el score
             let description = '';
-            if (score >= 80) {
+            if (score >= 75) {
                 description = '¡Excelente! Tienes una compatibilidad muy alta con esta carrera.';
             } else if (score >= 60) {
                 description = 'Buena compatibilidad. Con dedicación puedes tener éxito en esta carrera.';
-            } else if (score >= 40) {
+            } else if (score >= 45) {
                 description = 'Compatibilidad moderada. Considera desarrollar las habilidades necesarias.';
             } else {
                 description = 'Compatibilidad baja. Podrías considerar otras opciones o trabajar en tus debilidades.';
@@ -1088,9 +1368,38 @@
             const container = document.getElementById('skillsAnalysis');
             const career = careers[currentCareer];
             
+            // Función para formatear nombres de habilidades correctamente
+            function formatSkillName(skill) {
+                const skillNames = {
+                    'análisis': 'Análisis',
+                    'comunicación': 'Comunicación',
+                    'trabajo_equipo': 'Trabajo en Equipo',
+                    'empatía': 'Empatía',
+                    'creatividad': 'Creatividad',
+                    'persistencia': 'Persistencia',
+                    'liderazgo': 'Liderazgo',
+                    'innovación': 'Innovación',
+                    'ética': 'Ética',
+                    'adaptabilidad': 'Adaptabilidad',
+                    'atención_detalle': 'Atención al Detalle',
+                    'organización': 'Organización',
+                    'investigación': 'Investigación',
+                    'lógica': 'Lógica',
+                    'matemáticas': 'Matemáticas',
+                    'visualización': 'Visualización',
+                    'presión': 'Trabajo bajo Presión',
+                    'memoria': 'Memoria',
+                    'persuasión': 'Persuasión',
+                    'paciencia': 'Paciencia',
+                    'escucha_activa': 'Escucha Activa',
+                    'resolución_problemas': 'Resolución de Problemas'
+                };
+                return skillNames[skill] || skill.charAt(0).toUpperCase() + skill.slice(1);
+            }
+            
             container.innerHTML = career.skills.map(skill => {
-                const score = userScores[skill];
-                const skillName = skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const score = userScores[skill] || 0;
+                const skillName = formatSkillName(skill);
                 const dots = Array.from({length: 5}, (_, i) => 
                     `<div class="skill-dot ${i < Math.round(score / 20) ? 'active' : ''}"></div>`
                 ).join('');
@@ -1109,42 +1418,111 @@
             const sortedSkills = Object.entries(userScores)
                 .sort((a, b) => b[1] - a[1]);
 
-            // Fortalezas (top 3)
-            const strengths = sortedSkills.slice(0, 3);
+            // Función para formatear nombres de habilidades correctamente
+            function formatSkillName(skill) {
+                const skillNames = {
+                    'análisis': 'Análisis',
+                    'comunicación': 'Comunicación',
+                    'trabajo_equipo': 'Trabajo en Equipo',
+                    'empatía': 'Empatía',
+                    'creatividad': 'Creatividad',
+                    'persistencia': 'Persistencia',
+                    'liderazgo': 'Liderazgo',
+                    'innovación': 'Innovación',
+                    'ética': 'Ética',
+                    'adaptabilidad': 'Adaptabilidad',
+                    'atención_detalle': 'Atención al Detalle',
+                    'organización': 'Organización',
+                    'investigación': 'Investigación',
+                    'lógica': 'Lógica',
+                    'matemáticas': 'Matemáticas',
+                    'visualización': 'Visualización',
+                    'presión': 'Trabajo bajo Presión',
+                    'memoria': 'Memoria',
+                    'persuasión': 'Persuasión',
+                    'paciencia': 'Paciencia',
+                    'escucha_activa': 'Escucha Activa',
+                    'resolución_problemas': 'Resolución de Problemas'
+                };
+                return skillNames[skill] || skill.charAt(0).toUpperCase() + skill.slice(1);
+            }
+
+            // Fortalezas (top 3 con score > 50)
+            const strengths = sortedSkills.filter(([skill, score]) => score > 50).slice(0, 3);
             document.getElementById('strengthsList').innerHTML = strengths.map(([skill, score]) => {
-                const skillName = skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const skillName = formatSkillName(skill);
                 return `<div class="skill-item"><span class="skill-name">${skillName} (${score}%)</span></div>`;
             }).join('');
 
-            // Áreas de mejora (bottom 3)
-            const improvements = sortedSkills.slice(-3).reverse();
+            // Áreas de mejora (bottom 3 con score < 70)
+            const improvements = sortedSkills.filter(([skill, score]) => score < 70).slice(-3).reverse();
             document.getElementById('improvementsList').innerHTML = improvements.map(([skill, score]) => {
-                const skillName = skill.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const skillName = formatSkillName(skill);
                 return `<div class="skill-item"><span class="skill-name">${skillName} (${score}%)</span></div>`;
             }).join('');
         }
 
         function showRecommendations() {
             const score = parseInt(document.getElementById('scoreNumber').textContent);
+            const career = careers[currentCareer];
+            const sortedSkills = Object.entries(userScores).sort((a, b) => a[1] - b[1]);
+            const weakestSkills = sortedSkills.slice(0, 3);
+            
             let recommendations = [];
 
-            if (score >= 80) {
+            if (score >= 75) {
                 recommendations = [
-                    'Mantén tu nivel de motivación y continúa desarrollando tus fortalezas',
-                    'Considera especializarte en áreas específicas de la carrera',
-                    'Busca oportunidades de liderazgo y mentoría'
+                    'Excelente compatibilidad. Continúa desarrollando tus fortalezas naturales.',
+                    'Considera especializarte en áreas específicas de ' + career.name.toLowerCase() + '.',
+                    'Busca oportunidades de liderazgo y mentoría en tu campo.',
+                    'Mantén tu motivación y explora nuevas tendencias en la industria.'
                 ];
             } else if (score >= 60) {
                 recommendations = [
-                    'Enfócate en desarrollar las habilidades con menor puntuación',
-                    'Busca experiencias prácticas en el campo',
-                    'Considera tomar cursos adicionales en áreas débiles'
+                    'Buena base para ' + career.name.toLowerCase() + '. Enfócate en las áreas de mejora.',
+                    'Desarrolla especialmente: ' + weakestSkills.map(([skill]) => {
+                        const skillNames = {
+                            'análisis': 'análisis crítico',
+                            'comunicación': 'habilidades de comunicación',
+                            'trabajo_equipo': 'trabajo colaborativo',
+                            'empatía': 'inteligencia emocional',
+                            'creatividad': 'pensamiento creativo',
+                            'persistencia': 'perseverancia',
+                            'liderazgo': 'liderazgo',
+                            'innovación': 'innovación',
+                            'ética': 'ética profesional',
+                            'adaptabilidad': 'adaptabilidad',
+                            'atención_detalle': 'atención al detalle',
+                            'organización': 'organización',
+                            'investigación': 'investigación',
+                            'lógica': 'pensamiento lógico',
+                            'matemáticas': 'matemáticas',
+                            'visualización': 'visualización espacial',
+                            'presión': 'trabajo bajo presión',
+                            'memoria': 'memoria',
+                            'persuasión': 'persuasión',
+                            'paciencia': 'paciencia',
+                            'escucha_activa': 'escucha activa',
+                            'resolución_problemas': 'resolución de problemas'
+                        };
+                        return skillNames[skill] || skill;
+                    }).join(', ') + '.',
+                    'Busca experiencias prácticas y cursos especializados.',
+                    'Considera hacer pasantías o voluntariado en el campo.'
+                ];
+            } else if (score >= 45) {
+                recommendations = [
+                    'Compatibilidad moderada. Evalúa si realmente te apasiona ' + career.name.toLowerCase() + '.',
+                    'Desarrolla habilidades fundamentales antes de comprometerte.',
+                    'Considera carreras relacionadas que requieran menos de tus áreas débiles.',
+                    'Busca orientación vocacional profesional para explorar opciones.'
                 ];
             } else {
                 recommendations = [
-                    'Evalúa si realmente te interesa esta carrera',
-                    'Considera explorar carreras relacionadas',
-                    'Desarrolla las habilidades fundamentales antes de decidir'
+                    'Compatibilidad baja. Considera explorar otras carreras más alineadas con tus fortalezas.',
+                    'Reflexiona sobre tus verdaderos intereses y motivaciones.',
+                    'Explora carreras que valoren más tus habilidades naturales.',
+                    'No te desanimes, cada persona tiene su camino único.'
                 ];
             }
 
