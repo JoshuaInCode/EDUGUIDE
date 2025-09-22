@@ -230,7 +230,7 @@
                      <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
                          <h1 class="display-4 fw-bold mb-4 animate-3d-in" style="color:#ffffff; text-shadow:4px 4px 15px #0a2342, 0 0 30px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); font-weight: 900; letter-spacing: 2px;">DISCOVER YOUR VOCATION</h1>
                          <p class="lead mb-4 animate-3d-in-delay" style="color:#ffffff; text-shadow:3px 3px 12px #0a2342, 0 0 25px rgba(255,255,255,0.4), 0 0 35px rgba(255,255,255,0.2); font-weight: 700; letter-spacing: 1px;">Not sure what to study? Our vocational test will help you find your ideal professional path</p>
-                         <a href="https://blossomup.co/lp/career/?utm_medium=cpc&utm_source=google&utm_campaign=21997269117&gad_source=1&gad_campaignid=21997269117&gclid=Cj0KCQjwtMHEBhC-ARIsABua5iQlX-Hkc4kbEH5riHDWKIPiAZmOy8Xsn9SKseor_DmaDYB1A6Cw_FgaAvYUEALw_wcB" class="btn btn-cta-carousel animate-3d-in-delay2">Take Vocational Test</a>
+                         <a href="#" onclick="handleVocationalClick(event)" class="btn btn-cta-carousel animate-3d-in-delay2">Take Vocational Test</a>
                      </div>
                  </div>
 
@@ -1150,6 +1150,23 @@ document.addEventListener('DOMContentLoaded', revealOnScroll);
         };
     }
     // ...Integrar esta función en el flujo del test vocacional...
+    </script>
+    <script>
+        function handleVocationalClick(event) {
+            event.preventDefault();
+            try {
+                const isAuthenticated = window.authManager && typeof window.authManager.isUserAuthenticated === 'function'
+                    ? window.authManager.isUserAuthenticated()
+                    : false;
+                // From index root, internal pages live under 'pages/'
+                const targetWhenAuthed = 'pages/vocational-test.html';
+                const targetWhenGuest = 'pages/login.html';
+                window.location.href = isAuthenticated ? targetWhenAuthed : targetWhenGuest;
+            } catch (e) {
+                // Fallback: send to login
+                window.location.href = 'pages/login.html';
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "name": "eduguide",
+  "version": "1.0.0",
+  "description": "ExpoTechWork",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaInCode/EDUGUIDE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshuaInCode/EDUGUIDE/issues"
+  },
+  "homepage": "https://github.com/JoshuaInCode/EDUGUIDE#readme"
+}
